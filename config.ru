@@ -1,3 +1,3 @@
 require './app'
 
-run LiquidFeedback
+run LiquidFeedback::API
