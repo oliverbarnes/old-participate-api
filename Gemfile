@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'bundler'
 
 gem 'grape'
+gem 'roar'
 
 gem 'mongoid', '~> 3.0.0', require: true
 gem 'bson_ext'
