@@ -1,0 +1,13 @@
+development:
+  sessions:
+    default:
+      database: lf_development
+      hosts:
+        - localhost:27017
+
+test:
+  sessions:
+    default:
+      database: lf_test
+      hosts:
+        - localhost:27017

@@ -1,8 +1,9 @@
 module LiquidFeedback
   class Issues < Grape::API
 
-    get 'issues' do
-      { issues: 'loads' }.to_json
+    desc 'List issues'
+    get :issues do
+      Issue.all
     end
 
   end

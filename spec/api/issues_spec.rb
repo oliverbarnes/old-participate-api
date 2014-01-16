@@ -6,7 +6,7 @@ describe LiquidFeedback::Issues  do
     it 'outputs loads' do
       get "/issues"
       last_response.status.should == 200
-      JSON.parse(last_response.body)["issues"].should == "loads"
+      JSON.parse(last_response.body).should == []
     end
   end
 end

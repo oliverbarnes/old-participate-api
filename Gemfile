@@ -4,6 +4,9 @@ gem 'bundler'
 
 gem 'grape'
 
+gem 'mongoid', '~> 3.0.0', require: true
+gem 'bson_ext'
+
 group :development, :test do
   gem 'guard'
   gem 'guard-bundler'
@@ -14,4 +17,5 @@ group :test do
   gem 'rack-test'
   gem 'rspec'
   gem 'guard-rspec'
+  gem 'factory_girl'
 end
