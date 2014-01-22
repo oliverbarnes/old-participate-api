@@ -8,9 +8,9 @@ module LiquidFeedback
       Issue.all.extend( IssuesRepresenter )
     end
 
+    #untested, just for sanity checks for now
     desc 'Show issue'
     get :issue do
-      Issue.create!( name: 'Obama' )
       Issue.last.extend( IssueRepresenter )
     end
 
