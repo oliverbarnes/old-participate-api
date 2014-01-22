@@ -16,6 +16,10 @@ Dir[File.expand_path('../app/models/*.rb', __FILE__)].each do |file|
   require file
 end
 
+Dir[File.expand_path('../app/representers/*.rb', __FILE__)].each do |file|
+  require file
+end
+
 Dir[File.expand_path('../app/api/*.rb', __FILE__)].each do |file|
   require file
 end
