@@ -5,13 +5,14 @@ gem 'bundler'
 gem 'grape'
 gem 'roar'
 
-gem 'mongoid', '~> 3.0.0', require: true
+gem 'mongoid', '~> 3.1.6', require: true
 gem 'bson_ext'
 
 group :development, :test do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-rack'
+  gem 'pry'
 end
 
 group :test do

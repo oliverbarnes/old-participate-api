@@ -65,11 +65,11 @@ GEM
     lumberjack (1.0.4)
     method_source (0.8.2)
     mini_portile (0.5.2)
-    mongoid (3.0.23)
-      activemodel (~> 3.1)
-      moped (~> 1.2)
+    mongoid (3.1.6)
+      activemodel (~> 3.2)
+      moped (~> 1.4)
       origin (~> 1.0)
-      tzinfo (~> 0.3.22)
+      tzinfo (~> 0.3.29)
     moped (1.5.1)
     multi_json (1.8.4)
     multi_xml (0.5.5)
@@ -125,7 +125,8 @@ DEPENDENCIES
   guard-bundler
   guard-rack
   guard-rspec
-  mongoid (~> 3.0.0)
+  mongoid (~> 3.1.6)
+  pry
   rack-test
   roar
   rspec
