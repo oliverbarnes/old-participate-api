@@ -8,7 +8,7 @@ describe LiquidFeedback::Issues  do
   describe 'GET /issues' do
     subject { get '/issues' }
 
-    it 'status 200' do
+    it '200' do
       subject.status.should == 200
     end
 
@@ -16,18 +16,44 @@ describe LiquidFeedback::Issues  do
       JSON.parse( subject.body ).should == []
     end
 
-    context 'when issues present' do
+    context 'when issues exist' do
       before(:each) do
         FactoryGirl.create( :issue, name: 'Kofi' )
       end
   
-      it 'status 200' do
+      it '200' do
         subject.status.should == 200
       end
 
-      it "well-formed json collection" do
+      it "collection of issues" do
         JSON.parse( subject.body ).should == [{'name' => 'Kofi'}]
       end
+    end
+  end
+
+  describe 'GET /issues/:id' do
+    let(:issue) { FactoryGirl.create( :issue ) }
+    subject { get "/issues/#{issue.id}" }
+
+    it '200' do
+      subject.status.should == 200
+    end
+
+    it 'json representation of issue' do
+      JSON.parse( subject.body ).should == {'name' => 'Kofi'}
+    end
+
+    context 'non-existing id' do
+      subject { get "/issues/52e198366a69422a73000001" }
+
+      it '404' do
+        subject.status.should == 404
+      end
+
+      it 'issue not found' do
+        JSON.parse( subject.body ).should == {'error' => 'Issue not found'}
+      end
+
     end
   end
 end

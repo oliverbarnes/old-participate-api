@@ -2,17 +2,26 @@ require File.expand_path('../../representers/issue_representer.rb', __FILE__)
 
 module LiquidFeedback
   class Issues < Grape::API
-
-    desc 'List issues'
-    get :issues do
-      Issue.all.extend( IssuesRepresenter )
+    rescue_from Mongoid::Errors::DocumentNotFound do
+      error_response message: 'Issue not found', status: 404
     end
 
-    #untested, just for sanity checks for now
-    desc 'Show issue'
-    get :issue do
-      Issue.last.extend( IssueRepresenter )
-    end
+    resource :issues do
+      desc 'List issues'
+      get do
+        Issue.all.extend( IssuesRepresenter )
+      end
 
+      desc 'Show issue'
+      params do
+        requires :id, type: String, desc: "Issue id"
+      end
+
+      route_param :id do
+        get do
+          Issue.find(params[:id]).extend( IssueRepresenter )
+        end
+      end
+    end
   end
 end
