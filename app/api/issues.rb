@@ -14,7 +14,7 @@ module LiquidFeedback
 
       desc 'Show issue'
       params do
-        requires :id, type: String, desc: "Issue id"
+        requires :id, desc: "Issue id"
       end
 
       route_param :id do
