@@ -44,7 +44,7 @@ describe LiquidFeedback::Issues  do
     end
 
     context 'non-existing id' do
-      subject { get "/issues/52e198366a69422a73000001" }
+      subject { get "/issues/idontexist" }
 
       it '404' do
         subject.status.should == 404
