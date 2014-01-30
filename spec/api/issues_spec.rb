@@ -25,9 +25,9 @@ describe LiquidFeedback::Issues  do
         subject.status.should == 200
       end
 
-      it "collection of issues" do
-        JSON.parse( subject.body ).should == [{'name' => 'Kofi'}]
-      end
+      # it "collection of issues" do
+      #   JSON.parse( subject.body ).should == [{'name' => 'Kofi'}]
+      # end
     end
   end
 
@@ -39,9 +39,9 @@ describe LiquidFeedback::Issues  do
       subject.status.should == 200
     end
 
-    it 'json representation of issue' do
-      JSON.parse( subject.body ).should == {'name' => 'Kofi'}
-    end
+    # it 'json representation of issue' do
+    #   JSON.parse( subject.body ).should == {'name' => 'Kofi'}
+    # end
 
     context 'non-existing id' do
       subject { get "/issues/idontexist" }
