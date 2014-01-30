@@ -10,3 +10,9 @@ require 'factories'
 def app
   LiquidFeedback::API
 end
+
+RspecApiDocumentation.configure do |config|
+  config.app = app
+  config.curl_host = 'http://localhost:9292'
+  config.format = :json
+end
