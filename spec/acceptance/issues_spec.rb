@@ -11,8 +11,30 @@ resource 'Issues' do
     let(:id) { issue.id }
 
     example_request "Getting a specific issue" do
-      #TODO: fix time discrepancy
-      expected = JSON.parse '{"name":"Kofi","area_id":1,"policy_id":1,"admin_notice":"","state":"frozen","phase_finished":"2014-01-30T17:40:34-02:00","created":"2014-01-30T17:40:34-02:00","accepted":"2014-01-30T17:40:34-02:00","half_frozen":"2014-01-30T17:40:34-02:00","fully_frozen":"2014-01-30T17:40:34-02:00","closed":"2014-01-30T17:40:34-02:00","cleaned":"2014-01-30T17:40:34-02:00","admission_time":0,"discussion_time":0,"verification_time":0,"voting_time":0,"snapshot":"2014-01-30T17:40:34-02:00","latest_snapshot_event":"","population":0,"voter_count":0,"status_quo_schulze_rank":0}'
+      expected_representation = %{{
+                                   "name": "#{issue.name}",
+                                   "area_id": #{issue.area_id},
+                                   "policy_id": #{issue.policy_id},
+                                   "admin_notice": "#{issue.admin_notice}",
+                                   "state": "#{issue.state}",
+                                   "phase_finished": "#{issue.phase_finished.iso8601}",
+                                   "created": "#{issue.created.iso8601}",
+                                   "accepted": "#{issue.accepted.iso8601}",
+                                   "half_frozen": "#{issue.half_frozen.iso8601}",
+                                   "fully_frozen": "#{issue.fully_frozen.iso8601}",
+                                   "closed": "#{issue.closed.iso8601}",
+                                   "cleaned": "#{issue.cleaned.iso8601}",
+                                   "admission_time": #{issue.admission_time},
+                                   "discussion_time": #{issue.discussion_time},
+                                   "verification_time": #{issue.verification_time},
+                                   "voting_time": #{issue.voting_time},
+                                   "snapshot": "#{issue.snapshot.iso8601}",
+                                   "latest_snapshot_event": "#{issue.latest_snapshot_event}",
+                                   "population": #{issue.population},
+                                   "voter_count": #{issue.voter_count},
+                                   "status_quo_schulze_rank": #{issue.status_quo_schulze_rank}
+                                  }}
+      expected = JSON.parse( expected_representation )
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
     end
