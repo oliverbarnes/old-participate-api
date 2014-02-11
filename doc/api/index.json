@@ -7,6 +7,16 @@
           "description": "Getting a specific issue",
           "link": "issues/getting_a_specific_issue.json",
           "groups": "all"
+        },
+        {
+          "description": "Issue not found",
+          "link": "issues/issue_not_found.json",
+          "groups": "all"
+        },
+        {
+          "description": "Listing issues",
+          "link": "issues/listing_issues.json",
+          "groups": "all"
         }
       ]
     }

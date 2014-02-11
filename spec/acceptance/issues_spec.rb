@@ -5,13 +5,8 @@ resource 'Issues' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 
-  let(:issue) { FactoryGirl.create( :issue ) }
-
-  get "/issues/:id" do
-    let(:id) { issue.id }
-
-    example_request "Getting a specific issue" do
-      expected_representation = %{{
+  let!(:issue) { FactoryGirl.create( :issue ) }
+  let(:issue_representation) { %{{
                                    "name": "#{issue.name}",
                                    "area_id": #{issue.area_id},
                                    "policy_id": #{issue.policy_id},
@@ -33,8 +28,30 @@ resource 'Issues' do
                                    "population": #{issue.population},
                                    "voter_count": #{issue.voter_count},
                                    "status_quo_schulze_rank": #{issue.status_quo_schulze_rank}
-                                  }}
-      expected = JSON.parse( expected_representation )
+                                  }} }
+
+  get '/issues/:id' do
+    let(:id) { issue.id }
+
+    example_request "Getting a specific issue" do
+      expected = JSON.parse( issue_representation )
+      expect( JSON.parse( response_body) ).to eql expected
+      status.should == 200
+    end
+
+    context 'non-existing id' do
+      let(:id) { 'idontexist' }
+
+      example_request "Issue not found" do
+        expect( JSON.parse( response_body) ).to eql( {'error' => 'Issue not found'} )
+        status.should == 404
+      end
+    end
+  end
+
+  get '/issues' do
+    example_request "Listing issues" do
+      expected = JSON.parse( "[#{issue_representation}]" )
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
     end

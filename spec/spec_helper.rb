@@ -16,3 +16,7 @@ RspecApiDocumentation.configure do |config|
   config.curl_host = 'http://localhost:9292'
   config.format = :json
 end
+
+RSpec.configure do |config|
+  config.before(:each) { Issue.destroy_all }
+end
