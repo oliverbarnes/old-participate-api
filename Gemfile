@@ -13,7 +13,7 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'guard-rack'
   gem 'pry'
-  gem 'rspec_api_documentation', github: 'zipmark/rspec_api_documentation'
+  gem 'rspec_api_documentation'#, github: 'zipmark/rspec_api_documentation'
   gem 'raddocs'
 end
 
