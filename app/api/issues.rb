@@ -30,7 +30,10 @@ module LiquidFeedback
       end
 
       post do
-        Issue.create! params #TODO: sanitize
+        Issue.create!(
+          title: params[:title],
+          description: params[:description]
+        )
       end
     end
   end
