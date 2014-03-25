@@ -22,6 +22,16 @@ module LiquidFeedback
           Issue.find(params[:id]).extend( IssueRepresenter )
         end
       end
+
+      desc 'Post new issue'
+      params do
+        requires :title, desc: "Title of the issue"
+        requires :description, desc: "Description of the issue"
+      end
+
+      post do
+        Issue.create! params #TODO: sanitize
+      end
     end
   end
 end

@@ -22,6 +22,8 @@ class Issue
   field :population,                    type: Integer             
   field :voter_count,                   type: Integer           
   field :status_quo_schulze_rank,       type: Integer
+  field :title
+  field :description
 
   alias_method :created, :created_at
 

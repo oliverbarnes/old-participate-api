@@ -24,4 +24,6 @@ module IssueRepresenter
   property :population            
   property :voter_count           
   property :status_quo_schulze_rank
+  property :title
+  property :description
 end

@@ -4,8 +4,9 @@ require 'rspec_api_documentation/dsl'
 resource 'Issues' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
+  parameter :area_id, "Area the issue belongs to"
 
-  let!(:issue) { FactoryGirl.create( :issue ) }
+  let(:issue) { FactoryGirl.create( :issue ) }
   let(:issue_representation) { %{{
                                    "name": "#{issue.name}",
                                    "area_id": #{issue.area_id},
@@ -52,8 +53,21 @@ resource 'Issues' do
   get '/issues' do
     example_request "Listing issues" do
       expected = JSON.parse( "[#{issue_representation}]" )
+      do_request #hack to get response_body to populate
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
+    end
+  end
+
+  post '/issues' do
+    parameter :title, "Title of the issue", required: true
+    parameter :description, "Description of the issue", required: true
+
+    example "Posting a new issue" do
+      do_request(title: "Constant street flooding", description: "Every time there's a heavy rain, my street floods")
+      status.should == 201
+      expected = JSON.parse( issue_representation ) #TODO: add title and description fields
+      expect( JSON.parse( response_body) ).to eql expected
     end
   end
 end
