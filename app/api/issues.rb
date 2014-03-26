@@ -33,7 +33,7 @@ module LiquidFeedback
         Issue.create!(
           title: params[:title],
           description: params[:description]
-        )
+        ).extend( IssueRepresenter )
       end
     end
   end
