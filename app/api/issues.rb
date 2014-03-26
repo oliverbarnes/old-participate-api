@@ -9,7 +9,7 @@ module LiquidFeedback
     resource :issues do
       desc 'List issues'
       get do
-        Issue.all.extend( IssuesRepresenter )
+        Issue.all.extend IssuesRepresenter 
       end
 
       desc 'Show issue'
@@ -19,7 +19,7 @@ module LiquidFeedback
 
       route_param :id do
         get do
-          Issue.find(params[:id]).extend( IssueRepresenter )
+          Issue.find( params[:id] ).extend IssueRepresenter 
         end
       end
 
@@ -33,7 +33,7 @@ module LiquidFeedback
         Issue.create!(
           title: params[:title],
           description: params[:description]
-        ).extend( IssueRepresenter )
+        ).extend IssueRepresenter ;
       end
     end
   end

@@ -4,7 +4,7 @@ require 'rspec_api_documentation/dsl'
 resource 'Issues' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
-  parameter :area_id, "Area the issue belongs to"
+  # parameter :area_id, "Area the issue belongs to"
 
   let(:issue) { FactoryGirl.create( :issue ) }
   let(:issue_representation) { %{{ "title": "#{issue.title}", "description": "#{issue.description}" }} }

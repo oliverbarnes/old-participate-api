@@ -3,6 +3,7 @@ module LiquidFeedback
     format :json
 
     mount ::LiquidFeedback::Issues
+    mount ::LiquidFeedback::Votes
     mount Raddocs::App => "/docs"
   end
 end
