@@ -23,4 +23,7 @@ FactoryGirl.define do
     # voter_count 0                
     # status_quo_schulze_rank 0
   end
+
+  factory :vote do
+  end
 end

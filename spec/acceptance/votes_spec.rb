@@ -22,4 +22,12 @@ resource 'Votes' do
     end
   end
 
+  delete '/votes/:id' do
+    let(:id) { FactoryGirl.create( :vote ).id }
+    
+    example_request "Removing a vote" do
+      status.should == 200
+    end
+  end
+
 end

@@ -15,6 +15,13 @@ module LiquidFeedback
       post do
         Vote.create!( issue_id: params[:issue_id] ).extend VoteRepresenter
       end
+
+      desc 'Delete a vote'
+      route_param :id do
+        delete do
+          Vote.find( params[:id] ).destroy
+        end
+      end
     end
   end
 end
