@@ -27,12 +27,15 @@ module LiquidFeedback
       params do
         requires :title, desc: "Title of the issue"
         requires :description, desc: "Description of the issue"
+        requires :author_id, desc: "Author of the issue"
       end
 
       post do
+        author = Member.find params[:author_id]
         Issue.create!(
           title: params[:title],
-          description: params[:description]
+          description: params[:description],
+          author: author
         ).extend IssueRepresenter ;
       end
     end

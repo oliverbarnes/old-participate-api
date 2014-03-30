@@ -7,4 +7,5 @@ class Member
   has_many :votes
   has_many :delegations, inverse_of: :truster
   has_many :delegations, inverse_of: :trustee
+  has_many :issues
 end

@@ -4,6 +4,9 @@ class Issue
 
   field :title
   field :description
+
+  belongs_to :author, class_name: 'Member'
+  
   # field :name
   # field :area_id,                       type: Integer               
   # field :policy_id,                     type: Integer                            
