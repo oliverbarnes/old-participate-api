@@ -4,4 +4,5 @@ module VoteRepresenter
   include Roar::Representer::JSON
 
   property :issue_id
+  property :voter_id
 end

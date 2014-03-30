@@ -13,7 +13,8 @@ module LiquidFeedback
       end
 
       post do
-        Vote.create!( issue_id: params[:issue_id] ).extend VoteRepresenter
+        voter = Member.find params[:voter_id]
+        Vote.create!( issue_id: params[:issue_id], voter: voter ).extend VoteRepresenter
       end
 
       desc 'Delete a vote'
