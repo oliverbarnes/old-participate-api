@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'rspec_api_documentation/dsl'
 
 resource 'Issues' do
   header 'Accept', 'application/json'

@@ -5,6 +5,7 @@ require 'rack/test'
 
 include Rack::Test::Methods
 
+require 'rspec_api_documentation/dsl'
 require 'factories'
 
 def app

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'rspec_api_documentation/dsl'
 
 resource 'Votes' do
   header 'Accept', 'application/json'
