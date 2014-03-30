@@ -4,6 +4,7 @@ module LiquidFeedback
 
     mount ::LiquidFeedback::Issues
     mount ::LiquidFeedback::Votes
+    mount ::LiquidFeedback::Delegations
     mount Raddocs::App => "/docs"
   end
 end

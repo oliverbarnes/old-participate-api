@@ -26,4 +26,11 @@ FactoryGirl.define do
 
   factory :vote do
   end
+
+  factory :member do
+    name "Alastair Reynolds"
+  end
+
+  factory :delegation do
+  end
 end
