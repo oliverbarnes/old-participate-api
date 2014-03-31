@@ -5,4 +5,5 @@ module VoteRepresenter
 
   property :issue_id
   property :voter_id
+  property :grade
 end

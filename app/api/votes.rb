@@ -10,11 +10,16 @@ module LiquidFeedback
       desc 'Post new vote'
       params do
         requires :issue_id, desc: "Issue being voted on"
+        requires :voter_id, desc: "Voter"
+        requires :grade, desc: "Grade - positive numbers mean acceptance, negative mean rejection. Value indicates preference (1 is highest)"
       end
 
       post do
         voter = Member.find params[:voter_id]
-        Vote.create!( issue_id: params[:issue_id], voter: voter ).extend VoteRepresenter
+        Vote.create!( 
+                      issue_id: params[:issue_id],
+                      grade: params[:grade].to_i,
+                      voter: voter ).extend VoteRepresenter
       end
 
       desc 'Delete a vote'

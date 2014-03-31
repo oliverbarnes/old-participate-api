@@ -6,17 +6,22 @@ resource 'Votes' do
 
   post '/votes' do
   	parameter :issue_id, "Issue being voted on", required: true
-    parameter :voter_id, "Issue being voted on", required: true
+    parameter :voter_id, "Voter", required: true
+    parameter :grade, "Grade - positive numbers mean acceptance, negative mean rejection. Value indicates preference (1 is highest)", required: true
 
   	let(:issue) { FactoryGirl.create :issue }
     let(:voter) { FactoryGirl.create :member }
-  	let(:vote_representation) { %{ {"issue_id": "#{issue.id}", "voter_id": "#{voter.id}"} } }
+  	let(:vote_representation) { %{ { 
+                                     "issue_id": "#{issue.id}", 
+                                     "voter_id": "#{voter.id}",
+                                     "grade": 1
+                                    } } }
     let(:raw_post) do 
-      { issue_id: issue.id, voter_id: voter.id  }.to_json
+      { issue_id: issue.id, voter_id: voter.id, grade: '1' }.to_json
     end
 
   	example "Posting a new vote on a issue" do
-      do_request( issue_id: issue.id, voter_id: voter.id )
+      do_request
       status.should == 201
       expected = JSON.parse( vote_representation )
       expect( JSON.parse( response_body) ).to eql expected
