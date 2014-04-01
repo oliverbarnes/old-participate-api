@@ -15,6 +15,7 @@ module LiquidFeedback
       end
 
       post do
+        # Refactor into truster.delegate_to( trustee, issue)?
         truster = Member.find params[:truster_id]
         trustee = Member.find params[:trustee_id]
         issue = Issue.find params[:issue_id]

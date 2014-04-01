@@ -32,5 +32,8 @@ FactoryGirl.define do
   end
 
   factory :delegation do
+    issue
+    truster { FactoryGirl.create :member }
+    trustee { FactoryGirl.create :member, name: "Greg Egan" }
   end
 end
