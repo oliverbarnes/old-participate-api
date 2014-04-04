@@ -12,7 +12,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-rack'
-  gem 'pry'
+  gem 'pry-nav'
   gem 'rspec_api_documentation'#, github: 'zipmark/rspec_api_documentation'
   gem 'raddocs'
 end
@@ -22,6 +22,7 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'rack-test'
   gem 'rspec'
   gem 'guard-rspec'

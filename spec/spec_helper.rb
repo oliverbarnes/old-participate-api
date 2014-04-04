@@ -7,6 +7,7 @@ include Rack::Test::Methods
 
 require 'rspec_api_documentation/dsl'
 require 'factories'
+require 'database_cleaner'
 
 def app
   LiquidFeedback::API
@@ -19,5 +20,7 @@ RspecApiDocumentation.configure do |config|
 end
 
 RSpec.configure do |config|
-  config.before(:each) { Issue.destroy_all }
+  DatabaseCleaner.strategy = :truncation
+
+  config.before(:each) { DatabaseCleaner.clean }
 end
