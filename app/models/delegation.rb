@@ -12,10 +12,10 @@ class Delegation
   private
 
     def increment_trustee_voting_weight
-      trustee.voting_weight += 1
+      trustee.inc(:voting_weight, 1)
     end
 
     def decrement_trustee_voting_weight
-      trustee.voting_weight -= 1
+      trustee.inc(:voting_weight, -1)
     end
 end
