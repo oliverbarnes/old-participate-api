@@ -6,25 +6,21 @@ describe Member do
     it "is 1 by default" do
       expect( subject.voting_weight ).to eql 1
     end
+  end
 
-    context "when member is trusted with another's vote" do
-      let(:delegation) { FactoryGirl.create :delegation }
-      let(:subject) { delegation.trustee }
-
-      it "is incremented by 1" do
-        expect( subject.voting_weight ).to eql 2
-      end
+  describe "#increment_voting_weight!" do
+    it "increments voting weight by 1" do
+      subject.increment_voting_weight!
+      expect( subject.voting_weight ).to eql 2
     end
+  end
 
-    context "when another member's previous vote delegation to this member is removed" do
-      let(:delegation) { FactoryGirl.create :delegation }
-      let(:subject) { delegation.trustee }
-
-      it "is decremented by 1" do
-        expect( subject.voting_weight ).to eql 2
-        delegation.destroy
-        expect( subject.voting_weight ).to eql 1
-      end
+  describe "#decrement_voting_weight!" do
+    it "decrement voting weight by 1" do
+      subject.increment_voting_weight!
+      expect( subject.voting_weight ).to eql 2
+      subject.decrement_voting_weight!
+      expect( subject.voting_weight ).to eql 1
     end
   end
   
