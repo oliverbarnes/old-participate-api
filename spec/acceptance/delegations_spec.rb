@@ -22,18 +22,24 @@ resource 'Delegations' do
     end
 
     example "Posting a new delegation on a issue" do
+      expect( trustee.voting_weight ).to eql 1
       do_request
       status.should == 201
       expected = JSON.parse( delegation_representation )
       expect( JSON.parse( response_body) ).to eql expected
+      expect( trustee.reload.voting_weight ).to eql 2
     end
   end
 
   delete '/delegations/:id' do
-    let(:id) { FactoryGirl.create( :delegation ).id }
+    let(:delegation) { FactoryGirl.create :delegation }
+    let(:id) { delegation.id }
+    let(:trustee) { delegation.trustee }
     
     example_request "Removing a delegation" do
+      expect( trustee.voting_weight ).to eql 2
       status.should == 200
+      expect( trustee.reload.voting_weight ).to eql 1
     end
   end
 
