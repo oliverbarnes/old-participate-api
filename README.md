@@ -1,4 +1,4 @@
-Ruby port of [LiquidFeedback](http://liquidfeedback.org).
+Ruby port of [LiquidFeedback](http://liquidfeedback.org), a platform the Pirate Party uses internally for democratic decision making and policy drafting.
 
 Very early stage. 
 
