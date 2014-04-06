@@ -1,4 +1,4 @@
-Ruby port of [LiquidFeedback](http://liquidfeedback.org), a platform the Pirate Party uses internally for democratic decision making and policy drafting.
+Ruby port of [LiquidFeedback](http://liquidfeedback.org), the platform used in the Pirate Party's internal, radically democratic decision making and policy drafting.
 
 Very early stage. 
 
@@ -12,7 +12,7 @@ The plan is to build an API and an Ember app to go with it, as a reference front
 
 The API is in early progress, being built on [Grape](https://github.com/intridea/grape) and Mongodb ([Mongoid](http://mongoid.org/en/mongoid/index.html)).
 
-Using the [Rspec API Documentation](https://github.com/zipmark/rspec_api_documentation) gem for acceptance testing and, obviously, documentation, and Rspec for good old unit tests. 
+I'm using the [Rspec API Documentation](https://github.com/zipmark/rspec_api_documentation) gem for acceptance testing and, well, API documentation (it gets generated and then served online in parallel with the API), and Rspec for good old unit tests. 
 
 Implementation is loosely based on LiquidFeedback's [API documentation](http://dev.liquidfeedback.org/trac/lf/wiki/API) and [source](http://www.public-software-group.org/mercurial/lfapi), and on the [source for its Core application](http://dev.liquidfeedback.org/trac/lf/wiki/Core).
 
