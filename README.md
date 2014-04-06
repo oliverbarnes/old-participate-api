@@ -1,8 +1,10 @@
-Ruby port of [LiquidFeedback](http://liquidfeedback.org), the platform used in the Pirate Party's internal, radically democratic decision making, proposition/initiative development and policy drafting.
+Ruby port of [LiquidFeedback](http://liquidfeedback.org), the platform used in the Pirate Party's internal, radically democratic decision making, proposition/initiative development and policy drafting. It's also used by other institutions of different kinds, and even businesses. 
+
+It's in the forefront of digital democracy platforms, implementing the concept of [liquid democracy](http://en.wikipedia.org/wiki/Delegative_democracy) as a path to solve the huge short-comings of representative democracy.
 
 Very early stage. 
 
-Started as a way to learn how it implements [delegative democracy](http://en.wikipedia.org/wiki/Delegative_democracy), while I read the recently published [Principles of LiquidFeedback book](http://principles.liquidfeedback.org), out of an interest in online participative platforms and their potential for political change.
+This project started as a way to learn more about liquid democracy itself, and how they implement it, while I read the recently published [Principles of LiquidFeedback book](http://principles.liquidfeedback.org), out of an interest in online participative platforms and their potential for political change.
 
 Now beginning to take shape as an open source project aiming to be applicable down the line, and to make LiquidFeedback available for rubyists interested in it.
 
