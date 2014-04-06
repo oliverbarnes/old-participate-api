@@ -2,7 +2,7 @@ Ruby port of [LiquidFeedback](http://liquidfeedback.org), the platform used in t
 
 It's in the forefront of digital democracy platforms, implementing the concept of [liquid democracy](http://en.wikipedia.org/wiki/Delegative_democracy) as a path to solve the huge short-comings of representative democracy.
 
-Very early stage. 
+The port is in its early stages.
 
 This project started as a way to learn more about liquid democracy itself, and how they implement it, while I read the recently published [Principles of LiquidFeedback book](http://principles.liquidfeedback.org), out of an interest in online participative platforms and their potential for political change.
 
