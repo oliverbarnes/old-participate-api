@@ -12,9 +12,9 @@ The plan is to build an API and an Ember app to go with it, as a reference front
 
 The API is in early progress, being built on [Grape](https://github.com/intridea/grape) and Mongodb ([Mongoid](http://mongoid.org/en/mongoid/index.html)).
 
-Using [Rspec API Documentation](https://github.com/zipmark/rspec_api_documentation) for acceptance testing and generating the api docs, and Rspec for unit tests. 
+Using the [Rspec API Documentation](https://github.com/zipmark/rspec_api_documentation) gem for acceptance testing and, obviously, documentation, and Rspec for good old unit tests. 
 
-The implementation is loosely based on LiquidFeedback's [API documentation](http://dev.liquidfeedback.org/trac/lf/wiki/API) and [source](http://www.public-software-group.org/mercurial/lfapi), and the [source for its Core application](http://dev.liquidfeedback.org/trac/lf/wiki/Core).
+Implementation is loosely based on LiquidFeedback's [API documentation](http://dev.liquidfeedback.org/trac/lf/wiki/API) and [source](http://www.public-software-group.org/mercurial/lfapi), and on the [source for its Core application](http://dev.liquidfeedback.org/trac/lf/wiki/Core).
 
 Shooting for a clean, modular code-base, and a more user-friendly interface on the front-end.
 
