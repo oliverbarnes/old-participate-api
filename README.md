@@ -4,9 +4,9 @@ Very early stage.
 
 Started as a way to learn how it implements [delegative democracy](http://en.wikipedia.org/wiki/Delegative_democracy), while I read the recently published [Principles of LiquidFeedback book](http://principles.liquidfeedback.org), out of an interest in online participative platforms and their potential for political change.
 
-Now beginning to take shape as a long-term open source project, aiming for real applicability down the line, and available to the wider ruby community to use and extend. 
+Now beginning to take shape as an open source project aiming to be applicable down the line, and to make LiquidFeedback available for rubyists interested in it.
 
-### General direction and tech info
+### Plans, and stack
 
 The plan is to build an API and an Ember app to go with it, as a reference front-end implementation. 
 
