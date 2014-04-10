@@ -24,5 +24,5 @@ Implementation is loosely based on LiquidFeedback's [API documentation](http://d
 
 Contributors would be most welcome :)
 
-If you're interested, go right ahead and open an issue or a pull request to get the ball rolling. Or contact me at oliverbwork@gmail.com.
+If you're interested, go right ahead and open an issue or a pull request to get the ball rolling. Or contact me at oliverbwork at gmail dot com.
 
