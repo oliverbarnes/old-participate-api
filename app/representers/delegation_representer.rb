@@ -6,4 +6,5 @@ module DelegationRepresenter
   property :issue_id
   property :truster_id
   property :trustee_id
+  property :area_id
 end

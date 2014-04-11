@@ -8,6 +8,7 @@ resource 'Delegations' do
     parameter :issue_id, "Issue being delegated", required: true
     parameter :truster_id, "Member delegating their vote", required: true
     parameter :trustee_id, "Member receiving delegation of vote", required: true
+    parameter :area_id, "Area being delegated"
 
     let(:issue) { FactoryGirl.create :issue }
     let(:truster) { FactoryGirl.create :member }
@@ -28,6 +29,19 @@ resource 'Delegations' do
       expected = JSON.parse( delegation_representation )
       expect( JSON.parse( response_body) ).to eql expected
       expect( trustee.reload.voting_weight ).to eql 2
+    end
+
+    context "conflicting area_id and issue_id params" do
+      let(:params) { { issue_id: issue.id, area_id: 'someareaid', truster_id: truster.id, trustee_id: trustee.id  } }
+      let(:raw_post) do 
+        params.to_json
+      end
+
+      example "Conflicting params" do
+        do_request params
+        expect( JSON.parse( response_body) ).to eql( {'error' => 'issue_id and area_id are mutually exclusive params'} )
+        status.should == 400
+      end
     end
   end
 
