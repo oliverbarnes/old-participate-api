@@ -9,9 +9,9 @@ module LiquidFeedback
     resource :delegations do
       desc 'Post new delegation'
       params do
-        requires :issue_id, desc: "Issue being delegated"
         requires :truster_id, desc: "Member delegating their vote"
         requires :trustee_id, desc: "Member receiving delegation of vote"
+        optional :issue_id, desc: "Issue being delegated"
         optional :area_id, desc: 'Area being delegated'
         mutually_exclusive :issue_id, :area_id
       end
