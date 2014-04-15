@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bundler'
 
-gem 'grape', github: 'oliverbarnes/grape', branch: 'mutually_exclusive'
+gem 'grape', github: 'intridea/grape'
 gem 'roar'
 
 gem 'mongoid', '~> 3.1.6', require: true

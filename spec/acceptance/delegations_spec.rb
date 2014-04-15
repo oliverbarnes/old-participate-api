@@ -5,7 +5,7 @@ resource 'Delegations' do
   header 'Content-Type', 'application/json'
 
   post '/delegations' do
-    parameter :issue_id, "Issue being delegated", required: true
+    parameter :issue_id, "Issue being delegated"
     parameter :truster_id, "Member delegating their vote", required: true
     parameter :trustee_id, "Member receiving delegation of vote", required: true
     parameter :area_id, "Area being delegated"
@@ -39,7 +39,7 @@ resource 'Delegations' do
 
       example "Conflicting params" do
         do_request params
-        expect( JSON.parse( response_body) ).to eql( {'error' => 'issue_id and area_id are mutually exclusive params'} )
+        expect( JSON.parse( response_body) ).to eql( {'error' => '[:issue_id, :area_id] are mutually exclusive'} )
         status.should == 400
       end
     end

@@ -1,7 +1,6 @@
 GIT
-  remote: git://github.com/oliverbarnes/grape.git
-  revision: 8f66d9e30aa6bfb405127f0ec9a0ae5ca0225490
-  branch: mutually_exclusive
+  remote: git://github.com/intridea/grape.git
+  revision: 1e1b1f73375b80314cd1ced79cd2ed198c1d92a8
   specs:
     grape (0.7.1)
       activesupport
@@ -67,7 +66,7 @@ GEM
       rspec (>= 2.14, < 4.0)
     haml (4.0.5)
       tilt
-    hashie (2.1.0)
+    hashie (2.1.1)
     i18n (0.6.9)
     ice_nine (0.11.0)
     json (1.8.1)
