@@ -17,4 +17,9 @@ FactoryGirl.define do
     truster { FactoryGirl.create :member }
     trustee { FactoryGirl.create :member }
   end
+
+  factory :area do
+    name "housing"
+    description "All issues and initiatives related to housing"
+  end
 end

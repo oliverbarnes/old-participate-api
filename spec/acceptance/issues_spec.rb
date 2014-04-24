@@ -52,8 +52,6 @@ resource 'Issues' do
       { title: issue.title, description: issue.description, author_id: author.id }.to_json
     end
 
-    before { Issue.destroy_all }
-
     example "Posting a new issue" do
       do_request
       status.should == 201
