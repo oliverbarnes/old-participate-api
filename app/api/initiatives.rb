@@ -28,21 +28,28 @@ module LiquidFeedback
         requires :title, desc: "Title of the initiative"
         requires :description, desc: "Description of the initiative"
         requires :author_id, desc: "Author of the initiative"
+        optional :area_id, desc: "Area the initiative belongs to"
+        optional :issue_id, desc: "Issue the initiative belongs to"
+        mutually_exclusive :area_id, :issue_id
       end
 
       post do
         author = Member.find params[:author_id]
+        area = Area.find params[:area_id] if params[:area_id]
+        issue = Issue.find params[:issue_id] if params[:issue_id]
         Initiative.create!(
           title: params[:title],
           description: params[:description],
-          author: author
+          author: author,
+          area: area,
+          issue: issue
         ).extend InitiativeRepresenter
       end
 
       desc 'Update an initiative'
       params do
         requires :id, desc: "Initiative id"
-        optional :name, desc: "Initiative of the initiative"
+        optional :title, desc: "Initiative of the initiative"
         optional :description, desc: "Description of the initiative"
       end
 

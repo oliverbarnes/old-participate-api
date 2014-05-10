@@ -6,10 +6,14 @@ resource 'Initiatives' do
 
   let(:initiative) { FactoryGirl.create( :initiative ) }
   let(:author) { initiative.author }
+  let(:area) { initiative.area }
+  let(:issue) { initiative.issue }
   let(:initiative_representation) { %{{ 
                                    "title": "#{initiative.title}", 
                                    "description": "#{initiative.description}",
-                                   "author_id": "#{author.id}"
+                                   "author_id": "#{author.id}",
+                                   "area_id": "#{area.id}",
+                                   "issue_id": "#{issue.id}"
                                  }} }
 
   get '/initiatives/:id' do
@@ -45,10 +49,21 @@ resource 'Initiatives' do
     parameter :title, "Title of the initiative", required: true
     parameter :description, "Description of the initiative", required: true
     parameter :author_id, "Author of the initiative", required: true
+    parameter :area_id, "Area the initiative belongs to"
+    parameter :issue_id, "Issue the initiative belongs to"
 
     let(:raw_post) do 
-      { title: initiative.title, description: initiative.description, author_id: author.id }.to_json
+      { title: initiative.title, 
+        description: initiative.description, 
+        author_id: author.id,
+        issue_id: issue.id }.to_json
     end
+    let(:initiative_representation) { %{{ 
+                                     "title": "#{initiative.title}", 
+                                     "description": "#{initiative.description}",
+                                     "author_id": "#{author.id}",
+                                     "issue_id": "#{issue.id}"
+                                   }} }
 
     example "Posting a new initiative" do
       do_request
@@ -69,7 +84,9 @@ resource 'Initiatives' do
     let(:initiative_representation) { %{{ 
                                    "title": "new title", 
                                    "description": "new description",
-                                   "author_id": "#{author.id}"
+                                   "author_id": "#{author.id}",
+                                   "area_id": "#{area.id}",
+                                   "issue_id": "#{issue.id}"
                                  }} }
 
     example "Updating an initiative" do
@@ -78,6 +95,8 @@ resource 'Initiatives' do
       expected = JSON.parse( initiative_representation )
       expect( JSON.parse( response_body) ).to eql expected
     end
+
+    #TODO: context - can't change area or issue the initiative belongs to
   end
 
   delete '/initiatives/:id' do
