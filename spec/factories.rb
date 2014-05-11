@@ -30,4 +30,9 @@ FactoryGirl.define do
     area
     issue
   end
+
+  factory :suggestion do
+    initiative
+    body "Let's give priority to previously displaced tenants"
+  end
 end

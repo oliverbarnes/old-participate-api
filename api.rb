@@ -5,6 +5,7 @@ module LiquidFeedback
     mount ::LiquidFeedback::Areas
     mount ::LiquidFeedback::Issues
     mount ::LiquidFeedback::Initiatives
+    mount ::LiquidFeedback::Suggestions
     mount ::LiquidFeedback::Votes
     mount ::LiquidFeedback::Delegations
     mount Raddocs::App => "/docs"
