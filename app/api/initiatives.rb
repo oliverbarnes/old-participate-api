@@ -26,7 +26,7 @@ module LiquidFeedback
       desc 'Post new initiative'
       params do
         requires :title, desc: "Title of the initiative"
-        requires :description, desc: "Description of the initiative"
+        requires :draft, desc: "Description of the initiative"
         requires :author_id, desc: "Author of the initiative"
         optional :area_id, desc: "Area the initiative belongs to"
         optional :issue_id, desc: "Issue the initiative belongs to"
@@ -39,7 +39,7 @@ module LiquidFeedback
         issue = Issue.find params[:issue_id] if params[:issue_id]
         Initiative.create!(
           title: params[:title],
-          description: params[:description],
+          draft: params[:draft],
           author: author,
           area: area,
           issue: issue
@@ -50,14 +50,14 @@ module LiquidFeedback
       params do
         requires :id, desc: "Initiative id"
         optional :title, desc: "Initiative of the initiative"
-        optional :description, desc: "Description of the initiative"
+        optional :draft, desc: "Description of the initiative"
       end
 
       patch do
         initiative = Initiative.find( params[:id] )
         initiative.update_attributes!(
           title: params[:title],
-          description: params[:description]
+          draft: params[:draft]
         )
         initiative.extend InitiativeRepresenter
       end

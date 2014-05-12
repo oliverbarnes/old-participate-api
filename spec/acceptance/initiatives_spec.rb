@@ -10,7 +10,7 @@ resource 'Initiatives' do
   let(:issue) { initiative.issue }
   let(:initiative_representation) { %{{ 
                                    "title": "#{initiative.title}", 
-                                   "description": "#{initiative.description}",
+                                   "draft": "#{initiative.draft}",
                                    "author_id": "#{author.id}",
                                    "area_id": "#{area.id}",
                                    "issue_id": "#{issue.id}"
@@ -47,20 +47,20 @@ resource 'Initiatives' do
 
   post '/initiatives' do
     parameter :title, "Title of the initiative", required: true
-    parameter :description, "Description of the initiative", required: true
+    parameter :draft, "Description of the initiative", required: true
     parameter :author_id, "Author of the initiative", required: true
     parameter :area_id, "Area the initiative belongs to"
     parameter :issue_id, "Issue the initiative belongs to"
 
     let(:raw_post) do 
       { title: initiative.title, 
-        description: initiative.description, 
+        draft: initiative.draft, 
         author_id: author.id,
         issue_id: issue.id }.to_json
     end
     let(:initiative_representation) { %{{ 
                                      "title": "#{initiative.title}", 
-                                     "description": "#{initiative.description}",
+                                     "draft": "#{initiative.draft}",
                                      "author_id": "#{author.id}",
                                      "issue_id": "#{issue.id}"
                                    }} }
@@ -76,14 +76,14 @@ resource 'Initiatives' do
   patch '/initiatives' do
     parameter :id, "Initiative id", required: true
     parameter :title, "Title of the initiative"
-    parameter :description, "Description of the initiative"
+    parameter :draft, "Description of the initiative"
 
     let(:raw_post) do 
-      { id: initiative.id, title: 'new title', description: 'new description' }.to_json
+      { id: initiative.id, title: 'new title', draft: 'new draft' }.to_json
     end
     let(:initiative_representation) { %{{ 
                                    "title": "new title", 
-                                   "description": "new description",
+                                   "draft": "new draft",
                                    "author_id": "#{author.id}",
                                    "area_id": "#{area.id}",
                                    "issue_id": "#{issue.id}"

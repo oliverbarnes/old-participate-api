@@ -3,7 +3,7 @@ class Initiative
   include Mongoid::Timestamps
 
   field :title
-  field :description
+  field :draft
 
   belongs_to :author, class_name: 'Member'
   belongs_to :area
