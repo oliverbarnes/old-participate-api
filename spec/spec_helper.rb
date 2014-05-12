@@ -6,8 +6,11 @@ require 'rack/test'
 include Rack::Test::Methods
 
 require 'rspec_api_documentation/dsl'
-require 'factories'
 require 'database_cleaner'
+
+Dir[File.expand_path('../factories/*.rb', __FILE__)].each do |file|
+  require file
+end
 
 def app
   LiquidFeedback::API
