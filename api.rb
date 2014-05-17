@@ -3,8 +3,11 @@ module LiquidFeedback
     format :json
 
     mount ::LiquidFeedback::Areas
+    # mount ::LiquidFeedback::AreaMemberships
     mount ::LiquidFeedback::Issues
+    mount ::LiquidFeedback::InterestsInIssues
     mount ::LiquidFeedback::Initiatives
+    # mount ::LiquidFeedback::SupportForInitiatives
     mount ::LiquidFeedback::Suggestions
     mount ::LiquidFeedback::Votes
     mount ::LiquidFeedback::Delegations

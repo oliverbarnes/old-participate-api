@@ -9,6 +9,7 @@ class Member
   has_many :delegations, inverse_of: :truster
   has_many :delegations, inverse_of: :trustee
   has_many :issues
+  has_many :interest_in_issues
 
   def increment_voting_weight!
     self.inc(:voting_weight, 1)

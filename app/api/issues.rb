@@ -36,7 +36,7 @@ module LiquidFeedback
           title: params[:title],
           description: params[:description],
           author: author
-        ).extend IssueRepresenter ;
+        ).extend IssueRepresenter
       end
     end
   end

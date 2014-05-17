@@ -33,7 +33,7 @@ module LiquidFeedback
         Area.create!(
           name: params[:name],
           description: params[:description]
-        ).extend AreaRepresenter ;
+        ).extend AreaRepresenter
       end
 
       desc 'Update an area'
@@ -49,7 +49,7 @@ module LiquidFeedback
           name: params[:name],
           description: params[:description]
         )
-        area.extend AreaRepresenter;
+        area.extend AreaRepresenter
       end
 
       desc 'Delete an area'
