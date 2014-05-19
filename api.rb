@@ -7,7 +7,7 @@ module LiquidFeedback
     mount ::LiquidFeedback::Issues
     mount ::LiquidFeedback::InterestsInIssues
     mount ::LiquidFeedback::Initiatives
-    # mount ::LiquidFeedback::SupportForInitiatives
+    mount ::LiquidFeedback::SupportsToInitiatives
     mount ::LiquidFeedback::Suggestions
     mount ::LiquidFeedback::Votes
     mount ::LiquidFeedback::Delegations

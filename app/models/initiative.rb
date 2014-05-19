@@ -9,4 +9,5 @@ class Initiative
   belongs_to :area
   belongs_to :issue
   has_many :suggestions
+  has_many :supports, class_name: 'SupportToInitiative'
 end
