@@ -1,4 +1,4 @@
-require File.expand_path('../../representers/suggestion_representer.rb', __FILE__)
+require File.expand_path('../../representers/interest_in_issue_representer.rb', __FILE__)
 
 module LiquidFeedback
   class InterestsInIssues < Grape::API

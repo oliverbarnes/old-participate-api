@@ -46,7 +46,7 @@ resource 'InterestsInIssues' do
     parameter :member_id, "Interested member", required: true
 
     let(:raw_post) do 
-      { issue_id: issue.id, member_id: member.id, grade: '1' }.to_json
+      { issue_id: issue.id, member_id: member.id }.to_json
     end
 
     example "Posting a new interest in a issue" do
