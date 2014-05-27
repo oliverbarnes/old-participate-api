@@ -2,6 +2,7 @@ module LiquidFeedback
   class API < Grape::API
     format :json
 
+    mount ::LiquidFeedback::Root
     mount ::LiquidFeedback::Areas
     mount ::LiquidFeedback::AreaMemberships
     mount ::LiquidFeedback::Issues
@@ -11,6 +12,6 @@ module LiquidFeedback
     mount ::LiquidFeedback::Suggestions
     mount ::LiquidFeedback::Votes
     mount ::LiquidFeedback::Delegations
-    mount Raddocs::App => "/docs"
+    mount Raddocs::App => '/docs'
   end
 end
