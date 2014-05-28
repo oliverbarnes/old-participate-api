@@ -8,9 +8,12 @@ resource 'AreaMemberships' do
   let(:area) { membership.area }
   let(:member) { membership.member }
   let(:membership_representation) { %{ { 
-                                   "area_id": "#{area.id}", 
-                                   "member_id": "#{member.id}"
-                                 } } }
+                                         "area_memberships": [{
+                                            "id": "#{membership.id}",
+                                            "area_id": "#{area.id}", 
+                                            "member_id": "#{member.id}"
+                                          }]
+                                       } } }
 
   get '/area_memberships/:id' do
     let(:id) { membership.id }
@@ -34,7 +37,7 @@ resource 'AreaMemberships' do
   get '/area_memberships' do
 
     example_request "Listing area memberships" do
-      expected = JSON.parse( "[#{membership_representation}]" )
+      expected = JSON.parse( membership_representation )
       do_request 
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
@@ -48,6 +51,17 @@ resource 'AreaMemberships' do
     let(:raw_post) do 
       { area_id: area.id, member_id: member.id }.to_json
     end
+
+    let(:membership_id) { AreaMembership.last.id }
+
+    let(:membership_representation) { %{ { 
+                                         "area_memberships": [{
+                                            "id": "#{membership_id}",
+                                            "area_id": "#{area.id}", 
+                                            "member_id": "#{member.id}"
+                                          }]
+                                       } } }
+
 
     example "Posting new area membership" do
       do_request

@@ -19,7 +19,7 @@ module LiquidFeedback
 
       route_param :id do
         get do
-          AreaMembership.find( params[:id] ).extend AreaMembershipRepresenter 
+          [AreaMembership.find( params[:id] )].extend AreaMembershipsRepresenter 
         end
       end
 
@@ -30,10 +30,10 @@ module LiquidFeedback
       end
 
       post do
-        AreaMembership.create!(
+        [AreaMembership.create!(
           area_id: params[:area_id],
           member_id: params[:member_id]
-        ).extend AreaMembershipRepresenter
+        )].extend AreaMembershipsRepresenter
       end
 
       desc 'Delete area membership'
