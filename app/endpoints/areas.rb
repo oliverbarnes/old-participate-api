@@ -19,7 +19,7 @@ module LiquidFeedback
 
       route_param :id do
         get do
-          Area.find( params[:id] ).extend AreaRepresenter 
+          [Area.find( params[:id] )].extend AreasRepresenter 
         end
       end
 
@@ -30,10 +30,10 @@ module LiquidFeedback
       end
 
       post do
-        Area.create!(
+        [Area.create!(
           name: params[:name],
           description: params[:description]
-        ).extend AreaRepresenter
+        )].extend AreasRepresenter
       end
 
       desc 'Update an area'
@@ -49,7 +49,7 @@ module LiquidFeedback
           name: params[:name],
           description: params[:description]
         )
-        area.extend AreaRepresenter
+        [area].extend AreasRepresenter
       end
 
       desc 'Delete an area'

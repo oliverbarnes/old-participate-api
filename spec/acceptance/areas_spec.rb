@@ -6,9 +6,12 @@ resource 'Areas' do
 
   let(:area) { FactoryGirl.create( :area ) }
   let(:area_representation) { %{{ 
-                                   "name": "#{area.name}", 
-                                   "description": "#{area.description}"
-                                 }} }
+                                 "areas": [{ 
+                                    "id": "#{area.id}",
+                                    "name": "#{area.name}", 
+                                    "description": "#{area.description}"
+                                  }]
+                                }} }
 
   get '/areas/:id' do
     let(:id) { area.id }
@@ -32,7 +35,7 @@ resource 'Areas' do
   get '/areas' do
 
     example_request "Listing areas" do
-      expected = JSON.parse( "[#{area_representation}]" )
+      expected = JSON.parse( area_representation )
       do_request #hack to get response_body to populate - example_request() should already have made the request
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
@@ -44,8 +47,17 @@ resource 'Areas' do
     parameter :description, "Description of the area"
 
     let(:raw_post) do 
-      { name: area.name, description: area.description }.to_json
+      { name: 'new area', description: 'new area description' }.to_json
     end
+
+    let(:area_id) { Area.last.id }
+    let(:area_representation) { %{ { 
+                                     "areas": [{
+                                        "id": "#{area_id}",
+                                        "name": "#{'new area'}", 
+                                        "description": "#{'new area description'}"
+                                      }]
+                                   } } }
 
     example "Posting a new area" do
       do_request
@@ -64,8 +76,11 @@ resource 'Areas' do
       { id: area.id, name: 'new name', description: 'new description' }.to_json
     end
     let(:area_representation) { %{{ 
-                                   "name": "new name", 
-                                   "description": "new description"
+                                     "areas": [{
+                                        "id": "#{area.id}",
+                                        "name": "new name", 
+                                        "description": "new description"
+                                      }]
                                  }} }
 
     example "Updating an area" do
