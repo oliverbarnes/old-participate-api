@@ -6,10 +6,13 @@ resource 'Suggestions' do
 
   let(:suggestion) { FactoryGirl.create( :suggestion ) }
   let(:initiative) { suggestion.initiative }
-  let(:suggestion_representation) { %{{  
-                                   "body": "#{suggestion.body}",
-                                   "initiative_id": "#{initiative.id}"
-                                 }} }
+  let(:suggestion_representation) { %{{ 
+                                       "suggestions": [{  
+                                         "id": "#{suggestion.id}",
+                                         "body": "#{suggestion.body}",
+                                         "initiative_id": "#{initiative.id}"
+                                        }]
+                                     }} }
 
   get '/suggestions/:id' do
     let(:id) { suggestion.id }
@@ -25,7 +28,7 @@ resource 'Suggestions' do
     parameter :initiative_id, "Initiative the suggestion is for", required: true
 
     example_request "Listing suggestions"do
-      expected = JSON.parse( "[#{suggestion_representation}]" )
+      expected = JSON.parse( suggestion_representation )
       do_request(initiative_id: initiative.id)
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
@@ -37,9 +40,16 @@ resource 'Suggestions' do
     parameter :initiative_id, "Initiative the suggestion is for", required: true
 
     let(:raw_post) do 
-      { body: suggestion.body, initiative_id: initiative.id }.to_json
+      { body: "new suggestion", initiative_id: initiative.id }.to_json
     end
-
+    let(:suggestion_id) { Suggestion.last.id }
+    let(:suggestion_representation) { %{ { 
+                                     "suggestions": [{
+                                        "id": "#{suggestion_id}",
+                                        "body": "new suggestion", 
+                                        "initiative_id": "#{initiative.id}"
+                                      }]
+                                   } } }
     example "Posting a new suggestion" do
       do_request
       status.should == 201
@@ -55,10 +65,13 @@ resource 'Suggestions' do
     let(:raw_post) do 
       { id: suggestion.id, body: 'new body' }.to_json
     end
-    let(:suggestion_representation) { %{{  
-                                   "body": "new body",
-                                   "initiative_id": "#{initiative.id}"
-                                 }} }
+    let(:suggestion_representation) { %{ { 
+                                     "suggestions": [{
+                                        "id": "#{suggestion.id}",
+                                        "body": "new body", 
+                                        "initiative_id": "#{initiative.id}"
+                                      }]
+                                   } } }
 
     example "Updating an suggestion" do
       do_request

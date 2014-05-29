@@ -22,7 +22,7 @@ module LiquidFeedback
 
       route_param :id do
         get do
-          Suggestion.find( params[:id] ).extend SuggestionRepresenter 
+          [Suggestion.find( params[:id] )].extend SuggestionsRepresenter 
         end
       end
 
@@ -33,10 +33,10 @@ module LiquidFeedback
       end
 
       post do
-        Suggestion.create!(
-          body: params[:body],
-          initiative_id: params[:initiative_id]
-        ).extend SuggestionRepresenter ;
+        [Suggestion.create!(
+                  body: params[:body],
+                  initiative_id: params[:initiative_id]
+                )].extend SuggestionsRepresenter ;
       end
 
       desc 'Update an suggestion'
@@ -50,7 +50,7 @@ module LiquidFeedback
         suggestion.update_attributes!(
           body: params[:body]
         )
-        suggestion.extend SuggestionRepresenter;
+        [suggestion].extend SuggestionsRepresenter;
       end
 
       desc 'Delete an suggestion'
