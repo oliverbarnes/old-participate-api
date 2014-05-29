@@ -1,7 +1,7 @@
-require File.expand_path('../../representers/suggestion_representer.rb', __FILE__)
+require File.expand_path('../../representers/suggestion_to_initiative_representer.rb', __FILE__)
 
 module LiquidFeedback
-  class Suggestions < Grape::API
+  class SuggestionsToInitiatives < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do
       error_response message: 'Suggestion not found', status: 404
     end
@@ -12,7 +12,7 @@ module LiquidFeedback
         requires :initiative_id, desc: "Initiative the suggestions is for"
       end
       get do
-        Suggestion.where( initiative_id: params[:initiative_id] ).all.extend SuggestionsRepresenter 
+        SuggestionToInitiative.where( initiative_id: params[:initiative_id] ).all.extend SuggestionsToInitiativesRepresenter 
       end
 
       desc 'Show suggestion'
@@ -22,7 +22,7 @@ module LiquidFeedback
 
       route_param :id do
         get do
-          [Suggestion.find( params[:id] )].extend SuggestionsRepresenter 
+          [SuggestionToInitiative.find( params[:id] )].extend SuggestionsToInitiativesRepresenter 
         end
       end
 
@@ -33,10 +33,10 @@ module LiquidFeedback
       end
 
       post do
-        [Suggestion.create!(
+        [SuggestionToInitiative.create!(
                   body: params[:body],
                   initiative_id: params[:initiative_id]
-                )].extend SuggestionsRepresenter ;
+                )].extend SuggestionsToInitiativesRepresenter ;
       end
 
       desc 'Update an suggestion'
@@ -46,17 +46,17 @@ module LiquidFeedback
       end
 
       patch do
-        suggestion = Suggestion.find( params[:id] )
+        suggestion = SuggestionToInitiative.find( params[:id] )
         suggestion.update_attributes!(
           body: params[:body]
         )
-        [suggestion].extend SuggestionsRepresenter;
+        [suggestion].extend SuggestionsToInitiativesRepresenter;
       end
 
       desc 'Delete an suggestion'
       route_param :id do
         delete do
-          Suggestion.find( params[:id] ).destroy
+          SuggestionToInitiative.find( params[:id] ).destroy
         end
       end
     end

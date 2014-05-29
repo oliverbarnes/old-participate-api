@@ -1,6 +1,6 @@
 require 'roar/representer/json'
 
-module SuggestionRepresenter
+module SuggestionToInitiativeRepresenter
   include Roar::Representer::JSON
 
   property :id

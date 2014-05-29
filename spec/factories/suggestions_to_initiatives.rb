@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :suggestion do
+  factory :suggestion_to_initiative do
     initiative
     body "Let's give priority to previously displaced tenants"
   end

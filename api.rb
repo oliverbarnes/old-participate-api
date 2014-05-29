@@ -9,7 +9,7 @@ module LiquidFeedback
     mount ::LiquidFeedback::InterestsInIssues
     mount ::LiquidFeedback::Initiatives
     mount ::LiquidFeedback::SupportsToInitiatives
-    mount ::LiquidFeedback::Suggestions
+    mount ::LiquidFeedback::SuggestionsToInitiatives
     mount ::LiquidFeedback::Votes
     mount ::LiquidFeedback::Delegations
     mount Raddocs::App => '/docs'

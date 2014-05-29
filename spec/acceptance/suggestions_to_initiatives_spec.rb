@@ -4,10 +4,10 @@ resource 'Suggestions' do
   header 'Accept', 'application/json'
   header 'Content-Type', 'application/json'
 
-  let(:suggestion) { FactoryGirl.create( :suggestion ) }
+  let(:suggestion) { FactoryGirl.create( :suggestion_to_initiative ) }
   let(:initiative) { suggestion.initiative }
   let(:suggestion_representation) { %{{ 
-                                       "suggestions": [{  
+                                       "suggestions_to_initiatives": [{  
                                          "id": "#{suggestion.id}",
                                          "body": "#{suggestion.body}",
                                          "initiative_id": "#{initiative.id}"
@@ -42,9 +42,9 @@ resource 'Suggestions' do
     let(:raw_post) do 
       { body: "new suggestion", initiative_id: initiative.id }.to_json
     end
-    let(:suggestion_id) { Suggestion.last.id }
+    let(:suggestion_id) { SuggestionToInitiative.last.id }
     let(:suggestion_representation) { %{ { 
-                                     "suggestions": [{
+                                     "suggestions_to_initiatives": [{
                                         "id": "#{suggestion_id}",
                                         "body": "new suggestion", 
                                         "initiative_id": "#{initiative.id}"
@@ -66,7 +66,7 @@ resource 'Suggestions' do
       { id: suggestion.id, body: 'new body' }.to_json
     end
     let(:suggestion_representation) { %{ { 
-                                     "suggestions": [{
+                                     "suggestions_to_initiatives": [{
                                         "id": "#{suggestion.id}",
                                         "body": "new body", 
                                         "initiative_id": "#{initiative.id}"
@@ -82,7 +82,7 @@ resource 'Suggestions' do
   end
 
   delete '/suggestions/:id' do
-    let(:id) { FactoryGirl.create( :suggestion ).id }
+    let(:id) { FactoryGirl.create( :suggestion_to_initiative ).id }
     
     example_request "Removing a suggestion" do
       status.should == 200

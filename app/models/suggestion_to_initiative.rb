@@ -1,4 +1,4 @@
-class Suggestion
+class SuggestionToInitiative
   include Mongoid::Document
   include Mongoid::Timestamps
 
