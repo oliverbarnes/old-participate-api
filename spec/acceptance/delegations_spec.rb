@@ -14,9 +14,11 @@ resource 'Delegations' do
     let(:truster) { FactoryGirl.create :member }
     let(:trustee) { FactoryGirl.create :member }
     let(:delegation_representation) { %{{ 
-                                          "issue_id": "#{issue.id}",
-                                          "truster_id": "#{truster.id}",
-                                          "trustee_id": "#{trustee.id}"
+                                         "delegations": [{  
+                                            "issue_id": "#{issue.id}",
+                                            "truster_id": "#{truster.id}",
+                                            "trustee_id": "#{trustee.id}"
+                                          }]
                                         }} }
     let(:raw_post) do 
       { issue_id: issue.id, truster_id: truster.id, trustee_id: trustee.id  }.to_json

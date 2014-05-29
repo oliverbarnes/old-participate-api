@@ -21,11 +21,11 @@ module LiquidFeedback
         truster = Member.find params[:truster_id]
         trustee = Member.find params[:trustee_id]
         issue = Issue.find params[:issue_id]
-        Delegation.create!( 
+        [Delegation.create!( 
                             issue: issue,
                             truster: truster,
                             trustee: trustee
-                          ).extend DelegationRepresenter
+                          )].extend DelegationsRepresenter
       end
 
       desc 'Delete a delegation'
