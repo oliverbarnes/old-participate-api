@@ -13,8 +13,10 @@ resource 'Delegations' do
     let(:issue) { FactoryGirl.create :issue }
     let(:truster) { FactoryGirl.create :member }
     let(:trustee) { FactoryGirl.create :member }
+    let(:delegation_id) { Delegation.first.id }
     let(:delegation_representation) { %{{ 
                                          "delegations": [{  
+                                            "id": "#{delegation_id}",
                                             "issue_id": "#{issue.id}",
                                             "truster_id": "#{truster.id}",
                                             "trustee_id": "#{trustee.id}"
