@@ -11,10 +11,14 @@ resource 'Votes' do
 
   	let(:issue) { FactoryGirl.create :issue }
     let(:voter) { FactoryGirl.create :member }
+    let(:vote_id) { Vote.first.id }
   	let(:vote_representation) { %{ { 
-                                     "issue_id": "#{issue.id}", 
-                                     "voter_id": "#{voter.id}",
-                                     "grade": 1
+                                     "votes": [{
+                                        "id": "#{vote_id}",
+                                        "issue_id": "#{issue.id}", 
+                                        "voter_id": "#{voter.id}",
+                                        "grade": 1
+                                      }]
                                     } } }
     let(:raw_post) do 
       { issue_id: issue.id, voter_id: voter.id, grade: '1' }.to_json
