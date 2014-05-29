@@ -1,17 +1,17 @@
-module LiquidFeedback
+module Participate
   class API < Grape::API
     format :json
 
-    mount ::LiquidFeedback::Root
-    mount ::LiquidFeedback::Areas
-    mount ::LiquidFeedback::AreaMemberships
-    mount ::LiquidFeedback::Issues
-    mount ::LiquidFeedback::InterestsInIssues
-    mount ::LiquidFeedback::Initiatives
-    mount ::LiquidFeedback::SupportsToInitiatives
-    mount ::LiquidFeedback::SuggestionsToInitiatives
-    mount ::LiquidFeedback::Votes
-    mount ::LiquidFeedback::Delegations
+    mount ::Participate::Root
+    mount ::Participate::Areas
+    mount ::Participate::AreaMemberships
+    mount ::Participate::Issues
+    mount ::Participate::InterestsInIssues
+    mount ::Participate::Initiatives
+    mount ::Participate::SupportsToInitiatives
+    mount ::Participate::SuggestionsToInitiatives
+    mount ::Participate::Votes
+    mount ::Participate::Delegations
     mount Raddocs::App => '/docs'
   end
 end

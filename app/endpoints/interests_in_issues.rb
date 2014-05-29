@@ -1,6 +1,6 @@
 require File.expand_path('../../representers/interest_in_issue_representer.rb', __FILE__)
 
-module LiquidFeedback
+module Participate
   class InterestsInIssues < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do
       error_response message: 'Interest in issue not found', status: 404

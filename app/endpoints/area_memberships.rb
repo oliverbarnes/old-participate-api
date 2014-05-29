@@ -1,6 +1,6 @@
 require File.expand_path('../../representers/area_membership_representer.rb', __FILE__)
 
-module LiquidFeedback
+module Participate
   class AreaMemberships < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do
       error_response message: 'Area membership not found', status: 404

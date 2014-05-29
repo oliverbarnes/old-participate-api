@@ -1,6 +1,6 @@
 require File.expand_path('../../representers/delegation_representer.rb', __FILE__)
 
-module LiquidFeedback
+module Participate
   class Delegations < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do
       error_response message: 'Delegation not found', status: 404

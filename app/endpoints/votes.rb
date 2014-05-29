@@ -1,6 +1,6 @@
 require File.expand_path('../../representers/vote_representer.rb', __FILE__)
 
-module LiquidFeedback
+module Participate
   class Votes < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do
       error_response message: 'Vote not found', status: 404

@@ -1,6 +1,6 @@
 require File.expand_path('../../representers/suggestion_to_initiative_representer.rb', __FILE__)
 
-module LiquidFeedback
+module Participate
   class SuggestionsToInitiatives < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do
       error_response message: 'Suggestion not found', status: 404

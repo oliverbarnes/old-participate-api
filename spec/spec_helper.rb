@@ -13,7 +13,7 @@ Dir[File.expand_path('../factories/*.rb', __FILE__)].each do |file|
 end
 
 def app
-  LiquidFeedback::API
+  Participate::API
 end
 
 RspecApiDocumentation.configure do |config|

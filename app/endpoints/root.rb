@@ -1,4 +1,4 @@
-module LiquidFeedback
+module Participate
   class Root < Grape::API
     resource '/' do
       desc 'List of resource uris'
