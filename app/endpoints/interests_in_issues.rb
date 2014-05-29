@@ -23,7 +23,7 @@ module LiquidFeedback
 
       route_param :id do
         get do
-          InterestInIssue.find( params[:id] ).extend InterestInIssueRepresenter 
+          [InterestInIssue.find( params[:id] )].extend InterestsInIssuesRepresenter 
         end
       end
 
@@ -34,10 +34,10 @@ module LiquidFeedback
       end
 
       post do
-        InterestInIssue.create!(
-          issue_id: params[:issue_id],
-          member_id: params[:member_id]
-        ).extend InterestInIssueRepresenter
+        [InterestInIssue.create!(
+                  issue_id: params[:issue_id],
+                  member_id: params[:member_id]
+                )].extend InterestsInIssuesRepresenter
       end
 
       desc 'Delete interest in an issue'

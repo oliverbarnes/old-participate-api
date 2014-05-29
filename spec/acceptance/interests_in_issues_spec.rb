@@ -7,10 +7,13 @@ resource 'InterestsInIssues' do
   let(:interest) { FactoryGirl.create :interest_in_issue }
   let(:issue) { interest.issue }
   let(:member) { interest.member }
-  let(:interest_representation) { %{ { 
-                                   "issue_id": "#{issue.id}", 
-                                   "member_id": "#{member.id}"
-                                 } } }
+  let(:interest_representation) { %{{ 
+                                    "interests_in_issues": [{
+                                       "id": "#{interest.id}",
+                                       "issue_id": "#{issue.id}", 
+                                       "member_id": "#{member.id}"
+                                     }]
+                                   }} }
 
   get '/interests_in_issues/:id' do
     let(:id) { interest.id }
@@ -34,7 +37,7 @@ resource 'InterestsInIssues' do
   get '/interests_in_issues' do
 
     example_request "Listing interests in issues" do
-      expected = JSON.parse( "[#{interest_representation}]" )
+      expected = JSON.parse( interest_representation )
       do_request #hack to get response_body to populate - example_request() should already have made the request
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
@@ -48,6 +51,15 @@ resource 'InterestsInIssues' do
     let(:raw_post) do 
       { issue_id: issue.id, member_id: member.id }.to_json
     end
+
+    let(:interest_id) { InterestInIssue.last.id }
+    let(:interest_representation) { %{ { 
+                                     "interests_in_issues": [{
+                                       "id": "#{interest_id}",
+                                       "issue_id": "#{issue.id}", 
+                                       "member_id": "#{member.id}"
+                                      }]
+                                   } } }
 
     example "Posting a new interest in a issue" do
       do_request

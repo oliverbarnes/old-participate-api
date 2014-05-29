@@ -33,10 +33,10 @@ module LiquidFeedback
       post do
         author = Member.find params[:author_id]
         [Issue.create!(
-          title: params[:title],
-          description: params[:description],
-          author: author
-        )].extend IssuesRepresenter
+            title: params[:title],
+            description: params[:description],
+            author: author
+          )].extend IssuesRepresenter
       end
     end
   end
