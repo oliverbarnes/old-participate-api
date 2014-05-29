@@ -8,9 +8,12 @@ resource 'Issues' do
   let(:author) { FactoryGirl.create( :member ) }
   let(:issue) { FactoryGirl.create( :issue, author: author ) }
   let(:issue_representation) { %{{ 
-                                   "title": "#{issue.title}", 
-                                   "description": "#{issue.description}",
-                                   "author_id": "#{author.id}"
+                                   "issues": [{
+                                     "id": "#{issue.id}",
+                                     "title": "#{issue.title}", 
+                                     "description": "#{issue.description}",
+                                     "author_id": "#{author.id}"
+                                    }]
                                  }} }
 
 
@@ -36,7 +39,7 @@ resource 'Issues' do
   get '/issues' do
 
     example_request "Listing issues" do
-      expected = JSON.parse( "[#{issue_representation}]" )
+      expected = JSON.parse( issue_representation )
       do_request #hack to get response_body to populate - example_request() should already have made the request
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
@@ -49,8 +52,18 @@ resource 'Issues' do
     parameter :author_id, "Author of the issue", required: true
 
     let(:raw_post) do 
-      { title: issue.title, description: issue.description, author_id: author.id }.to_json
+      { title: 'new issue', description: 'new issue description', author_id: author.id }.to_json
     end
+
+    let(:issue_id) { Issue.last.id }
+    let(:issue_representation) { %{ { 
+                                     "issues": [{
+                                        "id": "#{issue_id}",
+                                        "title": "new issue", 
+                                        "description": "new issue description",
+                                        "author_id": "#{author.id}"
+                                      }]
+                                   } } }
 
     example "Posting a new issue" do
       do_request

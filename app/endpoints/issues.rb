@@ -19,7 +19,7 @@ module LiquidFeedback
 
       route_param :id do
         get do
-          Issue.find( params[:id] ).extend IssueRepresenter 
+          [Issue.find( params[:id] )].extend IssuesRepresenter 
         end
       end
 
@@ -32,11 +32,11 @@ module LiquidFeedback
 
       post do
         author = Member.find params[:author_id]
-        Issue.create!(
+        [Issue.create!(
           title: params[:title],
           description: params[:description],
           author: author
-        ).extend IssueRepresenter
+        )].extend IssuesRepresenter
       end
     end
   end
