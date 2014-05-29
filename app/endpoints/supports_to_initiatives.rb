@@ -19,7 +19,7 @@ module Participate
 
       route_param :id do
         get do
-          SupportToInitiative.find( params[:id] ).extend SupportToInitiativeRepresenter 
+          [SupportToInitiative.find( params[:id] )].extend SupportsToInitiativesRepresenter 
         end
       end
 
@@ -30,10 +30,10 @@ module Participate
       end
 
       post do
-        SupportToInitiative.create!(
-          initiative_id: params[:initiative_id],
-          member_id: params[:member_id]
-        ).extend SupportToInitiativeRepresenter
+        [SupportToInitiative.create!(
+                  initiative_id: params[:initiative_id],
+                  member_id: params[:member_id]
+                )].extend SupportsToInitiativesRepresenter
       end
 
       desc 'Delete support to initiative'

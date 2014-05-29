@@ -7,10 +7,13 @@ resource 'SupportsToInitiatives' do
   let(:support) { FactoryGirl.create :support_to_initiative }
   let(:initiative) { support.initiative }
   let(:member) { support.member }
-  let(:support_representation) { %{ { 
-                                   "initiative_id": "#{initiative.id}", 
-                                   "member_id": "#{member.id}"
-                                 } } }
+  let(:support_representation) { %{{ 
+                                     "supports_to_initiatives": [{
+                                        "id": "#{support.id}",
+                                        "initiative_id": "#{initiative.id}", 
+                                        "member_id": "#{member.id}"
+                                     }]
+                                 }} }
 
   get '/supports_to_initiatives/:id' do
     let(:id) { support.id }
@@ -34,7 +37,7 @@ resource 'SupportsToInitiatives' do
   get '/supports_to_initiatives' do
 
     example_request "Listing supports to initiatives" do
-      expected = JSON.parse( "[#{support_representation}]" )
+      expected = JSON.parse( support_representation )
       do_request 
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
@@ -48,6 +51,14 @@ resource 'SupportsToInitiatives' do
     let(:raw_post) do 
       { initiative_id: initiative.id, member_id: member.id }.to_json
     end
+    let(:support_id) { SupportToInitiative.last.id }
+    let(:support_representation) { %{ { 
+                                     "supports_to_initiatives": [{
+                                        "id": "#{support_id}",
+                                        "initiative_id": "#{initiative.id}", 
+                                        "member_id": "#{member.id}"
+                                      }]
+                                   } } }
 
     example "Posting new support to a initiative" do
       do_request
