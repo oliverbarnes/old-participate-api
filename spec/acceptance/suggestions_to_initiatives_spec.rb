@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 resource 'Suggestions' do
-  header 'Accept', 'application/json'
-  header 'Content-Type', 'application/json'
+  header 'Accept', 'application/vnd.api+json'
+  header 'Content-Type', 'application/vnd.api+json'
 
   let(:suggestion) { FactoryGirl.create( :suggestion_to_initiative ) }
   let(:initiative) { suggestion.initiative }

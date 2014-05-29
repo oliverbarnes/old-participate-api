@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 resource 'Initiatives' do
-  header 'Accept', 'application/json'
-  header 'Content-Type', 'application/json'
+  header 'Accept', 'application/vnd.api+json'
+  header 'Content-Type', 'application/vnd.api+json'
 
   let(:initiative) { FactoryGirl.create( :initiative ) }
   let(:author) { initiative.author }

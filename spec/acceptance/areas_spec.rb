@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 resource 'Areas' do
-  header 'Accept', 'application/json'
-  header 'Content-Type', 'application/json'
+  header 'Accept', 'application/vnd.api+json'
+  header 'Content-Type', 'application/vnd.api+json'
 
   let(:area) { FactoryGirl.create( :area ) }
   let(:area_representation) { %{{ 

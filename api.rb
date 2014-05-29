@@ -1,6 +1,7 @@
 module Participate
   class API < Grape::API
-    format :json
+    content_type :jsonapi, 'application/vnd.api+json'
+    format :jsonapi
 
     mount ::Participate::Root
     mount ::Participate::Areas

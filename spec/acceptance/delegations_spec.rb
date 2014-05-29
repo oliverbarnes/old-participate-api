@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 resource 'Delegations' do
-  header 'Accept', 'application/json'
-  header 'Content-Type', 'application/json'
+  header 'Accept', 'application/vnd.api+json'
+  header 'Content-Type', 'application/vnd.api+json'
 
   post '/delegations' do
     parameter :issue_id, "Issue being delegated"
