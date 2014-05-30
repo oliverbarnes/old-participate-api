@@ -62,6 +62,7 @@ resource 'Areas' do
     example "Posting a new area" do
       do_request
       status.should == 201
+      expect( response_headers['Location'] ).to eql "http://example.org/areas/#{area_id}"
       expected = JSON.parse( area_representation )
       expect( JSON.parse( response_body) ).to eql expected
     end
