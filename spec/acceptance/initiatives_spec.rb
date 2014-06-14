@@ -9,11 +9,14 @@ resource 'Initiatives' do
   let(:area) { initiative.area }
   let(:issue) { initiative.issue }
   let(:initiative_representation) { %{{ 
-                                   "title": "#{initiative.title}", 
-                                   "draft": "#{initiative.draft}",
-                                   "author_id": "#{author.id}",
-                                   "area_id": "#{area.id}",
-                                   "issue_id": "#{issue.id}"
+                                    "initiatives": [{
+                                       "id": "#{initiative.id}",
+                                       "title": "#{initiative.title}", 
+                                       "draft": "#{initiative.draft}",
+                                       "author_id": "#{author.id}",
+                                       "area_id": "#{area.id}",
+                                       "issue_id": "#{issue.id}"
+                                      }]
                                  }} }
 
   get '/initiatives/:id' do
@@ -38,7 +41,7 @@ resource 'Initiatives' do
   get '/initiatives' do
 
     example_request "Listing initiatives" do
-      expected = JSON.parse( "[#{initiative_representation}]" )
+      expected = JSON.parse( initiative_representation )
       do_request #hack to get response_body to populate - example_request() should already have made the request
       expect( JSON.parse( response_body) ).to eql expected
       status.should == 200
@@ -58,16 +61,21 @@ resource 'Initiatives' do
         author_id: author.id,
         issue_id: issue.id }.to_json
     end
+    let(:initiative_id) { Initiative.last.id }
     let(:initiative_representation) { %{{ 
-                                     "title": "#{initiative.title}", 
-                                     "draft": "#{initiative.draft}",
-                                     "author_id": "#{author.id}",
-                                     "issue_id": "#{issue.id}"
+                                      "initiatives": [{
+                                         "id": "#{initiative_id}",
+                                         "title": "#{initiative.title}", 
+                                         "draft": "#{initiative.draft}",
+                                         "author_id": "#{author.id}",
+                                         "issue_id": "#{issue.id}"
+                                        }]
                                    }} }
 
     example "Posting a new initiative" do
       do_request
       status.should == 201
+      expect( response_headers['Location'] ).to eql "http://example.org/initiatives/#{initiative_id}"
       expected = JSON.parse( initiative_representation )
       expect( JSON.parse( response_body) ).to eql expected
     end
@@ -82,12 +90,15 @@ resource 'Initiatives' do
       { id: initiative.id, title: 'new title', draft: 'new draft' }.to_json
     end
     let(:initiative_representation) { %{{ 
-                                   "title": "new title", 
-                                   "draft": "new draft",
-                                   "author_id": "#{author.id}",
-                                   "area_id": "#{area.id}",
-                                   "issue_id": "#{issue.id}"
-                                 }} }
+                                      "initiatives": [{
+                                         "id": "#{initiative.id}",
+                                         "title": "new title", 
+                                         "draft": "new draft",
+                                         "author_id": "#{author.id}",
+                                         "area_id": "#{area.id}",
+                                         "issue_id": "#{issue.id}"
+                                        }]
+                                   }} }
 
     example "Updating an initiative" do
       do_request

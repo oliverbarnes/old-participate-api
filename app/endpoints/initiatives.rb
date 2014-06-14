@@ -19,7 +19,7 @@ module Participate
 
       route_param :id do
         get do
-          Initiative.find( params[:id] ).extend InitiativeRepresenter 
+          [Initiative.find( params[:id] )].extend InitiativesRepresenter 
         end
       end
 
@@ -37,13 +37,15 @@ module Participate
         author = Member.find params[:author_id]
         area = Area.find params[:area_id] if params[:area_id]
         issue = Issue.find params[:issue_id] if params[:issue_id]
-        Initiative.create!(
-          title: params[:title],
-          draft: params[:draft],
-          author: author,
-          area: area,
-          issue: issue
-        ).extend InitiativeRepresenter
+        initiative = Initiative.create!(
+                            title: params[:title],
+                            draft: params[:draft],
+                            author: author,
+                            area: area,
+                            issue: issue
+                          )
+        location "/initiatives/#{initiative.id}" 
+        [initiative].extend InitiativesRepresenter
       end
 
       desc 'Update an initiative'
@@ -59,7 +61,7 @@ module Participate
           title: params[:title],
           draft: params[:draft]
         )
-        initiative.extend InitiativeRepresenter
+        [initiative].extend InitiativesRepresenter
       end
 
       desc 'Delete an initiative'

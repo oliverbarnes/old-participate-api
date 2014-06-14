@@ -3,6 +3,7 @@ require 'roar/representer/json'
 module InitiativeRepresenter
   include Roar::Representer::JSON
 
+  property :id
   property :title
   property :draft
   property :author_id
