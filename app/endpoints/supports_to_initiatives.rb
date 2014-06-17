@@ -30,10 +30,13 @@ module Participate
       end
 
       post do
-        [SupportToInitiative.create!(
-                  initiative_id: params[:initiative_id],
-                  member_id: params[:member_id]
-                )].extend SupportsToInitiativesRepresenter
+        support = SupportToInitiative.create!(
+                              initiative_id: params[:initiative_id],
+                              member_id: params[:member_id]
+                            )
+
+        location "/supports_to_initiatives/#{support.id}"
+        [support].extend SupportsToInitiativesRepresenter
       end
 
       desc 'Delete support to initiative'

@@ -30,10 +30,13 @@ module Participate
       end
 
       post do
-        [AreaMembership.create!(
+        membership = AreaMembership.create!(
           area_id: params[:area_id],
           member_id: params[:member_id]
-        )].extend AreaMembershipsRepresenter
+        )
+        
+        location "/area_memberships/#{membership.id}"
+        [membership].extend AreaMembershipsRepresenter
       end
 
       desc 'Delete area membership'

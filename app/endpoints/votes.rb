@@ -16,10 +16,13 @@ module Participate
 
       post do
         voter = Member.find params[:voter_id]
-        [Vote.create!( 
+        vote = Vote.create!( 
                       issue_id: params[:issue_id],
                       grade: params[:grade].to_i,
-                      voter: voter )].extend VotesRepresenter
+                      voter: voter )
+
+        location "/votes/#{vote.id}"
+        [vote].extend VotesRepresenter
       end
 
       desc 'Delete a vote'

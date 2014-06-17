@@ -17,15 +17,17 @@ module Participate
       end
 
       post do
-        # Refactor into truster.delegate_to( trustee, issue)?
         truster = Member.find params[:truster_id]
         trustee = Member.find params[:trustee_id]
         issue = Issue.find params[:issue_id]
-        [Delegation.create!( 
+        delegation = Delegation.create!( 
                             issue: issue,
                             truster: truster,
                             trustee: trustee
-                          )].extend DelegationsRepresenter
+                          )
+        
+        location "/delegations/#{delegation.id}" 
+        [delegation].extend DelegationsRepresenter
       end
 
       desc 'Delete a delegation'

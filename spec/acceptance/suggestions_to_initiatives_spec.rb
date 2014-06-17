@@ -53,6 +53,7 @@ resource 'Suggestions' do
     example "Posting a new suggestion" do
       do_request
       status.should == 201
+      expect( response_headers['Location'] ).to eql "http://example.org/suggestions_to_initiatives/#{suggestion_id}"
       expected = JSON.parse( suggestion_representation )
       expect( JSON.parse( response_body) ).to eql expected
     end

@@ -30,6 +30,7 @@ resource 'Delegations' do
       expect( trustee.voting_weight ).to eql 1
       do_request
       status.should == 201
+      expect( response_headers['Location'] ).to eql "http://example.org/delegations/#{delegation_id}"
       expected = JSON.parse( delegation_representation )
       expect( JSON.parse( response_body) ).to eql expected
       expect( trustee.reload.voting_weight ).to eql 2

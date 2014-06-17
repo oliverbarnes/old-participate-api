@@ -34,10 +34,13 @@ module Participate
       end
 
       post do
-        [InterestInIssue.create!(
-                  issue_id: params[:issue_id],
-                  member_id: params[:member_id]
-                )].extend InterestsInIssuesRepresenter
+        interest = InterestInIssue.create!(
+                              issue_id: params[:issue_id],
+                              member_id: params[:member_id]
+                            ) 
+        
+        location "/interests_in_issues/#{interest.id}"
+        [interest].extend InterestsInIssuesRepresenter
       end
 
       desc 'Delete interest in an issue'

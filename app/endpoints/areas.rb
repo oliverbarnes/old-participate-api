@@ -6,12 +6,6 @@ module Participate
       error_response message: 'Area not found', status: 404
     end
 
-    helpers do
-      def location(path)
-        header 'Location', "#{request.scheme}://#{request.host_with_port}#{path}"
-      end
-    end
-
     resource :areas do
       desc 'List areas'
       get do
@@ -40,6 +34,7 @@ module Participate
                     name: params[:name],
                     description: params[:description]
                   )
+        
         location "/areas/#{area.id}"
         [area].extend AreasRepresenter
       end
@@ -57,6 +52,7 @@ module Participate
           name: params[:name],
           description: params[:description]
         )
+        
         [area].extend AreasRepresenter
       end
 

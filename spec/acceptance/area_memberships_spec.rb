@@ -66,6 +66,7 @@ resource 'AreaMemberships' do
     example "Posting new area membership" do
       do_request
       status.should == 201
+      expect( response_headers['Location'] ).to eql "http://example.org/area_memberships/#{membership_id}"
       expected = JSON.parse( membership_representation )
       expect( JSON.parse( response_body) ).to eql expected
     end

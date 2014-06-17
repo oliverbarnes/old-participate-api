@@ -44,6 +44,7 @@ module Participate
                             area: area,
                             issue: issue
                           )
+        
         location "/initiatives/#{initiative.id}" 
         [initiative].extend InitiativesRepresenter
       end
@@ -61,6 +62,7 @@ module Participate
           title: params[:title],
           draft: params[:draft]
         )
+        
         [initiative].extend InitiativesRepresenter
       end
 

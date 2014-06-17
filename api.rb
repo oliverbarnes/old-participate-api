@@ -3,6 +3,12 @@ module Participate
     content_type :jsonapi, 'application/vnd.api+json'
     format :jsonapi
 
+    helpers do
+      def location(path)
+        header 'Location', "#{request.scheme}://#{request.host_with_port}#{path}"
+      end
+    end
+
     mount ::Participate::Root
     mount ::Participate::Areas
     mount ::Participate::AreaMemberships

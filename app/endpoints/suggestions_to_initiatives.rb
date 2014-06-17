@@ -33,10 +33,13 @@ module Participate
       end
 
       post do
-        [SuggestionToInitiative.create!(
-                  body: params[:body],
-                  initiative_id: params[:initiative_id]
-                )].extend SuggestionsToInitiativesRepresenter ;
+        suggestion = SuggestionToInitiative.create!(
+                                    body: params[:body],
+                                    initiative_id: params[:initiative_id]
+                                  )
+
+        location "/suggestions_to_initiatives/#{suggestion.id}"
+        [suggestion].extend SuggestionsToInitiativesRepresenter ;
       end
 
       desc 'Update an suggestion'
@@ -50,6 +53,7 @@ module Participate
         suggestion.update_attributes!(
           body: params[:body]
         )
+
         [suggestion].extend SuggestionsToInitiativesRepresenter;
       end
 

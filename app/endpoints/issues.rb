@@ -32,11 +32,14 @@ module Participate
 
       post do
         author = Member.find params[:author_id]
-        [Issue.create!(
-            title: params[:title],
-            description: params[:description],
-            author: author
-          )].extend IssuesRepresenter
+        issue = Issue.create!(
+                          title: params[:title],
+                          description: params[:description],
+                          author: author
+                        ) 
+
+        location "/issues/#{issue.id}"
+        [issue].extend IssuesRepresenter
       end
     end
   end

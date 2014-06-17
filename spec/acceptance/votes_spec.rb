@@ -27,6 +27,7 @@ resource 'Votes' do
   	example "Posting a new vote on a issue" do
       do_request
       status.should == 201
+      expect( response_headers['Location'] ).to eql "http://example.org/votes/#{vote_id}"
       expected = JSON.parse( vote_representation )
       expect( JSON.parse( response_body) ).to eql expected
     end
