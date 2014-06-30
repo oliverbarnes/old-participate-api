@@ -13,6 +13,13 @@ cd participate
 git remote add upstream https://github.com/oliverbarnes/participate.git
 ```
 
+Install MongoDB if you don't have it yet and start it up.
+
+```
+brew install mongodb
+mongod --logpath mongo.log &
+```
+
 #### Create a Topic Branch
 
 Make sure your fork is up-to-date and create a topic branch for your feature or bug fix.

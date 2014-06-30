@@ -4,35 +4,8 @@ Participate is a democratic participation plaftorm, based on [LiquidFeedback](ht
 
 Development is in its early stages.
 
-The platform is made up of a ruby API built on [Grape](https://github.com/intridea/grape), whose codebase you'll find in this repo, and a [Ember.js](http://emberjs.com) front-end app that [lives at another repo](https://github.com/oliverbarnes/participate-frontend).
+The platform is made up of a ruby API built on [Grape](https://github.com/intridea/grape), the codebase for which you'll find in this repo, and a [Ember.js](http://emberjs.com) front-end app that [lives at another repo](https://github.com/oliverbarnes/participate-frontend) and gets run separately. 
 
 The API has endpoints essentially CRUDing the basic domain models (like Initiative, Vote and Delegation), and work will start soon on the core logic (such as Initiative states/phases, calculating voting weight, and harmonic ordering) implementing LF's algorithms. Work on the frontend app has just started.
 
-## Getting started on development for the API
-
-- Fork this repo
-- Bundle
-- Install MongoDB and start it
-
-```
-$ brew install mongodb
-$ mongod --logpath mongo.log &
-```
-
-- Start [Guard](https://github.com/guard/guard)
-
-```
-$ guard
-```
-
-- Hit Enter/Return to run the test suite.
-
-Acceptance tests use the [RSpec API Documentation](https://github.com/zipmark/rspec_api_documentation) gem, which generates docs that get served online in parallel with the API. Unit tests use [RSpec](http://rspec.info). Development is fully test-driven.
-
-
-
-
-
-
-
-
+If you're interested in contributing, please see the[CONTRIBUTING](CONTRIBUTING.md) guide and the [CHANGELOG](CHANGELOG.md).
