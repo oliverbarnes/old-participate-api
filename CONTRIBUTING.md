@@ -49,11 +49,11 @@ To run the app, open a new terminal tab or window and run
 bundle exec rackup
 ```
 
-The app go up on 
+The app will go up on 
 
 [http://localhost:9292/](http://localhost:9292/). 
 
-The generated API docs can be seen
+The generated API docs can be seen at
 
 [http://localhost:9292/docs/](http://localhost:9292/docs/)
 
