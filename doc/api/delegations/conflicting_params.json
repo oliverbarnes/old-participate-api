@@ -1,0 +1,49 @@
+{
+  "resource": "Delegations",
+  "http_method": "POST",
+  "route": "/delegations",
+  "description": "Conflicting params",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "issue_id",
+      "description": "Issue being delegated"
+    },
+    {
+      "required": true,
+      "name": "truster_id",
+      "description": "Member delegating their vote"
+    },
+    {
+      "required": true,
+      "name": "trustee_id",
+      "description": "Member receiving delegation of vote"
+    },
+    {
+      "name": "area_id",
+      "description": "Area being delegated"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/delegations",
+      "request_body": "{\"issue_id\":\"53bd66b76a6942d34d000017\",\"area_id\":\"someareaid\",\"truster_id\":\"53bd66b76a6942d34d000018\",\"trustee_id\":\"53bd66b76a6942d34d000019\"}",
+      "request_headers": {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 400,
+      "response_status_text": "Bad Request",
+      "response_body": "{\"error\":\"[:issue_id, :area_id] are mutually exclusive\"}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"56"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/delegations\" -d '{\"issue_id\":\"53bd66b76a6942d34d000017\",\"area_id\":\"someareaid\",\"truster_id\":\"53bd66b76a6942d34d000018\",\"trustee_id\":\"53bd66b76a6942d34d000019\"}' -X POST \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+}
+  ]
+}

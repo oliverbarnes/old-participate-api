@@ -1,0 +1,40 @@
+{
+  "resource": "Suggestions",
+  "http_method": "PATCH",
+  "route": "/suggestions",
+  "description": "Updating an suggestion",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "Suggestion id"
+    },
+    {
+      "name": "body",
+      "description": "Body text of the suggestion"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "/suggestions",
+      "request_body": "{\"id\":\"53bd66b76a6942d34d00005a\",\"body\":\"new body\"}",
+      "request_headers": {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"suggestions_to_initiatives\":[{\"id\":\"53bd66b76a6942d34d00005a\",\"body\":\"new body\",\"initiative_id\":\"53bd66b76a6942d34d000059\"}]}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"127"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/suggestions\" -d '{\"id\":\"53bd66b76a6942d34d00005a\",\"body\":\"new body\"}' -X PATCH \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+}
+  ]
+}

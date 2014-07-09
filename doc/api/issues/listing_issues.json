@@ -13,20 +13,40 @@
       "request_path": "/issues",
       "request_body": null,
       "request_headers": {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
         "Host": "example.org",
         "Cookie": ""
       },
       "request_query_parameters": {
       },
-      "request_content_type": "application/json",
+      "request_content_type": "application/vnd.api+json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[{\"name\":\"Kofi\",\"area_id\":1,\"policy_id\":1,\"admin_notice\":\"\",\"state\":\"frozen\",\"phase_finished\":\"2014-02-11T19:15:36-02:00\",\"created\":\"2014-02-11T19:15:36-02:00\",\"accepted\":\"2014-02-11T19:15:36-02:00\",\"half_frozen\":\"2014-02-11T19:15:36-02:00\",\"fully_frozen\":\"2014-02-11T19:15:36-02:00\",\"closed\":\"2014-02-11T19:15:36-02:00\",\"cleaned\":\"2014-02-11T19:15:36-02:00\",\"admission_time\":0,\"discussion_time\":0,\"verification_time\":0,\"voting_time\":0,\"snapshot\":\"2014-02-11T19:15:36-02:00\",\"latest_snapshot_event\":\"\",\"population\":0,\"voter_count\":0,\"status_quo_schulze_rank\":0}]",
-      "response_headers": {"Content-Type":"application/json","Content-Length":"562"},
-      "response_content_type": "application/json",
-      "curl": "curl \"http://localhost:9292/issues\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+      "response_body": "{\"issues\":[]}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"13"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/issues\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+},
+    {
+"request_method": "GET",
+"request_path": "/issues",
+"request_body": null,
+"request_headers": {
+  "Accept": "application/vnd.api+json",
+  "Content-Type": "application/vnd.api+json",
+  "Host": "example.org",
+  "Cookie": ""
+},
+"request_query_parameters": {
+},
+"request_content_type": "application/vnd.api+json",
+"response_status": 200,
+"response_status_text": "OK",
+"response_body": "{\"issues\":[{\"id\":\"53bd66b76a6942d34d000043\",\"title\":\"Public school in disrepair\",\"description\":\"My local school has missing lights, bathrooms that don't work\",\"author_id\":\"53bd66b76a6942d34d000042\"}]}",
+"response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"200"},
+"response_content_type": "application/vnd.api+json",
+"curl": "curl \"http://localhost:9292/issues\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
 }
   ]
 }

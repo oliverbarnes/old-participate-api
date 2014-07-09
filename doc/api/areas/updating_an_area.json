@@ -1,0 +1,44 @@
+{
+  "resource": "Areas",
+  "http_method": "PATCH",
+  "route": "/areas",
+  "description": "Updating an area",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "id",
+      "description": "Area id"
+    },
+    {
+      "name": "name",
+      "description": "Name of the area"
+    },
+    {
+      "name": "description",
+      "description": "Description of the area"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "PATCH",
+      "request_path": "/areas",
+      "request_body": "{\"id\":\"53bd66b76a6942d34d000011\",\"name\":\"new name\",\"description\":\"new description\"}",
+      "request_headers": {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"areas\":[{\"id\":\"53bd66b76a6942d34d000011\",\"name\":\"new name\",\"description\":\"new description\"}]}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"95"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/areas\" -d '{\"id\":\"53bd66b76a6942d34d000011\",\"name\":\"new name\",\"description\":\"new description\"}' -X PATCH \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+}
+  ]
+}

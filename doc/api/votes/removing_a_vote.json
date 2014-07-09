@@ -1,0 +1,32 @@
+{
+  "resource": "Votes",
+  "http_method": "DELETE",
+  "route": "/votes/:id",
+  "description": "Removing a vote",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "DELETE",
+      "request_path": "/votes/53bd66b86a6942d34d00007c",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "true",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"4"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/votes/53bd66b86a6942d34d00007c\" -d '' -X DELETE \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+}
+  ]
+}

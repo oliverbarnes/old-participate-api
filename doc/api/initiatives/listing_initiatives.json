@@ -1,0 +1,52 @@
+{
+  "resource": "Initiatives",
+  "http_method": "GET",
+  "route": "/initiatives",
+  "description": "Listing initiatives",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/initiatives",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"initiatives\":[]}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"18"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/initiatives\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+},
+    {
+"request_method": "GET",
+"request_path": "/initiatives",
+"request_body": null,
+"request_headers": {
+  "Accept": "application/vnd.api+json",
+  "Content-Type": "application/vnd.api+json",
+  "Host": "example.org",
+  "Cookie": ""
+},
+"request_query_parameters": {
+},
+"request_content_type": "application/vnd.api+json",
+"response_status": 200,
+"response_status_text": "OK",
+"response_body": "{\"initiatives\":[{\"id\":\"53bd66b76a6942d34d000025\",\"title\":\"Repurpose abandoned warehouse to make public housing\",\"draft\":\"It's been sitting there for 8 years, and there's funding available to renovate it and let new tenants in\",\"author_id\":\"53bd66b76a6942d34d000022\",\"area_id\":\"53bd66b76a6942d34d000023\",\"issue_id\":\"53bd66b76a6942d34d000024\"}]}",
+"response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"343"},
+"response_content_type": "application/vnd.api+json",
+"curl": "curl \"http://localhost:9292/initiatives\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+}
+  ]
+}

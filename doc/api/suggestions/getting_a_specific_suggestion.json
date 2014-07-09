@@ -1,0 +1,32 @@
+{
+  "resource": "Suggestions",
+  "http_method": "GET",
+  "route": "/suggestions/:id",
+  "description": "Getting a specific suggestion",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/suggestions/53bd66b76a6942d34d00004a",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"suggestions_to_initiatives\":[{\"id\":\"53bd66b76a6942d34d00004a\",\"body\":\"Let's give priority to previously displaced tenants\",\"initiative_id\":\"53bd66b76a6942d34d000049\"}]}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"170"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/suggestions/53bd66b76a6942d34d00004a\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+}
+  ]
+}

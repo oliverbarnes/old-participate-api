@@ -1,8 +1,8 @@
 {
-  "resource": "Issues",
+  "resource": "AreaMemberships",
   "http_method": "GET",
-  "route": "/issues/:id",
-  "description": "Issue not found",
+  "route": "/area_memberships/:id",
+  "description": "Area membership not found",
   "explanation": null,
   "parameters": [
 
@@ -10,7 +10,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/issues/idontexist",
+      "request_path": "/area_memberships/idontexist",
       "request_body": null,
       "request_headers": {
         "Accept": "application/vnd.api+json",
@@ -23,10 +23,10 @@
       "request_content_type": "application/vnd.api+json",
       "response_status": 404,
       "response_status_text": "Not Found",
-      "response_body": "{\"error\":\"Issue not found\"}",
-      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"27"},
+      "response_body": "{\"error\":\"Area membership not found\"}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"37"},
       "response_content_type": "application/vnd.api+json",
-      "curl": "curl \"http://localhost:9292/issues/idontexist\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+      "curl": "curl \"http://localhost:9292/area_memberships/idontexist\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
 }
   ]
 }

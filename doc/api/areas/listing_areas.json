@@ -1,0 +1,52 @@
+{
+  "resource": "Areas",
+  "http_method": "GET",
+  "route": "/areas",
+  "description": "Listing areas",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/areas",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"areas\":[]}",
+      "response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"12"},
+      "response_content_type": "application/vnd.api+json",
+      "curl": "curl \"http://localhost:9292/areas\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+},
+    {
+"request_method": "GET",
+"request_path": "/areas",
+"request_body": null,
+"request_headers": {
+  "Accept": "application/vnd.api+json",
+  "Content-Type": "application/vnd.api+json",
+  "Host": "example.org",
+  "Cookie": ""
+},
+"request_query_parameters": {
+},
+"request_content_type": "application/vnd.api+json",
+"response_status": 200,
+"response_status_text": "OK",
+"response_body": "{\"areas\":[{\"id\":\"53bd66b76a6942d34d00000f\",\"name\":\"housing\",\"description\":\"All issues and initiatives related to housing\"}]}",
+"response_headers": {"Content-Type":"application/vnd.api+json","Content-Length":"124"},
+"response_content_type": "application/vnd.api+json",
+"curl": "curl \"http://localhost:9292/areas\" -X GET \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+}
+  ]
+}

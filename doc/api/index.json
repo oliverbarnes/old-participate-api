@@ -1,6 +1,156 @@
 {
   "resources": [
     {
+      "name": "AreaMemberships",
+      "examples": [
+        {
+          "description": "Area membership not found",
+          "link": "areamemberships/area_membership_not_found.json",
+          "groups": "all"
+        },
+        {
+          "description": "Getting a specific area membership",
+          "link": "areamemberships/getting_a_specific_area_membership.json",
+          "groups": "all"
+        },
+        {
+          "description": "Listing area memberships",
+          "link": "areamemberships/listing_area_memberships.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting new area membership",
+          "link": "areamemberships/posting_new_area_membership.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing membership to area",
+          "link": "areamemberships/removing_membership_to_area.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Areas",
+      "examples": [
+        {
+          "description": "Area not found",
+          "link": "areas/area_not_found.json",
+          "groups": "all"
+        },
+        {
+          "description": "Getting a specific area",
+          "link": "areas/getting_a_specific_area.json",
+          "groups": "all"
+        },
+        {
+          "description": "Listing areas",
+          "link": "areas/listing_areas.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting a new area",
+          "link": "areas/posting_a_new_area.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing a area",
+          "link": "areas/removing_a_area.json",
+          "groups": "all"
+        },
+        {
+          "description": "Updating an area",
+          "link": "areas/updating_an_area.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Delegations",
+      "examples": [
+        {
+          "description": "Conflicting params",
+          "link": "delegations/conflicting_params.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting a new delegation on a issue",
+          "link": "delegations/posting_a_new_delegation_on_a_issue.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing a delegation",
+          "link": "delegations/removing_a_delegation.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Initiatives",
+      "examples": [
+        {
+          "description": "Getting a specific initiative",
+          "link": "initiatives/getting_a_specific_initiative.json",
+          "groups": "all"
+        },
+        {
+          "description": "Initiative not found",
+          "link": "initiatives/initiative_not_found.json",
+          "groups": "all"
+        },
+        {
+          "description": "Listing initiatives",
+          "link": "initiatives/listing_initiatives.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting a new initiative",
+          "link": "initiatives/posting_a_new_initiative.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing a initiative",
+          "link": "initiatives/removing_a_initiative.json",
+          "groups": "all"
+        },
+        {
+          "description": "Updating an initiative",
+          "link": "initiatives/updating_an_initiative.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "InterestsInIssues",
+      "examples": [
+        {
+          "description": "Getting a specific interest in a issue",
+          "link": "interestsinissues/getting_a_specific_interest_in_a_issue.json",
+          "groups": "all"
+        },
+        {
+          "description": "Interest in issue not found",
+          "link": "interestsinissues/interest_in_issue_not_found.json",
+          "groups": "all"
+        },
+        {
+          "description": "Listing interests in issues",
+          "link": "interestsinissues/listing_interests_in_issues.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting a new interest in a issue",
+          "link": "interestsinissues/posting_a_new_interest_in_a_issue.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing interest in issue",
+          "link": "interestsinissues/removing_interest_in_issue.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
       "name": "Issues",
       "examples": [
         {
@@ -16,6 +166,96 @@
         {
           "description": "Listing issues",
           "link": "issues/listing_issues.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting a new issue",
+          "link": "issues/posting_a_new_issue.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "examples": [
+        {
+          "description": "Getting list discoverable resources at the root",
+          "link": "root/getting_list_discoverable_resources_at_the_root.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Suggestions",
+      "examples": [
+        {
+          "description": "Getting a specific suggestion",
+          "link": "suggestions/getting_a_specific_suggestion.json",
+          "groups": "all"
+        },
+        {
+          "description": "Listing suggestions",
+          "link": "suggestions/listing_suggestions.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting a new suggestion",
+          "link": "suggestions/posting_a_new_suggestion.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing a suggestion",
+          "link": "suggestions/removing_a_suggestion.json",
+          "groups": "all"
+        },
+        {
+          "description": "Updating an suggestion",
+          "link": "suggestions/updating_an_suggestion.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "SupportsToInitiatives",
+      "examples": [
+        {
+          "description": "Getting a specific support to a initiative",
+          "link": "supportstoinitiatives/getting_a_specific_support_to_a_initiative.json",
+          "groups": "all"
+        },
+        {
+          "description": "Listing supports to initiatives",
+          "link": "supportstoinitiatives/listing_supports_to_initiatives.json",
+          "groups": "all"
+        },
+        {
+          "description": "Posting new support to a initiative",
+          "link": "supportstoinitiatives/posting_new_support_to_a_initiative.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing support to initiative",
+          "link": "supportstoinitiatives/removing_support_to_initiative.json",
+          "groups": "all"
+        },
+        {
+          "description": "Support to initiative not found",
+          "link": "supportstoinitiatives/support_to_initiative_not_found.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Votes",
+      "examples": [
+        {
+          "description": "Posting a new vote on a issue",
+          "link": "votes/posting_a_new_vote_on_a_issue.json",
+          "groups": "all"
+        },
+        {
+          "description": "Removing a vote",
+          "link": "votes/removing_a_vote.json",
           "groups": "all"
         }
       ]
