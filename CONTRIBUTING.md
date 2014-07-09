@@ -59,6 +59,8 @@ The generated API docs can be seen
 
 To manually test the API, use the `curl` command examples.
 
+If you're curious about how this works, check out [Rspec Api Documentation](https://github.com/zipmark/rspec_api_documentation) and [Raddocs](https://github.com/smartlogic/raddocs/).
+
 #### Create a Topic Branch
 
 Make sure your fork is up-to-date and create a topic branch for your feature or bug fix.
