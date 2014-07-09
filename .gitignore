@@ -1,6 +1,5 @@
 .bundle
 .ruby-gemset
-.ruby-version
 .rspec
 .DS_Store
 mongo.log

@@ -13,21 +13,21 @@ cd participate
 git remote add upstream https://github.com/oliverbarnes/participate.git
 ```
 
-Install MongoDB if you don't have it yet and start it up.
+#### Ruby version and database
+
+Install Ruby 2.1.1 if you don't have it yet
+
+```
+rvm install 2.1.1
+```
+
+(Or use whatever ruby version manager you prefer. There's a [.ruby-version](.ruby-version) for the project that should work with any of them)
+
+Install MongoDB if you don't have it yet as well and start it up.
 
 ```
 brew install mongodb
 mongod --logpath mongo.log &
-```
-
-#### Create a Topic Branch
-
-Make sure your fork is up-to-date and create a topic branch for your feature or bug fix.
-
-```
-git checkout master
-git pull upstream master
-git checkout -b my-feature-branch
 ```
 
 #### Bundle install and run tests
@@ -40,6 +40,16 @@ guard
 ```
 
 (Hit Enter/Return to get Guard to run the test suite after starting up)
+
+#### Create a Topic Branch
+
+Make sure your fork is up-to-date and create a topic branch for your feature or bug fix.
+
+```
+git checkout master
+git pull upstream master
+git checkout -b my-feature-branch
+```
 
 #### Write Tests
 
