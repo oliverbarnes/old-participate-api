@@ -41,6 +41,24 @@ guard
 
 (Hit Enter/Return to get Guard to run the test suite after starting up)
 
+#### Start the app and check the API docs
+
+To run the app, open a new terminal tab or window and run
+
+```
+bundle exec rackup
+```
+
+The app go up on 
+
+[http://localhost:9292/](http://localhost:9292/). 
+
+The generated API docs can be seen
+
+[http://localhost:9292/docs/](http://localhost:9292/docs/)
+
+To manually test the API, use the `curl` command examples.
+
 #### Create a Topic Branch
 
 Make sure your fork is up-to-date and create a topic branch for your feature or bug fix.
@@ -61,9 +79,13 @@ I also appreciate pull requests that highlight or reproduce a problem, even with
 
 Implement your feature or bug fix. Please be sure to submit clean, well refactored code.
 
-#### Write Documentation
+#### Generate Documentation for API changes
 
-Document any external behavior in the [README](README.md).
+If endpoints have been added or changed, regenerate the API docs
+
+```
+rspec spec/acceptance --format RspecApiDocumentation::ApiFormatter
+```
 
 #### Update Changelog
 
