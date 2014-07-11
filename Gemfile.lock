@@ -78,18 +78,18 @@ GEM
       rb-inotify (>= 0.9)
     lumberjack (1.0.4)
     method_source (0.8.2)
-    mini_portile (0.5.2)
+    mini_portile (0.6.0)
     mongoid (3.1.6)
       activemodel (~> 3.2)
       moped (~> 1.4)
       origin (~> 1.0)
       tzinfo (~> 0.3.29)
     moped (1.5.1)
-    multi_json (1.9.2)
+    multi_json (1.10.1)
     multi_xml (0.5.5)
     mustache (0.99.5)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     origin (1.1.0)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -113,9 +113,10 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
-    representable (1.7.5)
+    representable (1.8.5)
       multi_json
       nokogiri
+      uber
     rerun (0.8.1)
       listen (>= 1.0.3)
     roar (0.12.2)
@@ -146,6 +147,7 @@ GEM
     tilt (1.4.1)
     timers (1.1.0)
     tzinfo (0.3.38)
+    uber (0.0.7)
     virtus (1.0.2)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -172,6 +174,7 @@ DEPENDENCIES
   pry-nav
   rack-test
   raddocs
+  representable
   rerun
   roar
   rspec
