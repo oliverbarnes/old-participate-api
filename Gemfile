@@ -4,6 +4,7 @@ gem 'bundler'
 
 gem 'grape', github: 'intridea/grape'
 gem 'roar'
+gem 'representable'
 
 gem 'mongoid', '~> 3.1.6', require: true
 gem 'bson_ext'
