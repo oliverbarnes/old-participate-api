@@ -1,5 +1,3 @@
-require File.expand_path('../../representers/interest_in_issue_representer.rb', __FILE__)
-
 module Participate
   class InterestsInIssues < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do

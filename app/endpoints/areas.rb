@@ -1,5 +1,3 @@
-require File.expand_path('../../representers/area_representer.rb', __FILE__)
-
 module Participate
   class Areas < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do

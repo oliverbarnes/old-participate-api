@@ -1,5 +1,3 @@
-require File.expand_path('../../representers/suggestion_to_initiative_representer.rb', __FILE__)
-
 module Participate
   class SuggestionsToInitiatives < Grape::API
     rescue_from Mongoid::Errors::DocumentNotFound do
