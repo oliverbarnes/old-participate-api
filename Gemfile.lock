@@ -110,6 +110,7 @@ GEM
       haml
       json
       sinatra
+    rake (0.9.6)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
@@ -174,6 +175,7 @@ DEPENDENCIES
   pry-nav
   rack-test
   raddocs
+  rake
   representable
   rerun
   roar

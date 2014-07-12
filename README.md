@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/oliverbarnes/participate.svg?branch=master)](https://travis-ci.org/oliverbarnes/participate) 
+
 Participate is a democratic participation plaftorm, based on [LiquidFeedback](http://liquidfeedback.org), the open source system used at the Pirate Party for its internal decision making and policy creation, and on its [principles](http://principles.liquidfeedback.org).
 
 Development is in its early stages.

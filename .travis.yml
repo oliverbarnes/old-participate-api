@@ -1,0 +1,14 @@
+language: ruby
+
+script: bundle exec rspec
+
+bundler_args: --without development
+
+rvm:
+  - 2.1.0
+  - 2.0.0
+
+services:
+  - mongodb
+
+cache: bundler

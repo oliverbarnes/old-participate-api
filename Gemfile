@@ -28,4 +28,5 @@ group :test do
   gem 'rspec'
   gem 'guard-rspec'
   gem 'factory_girl'
+  gem 'rake'
 end
