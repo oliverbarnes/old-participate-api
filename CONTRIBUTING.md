@@ -1,16 +1,16 @@
 Contributing
 ============
 
-So far this is a one-man project, and new contributions will be greatly appreciated. You're welcome to submit [pull requests](https://github.com/oliverbarnes/participate/pulls), [propose features and discuss issues](https://github.com/oliverbarnes/participate/issues). When in doubt, ask a question in the [Participate App Google Group](https://groups.google.com/forum/#!forum/participate-app).
+So far this is a one-man project, and new contributions will be greatly appreciated. You're welcome to submit [pull requests](https://github.com/oliverbarnes/participate-api/pulls), [propose features and discuss issues](https://github.com/oliverbarnes/participate-api/issues). When in doubt, ask a question in the [Participate App Google Group](https://groups.google.com/forum/#!forum/participate-app).
 
 #### Fork the Project
 
-Fork the [project on Github](https://github.com/oliverbarnes/participate) and check out your copy.
+Fork the [project on Github](https://github.com/oliverbarnes/participate-api) and check out your copy.
 
 ```
-git clone https://github.com/contributor/participate.git
-cd participate
-git remote add upstream https://github.com/oliverbarnes/participate.git
+git clone https://github.com/contributor/participate-api.git
+cd participate-api
+git remote add upstream https://github.com/oliverbarnes/participate-api.git
 ```
 
 #### Ruby version and database
@@ -117,7 +117,7 @@ git push origin my-feature-branch
 
 #### Make a Pull Request
 
-Go to https://github.com/contributor/participate and select your feature branch. Click the 'Pull Request' button and fill out the form. Pull requests are usually reviewed daily on weekdays.
+Go to https://github.com/contributor/participate-api and select your feature branch. Click the 'Pull Request' button and fill out the form. Pull requests are usually reviewed daily on weekdays.
 
 If you're new to Pull Requests, check out the [Github docs](https://help.github.com/articles/using-pull-requests)
 
@@ -136,7 +136,7 @@ git push origin my-feature-branch -f
 Update the [CHANGELOG](CHANGELOG.md) with the pull request number. A typical entry looks as follows (fake entry).
 
 ```
-* [#123](https://github.com/oliverbarnes/participate/pull/123): Add vote notifications - [@contributor](https://github.com/contributor).
+* [#123](https://github.com/oliverbarnes/participate-api/pull/123): Add vote notifications - [@contributor](https://github.com/contributor).
 ```
 
 Amend your previous commit and force push the changes.
