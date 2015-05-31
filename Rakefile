@@ -1,8 +1,6 @@
-require 'rake'
-require 'rspec/core/rake_task'
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-desc 'Generate API request documentation from API specs'
-RSpec::Core::RakeTask.new('docs:generate') do |t|
-  t.pattern = 'spec/acceptance/**/*_spec.rb'
-  t.rspec_opts = ["--format RspecApiDocumentation::ApiFormatter"]
-end
+require File.expand_path('../config/application', __FILE__)
+
+Rails.application.load_tasks

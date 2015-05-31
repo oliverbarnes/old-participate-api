@@ -1,32 +1,31 @@
 source 'https://rubygems.org'
 
-gem 'bundler'
+gem 'rails', '4.2.1'
+gem 'rails-api', github: 'rails-api/rails-api'
+gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources'
+gem 'rack-cors', require: 'rack/cors'
+gem 'bcrypt', '~> 3.1.7'
 
-gem 'grape', github: 'intridea/grape'
-gem 'roar'
-gem 'representable'
-
-gem 'mongoid', '~> 3.1.6', require: true
-gem 'bson_ext'
+gem 'httparty', '0.13.3'
 
 group :development, :test do
-  gem 'guard'
-  gem 'guard-bundler'
-  gem 'guard-rack'
-  gem 'pry-nav'
-  gem 'rspec_api_documentation'#, github: 'zipmark/rspec_api_documentation'
-  gem 'raddocs'
-end
-
-group :development do
-  gem 'rerun'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'guard-rspec', require: false
+  gem 'guard-bundler', require: false
+  gem 'guard-rubocop'
+  gem 'pry'
+  gem 'rubocop', require: false
+  gem 'dotenv-rails'
+  gem 'faker', require: false
 end
 
 group :test do
-  gem 'database_cleaner'
-  gem 'rack-test'
-  gem 'rspec'
-  gem 'guard-rspec'
-  gem 'factory_girl'
-  gem 'rake'
+  gem 'shoulda'
+  gem 'webmock', require: 'webmock/rspec'
+  gem 'factory_girl_rails'
+  gem 'timecop'
+  gem 'json_spec'
 end

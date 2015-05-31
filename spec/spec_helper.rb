@@ -1,29 +1,14 @@
-ENV["RACK_ENV"] ||= 'test'
-
-require './app'
-require 'rack/test'
-
-include Rack::Test::Methods
-
-require 'rspec_api_documentation/dsl'
-require 'database_cleaner'
-
-Dir[File.expand_path('../factories/*.rb', __FILE__)].each do |file|
-  require file
-end
-
-def app
-  Participate::API
-end
-
-RspecApiDocumentation.configure do |config|
-  config.app = app
-  config.curl_host = 'http://localhost:9292'
-  config.format = :json
-end
+require 'faker'
 
 RSpec.configure do |config|
-  DatabaseCleaner.strategy = :truncation
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
 
-  config.before(:each) { DatabaseCleaner.clean }
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
 end
