@@ -5,8 +5,7 @@ gem 'rails-api', github: 'rails-api/rails-api'
 gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources'
 gem 'rack-cors', require: 'rack/cors'
 gem 'bcrypt', '~> 3.1.7'
-
-gem 'httparty', '0.13.3'
+gem 'mongoid', '~> 4.0.0'
 
 group :development, :test do
   gem 'byebug'

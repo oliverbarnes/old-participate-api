@@ -1,0 +1,13 @@
+development:
+  sessions:
+    default:
+      database: participate_development
+      hosts:
+        - localhost:27017
+
+test:
+  sessions:
+    default:
+      database: participate_test
+      hosts:
+        - localhost:27017
