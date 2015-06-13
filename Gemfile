@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
 gem 'rails-api', github: 'rails-api/rails-api'
+gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
 gem 'mongoid', '~> 4.0.0'
 gem 'rack-cors', require: 'rack/cors'
