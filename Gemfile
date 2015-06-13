@@ -2,10 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
 gem 'rails-api', github: 'rails-api/rails-api'
-gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources'
-gem 'rack-cors', require: 'rack/cors'
 gem 'bcrypt', '~> 3.1.7'
 gem 'mongoid', '~> 4.0.0'
+gem 'rack-cors', require: 'rack/cors'
+gem 'httparty'
+gem 'doorkeeper'
+gem 'doorkeeper-grants_assertion'
+gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources'
 
 group :development, :test do
   gem 'byebug'
