@@ -6,8 +6,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mongoid', '~> 4.0.0'
 gem 'rack-cors', require: 'rack/cors'
 gem 'httparty'
-gem 'doorkeeper'
-gem 'doorkeeper-grants_assertion'
 gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources'
 
 group :development, :test do
