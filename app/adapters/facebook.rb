@@ -1,17 +1,18 @@
 class Facebook
-  class GraphApiError < StandardError; end
+  class APIError < StandardError; end
 
   class << self
 
-    def authenticate(app_token)
-      access_token = request_access_token(app_token)
+    def fetch_user(authentication_code)
+      # memoize fetched user data?
+      access_token = request_access_token(authentication_code)
       request_user_data(access_token)
     end
 
     private
 
-      def request_access_token(app_token)
-        request( token_url(app_token) ).parsed_response['access_token']
+      def request_access_token(authentication_code)
+        request( token_url(authentication_code) ).parsed_response['access_token']
       end
 
       def request_user_data(access_token)
@@ -20,20 +21,20 @@ class Facebook
 
       def request(url)
         response = HTTParty.get(url)
-        raise GraphApiError.new if response.code != 200
+        raise APIError.new if response.code != 200
         response
       end
 
-      def token_url(app_token)
-        graph_url + '/oauth/access_token?' + token_query(app_token)
+      def token_url(authentication_code)
+        graph_url + '/oauth/access_token?' + token_query(authentication_code)
       end
 
-      def token_query(app_token)
+      def token_query(authentication_code)
         {
           client_id:     app_id,
           redirect_uri:  redirect_uri,
           client_secret: app_secret,
-          code:          app_token
+          code:          authentication_code
         }.to_query
       end
 
