@@ -66,5 +66,8 @@ Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
 
+Style/SpaceInsideParens:
+  Enabled: false
+
 Metrics/AbcSize:
   Max: 25
