@@ -6,6 +6,16 @@ GIT
       rails (>= 4.0)
 
 GIT
+  remote: git://github.com/mongoid/mongoid.git
+  revision: f56b96b75eef6d71102c1ef89f3600d35d277e69
+  specs:
+    mongoid (5.0.0)
+      activemodel (~> 4.0)
+      mongo (~> 2.0)
+      origin (~> 2.1)
+      tzinfo (>= 0.3.37)
+
+GIT
   remote: git://github.com/rails-api/rails-api.git
   revision: 67115bc06ee388db5b8e70822553db686745097c
   specs:
@@ -59,22 +69,15 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bson (2.3.0)
+    bson (3.1.0)
     builder (3.2.2)
-    byebug (5.0.0)
-      columnize (= 0.9.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
-    columnize (0.9.0)
-    connection_pool (2.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
-    dotenv (2.0.1)
-    dotenv-rails (2.0.1)
-      dotenv (= 2.0.1)
     erubis (2.7.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -119,6 +122,7 @@ GEM
     json_spec (1.1.4)
       multi_json (~> 1.0)
       rspec (>= 2.0, < 4.0)
+    jwt (1.5.0)
     listen (2.10.0)
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
@@ -132,15 +136,8 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    mongoid (4.0.2)
-      activemodel (~> 4.0)
-      moped (~> 2.0.0)
-      origin (~> 2.1)
-      tzinfo (>= 0.3.37)
-    moped (2.0.4)
-      bson (~> 2.2)
-      connection_pool (~> 2.0)
-      optionable (~> 0.2.0)
+    mongo (2.0.5)
+      bson (~> 3.0)
     multi_json (1.11.0)
     multi_xml (0.5.5)
     nenv (0.2.0)
@@ -149,7 +146,6 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    optionable (0.2.0)
     origin (2.1.1)
     parser (2.2.2.5)
       ast (>= 1.1, < 3.0)
@@ -221,12 +217,6 @@ GEM
     ruby-progressbar (1.7.5)
     safe_yaml (1.0.4)
     shellany (0.0.1)
-    shoulda (3.5.0)
-      shoulda-context (~> 1.0, >= 1.0.1)
-      shoulda-matchers (>= 1.4.1, < 3.0)
-    shoulda-context (1.2.1)
-    shoulda-matchers (2.8.0)
-      activesupport (>= 3.0.0)
     slop (3.6.0)
     spring (1.3.6)
     sprockets (3.1.0)
@@ -237,7 +227,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
     thor (0.19.1)
     thread_safe (0.3.5)
-    timecop (0.7.3)
     timers (4.0.1)
       hitimes
     tzinfo (1.2.2)
@@ -256,8 +245,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  byebug
-  dotenv-rails
   factory_girl_rails
   faker
   figaro
@@ -267,16 +254,15 @@ DEPENDENCIES
   httparty
   json_spec
   jsonapi-resources!
-  mongoid (~> 4.0.0)
+  jwt
+  mongoid!
   pry
   rack-cors
   rails (= 4.2.1)
   rails-api!
   rspec-rails (~> 3.0)
   rubocop
-  shoulda
   spring
-  timecop
   web-console (~> 2.0)
   webmock
 
