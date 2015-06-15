@@ -1,0 +1,8 @@
+facebook_app_id:       'test-or-development-app-id'
+facebook_app_secret:   'test-or-development-app-secret'
+facebook_graph_url:    'https://graph.facebook.com/v2.3'
+facebook_redirect_uri: 'http://localhost:4200/login'
+
+production:
+  facebook_facebook_app_id:     'production-app-id'
+  facebook_facebook_app_secret: 'production-app-secret'
