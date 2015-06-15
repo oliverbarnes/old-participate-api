@@ -10,5 +10,6 @@ Bundler.require(*Rails.groups)
 
 module Api
   class Application < Rails::Application
+    Figaro.load
   end
 end
