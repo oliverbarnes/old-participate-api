@@ -1,19 +1,18 @@
 require 'rails_helper'
 
-# - 'Facebook' object, not 'FacebookAuthenticator'
-# - tokens controller, not oauth2
-# - no doorkeeper, just oauth2 gem
-# - jwt
-# - encapsulate connect/create from facebook into Login
-
 describe 'Access Tokens API' do
   describe 'with Facebook login' do
     describe 'POST /tokens' do
-      let(:email)  { 'sljfqyn_fergiesen_1434326573@tfbnw.net' }
+      let!(:user_data) { stub_facebook_requests! }
+
+      let(:email)  { user_data[:email] }
       let(:login)  { Login.find_by(email: email) }
-      let(:params) { { facebook_app_token: '1583083701926004|YfXgmPo41REJ21G4irTxUgbh0wA' } }
+
+      let(:params) { { facebook_authentication_code: 'authenticationcode' } }
 
       subject { post '/tokens', params }
+
+      before { Login.destroy_all }
 
       it 'succeeds' do
         subject

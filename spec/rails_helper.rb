@@ -11,4 +11,16 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include Helpers
+
+  # config.before do
+  #   DatabaseCleaner.start
+  # end
+
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :truncation
+  # end
+
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
 end
