@@ -4,7 +4,7 @@ gem 'rails', '4.2.1'
 gem 'rails-api', github: 'rails-api/rails-api'
 gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
-gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongoid', '~> 4.0.2'
 gem 'moped'
 gem 'rack-cors', require: 'rack/cors'
 gem 'httparty'
@@ -21,7 +21,7 @@ group :development, :test do
   gem 'pry'
   gem 'rubocop', require: false
   gem 'faker', require: false
-  # gem 'database_cleaner', '~> 1.4.1'
+  gem 'database_cleaner', '~> 1.4.1'
 end
 
 group :test do
