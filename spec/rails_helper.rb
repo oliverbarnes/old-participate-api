@@ -12,6 +12,11 @@ RSpec.configure do |config|
 
   config.include Helpers
 
+  # dirty hack to si mongodb debug output to shut up,
+  # after trying all sorts of config in different levels
+  # (mongoid, moped, mongo driver, mongod)
+  config.before { allow($stdout).to receive(:write) }
+
   # config.before do
   #   DatabaseCleaner.start
   # end

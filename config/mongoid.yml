@@ -10,6 +10,7 @@ development:
       # of host:port pairs. (required)
       hosts:
         - localhost:27017
+      logger: false
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
@@ -129,6 +130,7 @@ test:
       database: api_test
       hosts:
         - localhost:27017
+      logger: false
       options:
         read:
           mode: primary

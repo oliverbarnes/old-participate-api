@@ -1,2 +1,1 @@
-# Mongoid.logger.level = Logger::INFO
-# Moped.logger.level = Logger::INFO
+Mongoid.logger.level = Moped.logger.level = Logger::INFO
