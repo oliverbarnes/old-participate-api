@@ -113,7 +113,7 @@ describe 'Proposals API' do
       {
         data: {
           type: 'proposals',
-          id: proposal.id,
+          id: proposal.id.to_s,
           attributes: {
             title: 'New title',
             body:  'New body'

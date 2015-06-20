@@ -1,5 +1,3 @@
 class ProposalsController < ApplicationController
-
-  def index
-  end
+  include JSONAPI::ActsAsResourceController
 end
