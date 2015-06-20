@@ -14,7 +14,7 @@ describe 'Access Tokens API' do
 
       before { Login.destroy_all }
 
-      it 'succeeds' do
+      it '200 OK' do
         subject
 
         expect(response).to have_http_status(200)
@@ -35,7 +35,7 @@ describe 'Access Tokens API' do
           stub_facebook_and_return_error!
         end
 
-        it 'responds with status 500' do
+        it '500 Internal server error' do
           subject
 
           expect(response).to have_http_status(500)

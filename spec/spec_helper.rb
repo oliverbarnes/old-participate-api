@@ -11,4 +11,6 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  config.alias_it_should_behave_like_to :it_behaves_like, 'when'
 end

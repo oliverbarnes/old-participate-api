@@ -5,7 +5,7 @@ describe 'Proposals API' do
     {
       'Accept':        'application/vnd.api+json',
       'Content-type':  'application/vnd.api+json',
-      'Authorization': "Bearer #{token}"
+      'Authorization': token
     }
   end
   let!(:login)  { FactoryGirl.create(:login) }
@@ -13,11 +13,11 @@ describe 'Proposals API' do
   let(:proposal) { FactoryGirl.create(:proposal) }
 
   describe 'GET /proposals' do
-    let!(:proposals) { [ proposal ] }
+    let!(:proposals) { [proposal] }
 
     subject { get '/proposals', {}, headers }
 
-    it 'success' do
+    it '200 OK' do
       subject
 
       expect(response.status).to eq 200
@@ -50,7 +50,7 @@ describe 'Proposals API' do
 
     subject { get "/proposals/#{proposal.id}", {}, headers }
 
-    it 'success' do
+    it '200 OK' do
       subject
 
       expect(response.status).to eq 200
@@ -136,20 +136,32 @@ describe 'Proposals API' do
       }.to change { proposal.reload.body }.from(proposal.body).to(params[:data][:attributes][:body])
     end
 
-    it 'success' do
+    it '200 OK' do
       subject
 
       expect(response.status).to eq 200
     end
 
-    context "when proposal being patched isn't owned by the current login" do
+    it_behaves_like 'token is invalid'
+
+    context "token doesn't belong to owner" do
       let(:another_proposal) { create(:proposal) }
 
       subject { patch "/proposals/#{another_proposal.id}", params.to_json, headers }
 
       before { params[:data][:id] = another_proposal.id }
 
-      it 'unauthorized'
+      it '403' do
+        subject
+
+        expect(response.status).to eq 403
+      end
+
+      it 'responds with an empty body' do
+        subject
+
+        expect(response.body).to eq ''
+      end
     end
   end
 end
