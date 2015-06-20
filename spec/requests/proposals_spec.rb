@@ -44,6 +44,8 @@ describe 'Proposals API' do
 
       expect(response.body).to be_json_eql(expected)
     end
+
+    it_behaves_like 'token is invalid'
   end
 
   describe 'GET /proposals/:id' do
@@ -75,6 +77,8 @@ describe 'Proposals API' do
 
       expect(response.body).to be_json_eql(expected)
     end
+
+    it_behaves_like 'token is invalid'
   end
 
   describe 'POST /proposals' do
@@ -106,6 +110,8 @@ describe 'Proposals API' do
 
       expect(response.status).to eq 201
     end
+
+    it_behaves_like 'token is invalid'
   end
 
   describe 'PATCH /proposals' do
