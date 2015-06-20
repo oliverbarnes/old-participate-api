@@ -29,6 +29,24 @@ describe 'Access Tokens API' do
 
         expect(response.body).to be_json_eql({ token: login.access_token }.to_json)
       end
+
+      context 'when Facebook responds with an error' do
+        before do
+          stub_facebook_and_return_error!
+        end
+
+        it 'responds with status 500' do
+          subject
+
+          expect(response).to have_http_status(500)
+        end
+
+        it 'responds with an empty response body' do
+          subject
+
+          expect(response.body).to eql('')
+        end
+      end
     end
   end
 end
