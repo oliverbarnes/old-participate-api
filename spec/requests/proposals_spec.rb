@@ -8,9 +8,9 @@ describe 'Proposals API' do
       'Authorization': token
     }
   end
-  let!(:login)  { FactoryGirl.create(:login) }
+  let(:login)  { FactoryGirl.create(:login) }
   let(:token)   { login.access_token }
-  let(:proposal) { FactoryGirl.create(:proposal) }
+  let(:proposal) { FactoryGirl.create(:proposal, login: login) }
 
   describe 'GET /proposals' do
     let!(:proposals) { [proposal] }
@@ -150,24 +150,6 @@ describe 'Proposals API' do
 
     it_behaves_like 'token is invalid'
 
-    context "token doesn't belong to owner" do
-      let(:another_proposal) { create(:proposal) }
-
-      subject { patch "/proposals/#{another_proposal.id}", params.to_json, headers }
-
-      before { params[:data][:id] = another_proposal.id }
-
-      it '403' do
-        subject
-
-        expect(response.status).to eq 403
-      end
-
-      it 'responds with an empty body' do
-        subject
-
-        expect(response.body).to eq ''
-      end
-    end
+    it_behaves_like "token doesn't belong to owner"
   end
 end

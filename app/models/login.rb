@@ -1,6 +1,8 @@
 class Login
   include Mongoid::Document
 
+  has_many :proposals
+
   field :email
   field :facebook_uid
 
