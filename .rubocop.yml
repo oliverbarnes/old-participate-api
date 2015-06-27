@@ -69,5 +69,8 @@ Style/BlockDelimiters:
 Style/SpaceInsideParens:
   Enabled: false
 
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
 Metrics/AbcSize:
   Max: 25
