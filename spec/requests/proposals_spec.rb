@@ -150,7 +150,9 @@ describe 'Proposals API' do
 
     it_behaves_like 'token is invalid'
 
-    it_behaves_like "token doesn't belong to owner"
+    it_behaves_like "token doesn't belong to owner" do
+      let(:proposal) { create(:proposal) }
+    end
   end
 
   describe 'DELETE /proposals/:id' do
@@ -172,6 +174,8 @@ describe 'Proposals API' do
 
     it_behaves_like 'token is invalid'
 
-    it_behaves_like "token doesn't belong to owner"
+    it_behaves_like "token doesn't belong to owner" do
+      let(:proposal) { create(:proposal) }
+    end
   end
 end

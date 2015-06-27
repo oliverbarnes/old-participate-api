@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 shared_examples "token doesn't belong to owner" do
-  let(:proposal) { create(:proposal) }
-
   it '403 Forbidden' do
     subject
 
