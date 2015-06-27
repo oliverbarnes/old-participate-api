@@ -18,7 +18,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rubocop'
-  gem 'pry'
+  gem 'pry', github: 'pry/pry'
   gem 'rubocop', require: false
   gem 'faker', require: false
   gem 'database_cleaner', '~> 1.4.1'

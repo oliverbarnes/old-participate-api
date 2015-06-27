@@ -6,6 +6,15 @@ GIT
       rails (>= 4.0)
 
 GIT
+  remote: git://github.com/pry/pry.git
+  revision: 42ff1b633c4c28598cf83f971e78fceb57355ade
+  specs:
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+
+GIT
   remote: git://github.com/rails-api/rails-api.git
   revision: 67115bc06ee388db5b8e70822553db686745097c
   specs:
@@ -150,10 +159,6 @@ GEM
     parser (2.2.2.5)
       ast (>= 1.1, < 3.0)
     powerpack (0.1.1)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     rack (1.6.1)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -258,7 +263,7 @@ DEPENDENCIES
   jwt
   mongoid (~> 4.0.2)
   moped
-  pry
+  pry!
   rack-cors
   rails (= 4.2.1)
   rails-api!
