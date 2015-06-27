@@ -12,8 +12,6 @@ describe 'Access Tokens API' do
 
       subject { post '/tokens', params }
 
-      before { Login.destroy_all }
-
       it '200 OK' do
         subject
 
