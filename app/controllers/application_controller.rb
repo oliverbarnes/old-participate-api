@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::API
-
   attr_reader :current_user
-
-  rescue_from Forbidden, with: :forbidden_response
 
   private
 
