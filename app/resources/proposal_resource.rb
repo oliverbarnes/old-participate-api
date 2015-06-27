@@ -3,6 +3,7 @@ require 'jsonapi/resource'
 class ProposalResource < JSONAPI::Resource
   before_create :associate_login
   before_update :authorize_ownership!
+  before_remove :authorize_ownership!
 
   attributes :title, :body
 

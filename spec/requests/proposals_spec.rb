@@ -152,4 +152,26 @@ describe 'Proposals API' do
 
     it_behaves_like "token doesn't belong to owner"
   end
+
+  describe 'DELETE /proposals/:id' do
+    let(:proposal_id) { proposal.id }
+
+    subject { delete "/proposals/#{proposal_id}", {}, headers }
+
+    it 'destroys the proposal' do
+      expect(Proposal.where(id: proposal_id).count).to eql 1
+      subject
+      expect(Proposal.where(id: proposal_id).count).to eql 0
+    end
+
+    it '204 No Content' do
+      subject
+
+      expect(response.status).to eq 204
+    end
+
+    it_behaves_like 'token is invalid'
+
+    it_behaves_like "token doesn't belong to owner"
+  end
 end
