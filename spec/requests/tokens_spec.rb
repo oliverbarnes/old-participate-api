@@ -8,7 +8,7 @@ describe 'Access Tokens API' do
       let(:email)  { user_data[:email] }
       let(:login)  { Login.find_by(email: email) }
 
-      let(:params) { { facebook_authentication_code: 'authenticationcode' } }
+      let(:params) { { auth_code: 'authenticationcode' } }
 
       subject { post '/tokens', params }
 
@@ -26,6 +26,22 @@ describe 'Access Tokens API' do
         subject
 
         expect(response.body).to be_json_eql({ token: login.access_token }.to_json)
+      end
+
+      context 'when auth code is not present', :focus do
+        let(:params) { {} }
+
+        it '400 Bad request' do
+          subject
+
+          expect(response).to have_http_status(400)
+        end
+
+        it 'responds with a error message' do
+          subject
+
+          expect(response.body).to eql('{"error":"facebook auth code missing"}')
+        end
       end
 
       context 'when Facebook responds with an error' do
