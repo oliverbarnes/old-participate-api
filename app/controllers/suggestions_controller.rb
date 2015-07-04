@@ -1,0 +1,2 @@
+class SuggestionsController < ResourceController
+end

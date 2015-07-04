@@ -28,7 +28,7 @@ describe 'Access Tokens API' do
         expect(response.body).to be_json_eql({ token: login.access_token }.to_json)
       end
 
-      context 'when auth code is not present', :focus do
+      context 'when auth code is not present' do
         let(:params) { {} }
 
         it '400 Bad request' do
