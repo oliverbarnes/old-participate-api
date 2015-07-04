@@ -13,7 +13,7 @@ describe 'Supports API' do
   let(:proposal) { FactoryGirl.create(:proposal) }
   let(:support)  { FactoryGirl.create(:support, login: login) }
 
-  describe 'POST /supports' do
+  describe 'POST /proposals/:proposal_id/supports' do
     let(:params) do
       {
         data: {
@@ -28,9 +28,9 @@ describe 'Supports API' do
     end
     let(:new_support)  { Support.first }
 
-    subject { post '/supports', params.to_json, headers }
+    subject { post "/proposals/#{proposal.id}/supports", params.to_json, headers }
 
-    it 'creates new support to related proposal' do
+    it 'creates new support to related proposal', :focus do
       expect(Support.count).to eql 0
       subject
       expect(new_support.proposal).to eql proposal

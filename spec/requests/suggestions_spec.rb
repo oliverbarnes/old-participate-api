@@ -129,7 +129,7 @@ describe 'Suggestions API' do
     it_behaves_like 'token is invalid'
   end
 
-  describe 'PATCH /suggestions' do
+  describe 'PATCH /suggestions/:id' do
     let(:params) do
       {
         data: {
