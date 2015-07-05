@@ -6,6 +6,7 @@ class Login
   # TODO: these will move into the User class
   has_many :proposals
   has_many :supports
+  has_many :suggestions
 
   field :email
   field :facebook_uid

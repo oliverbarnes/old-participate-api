@@ -45,8 +45,8 @@ describe 'Supports API' do
   end
 
   describe 'DELETE /supports/:id' do
-    let(:support)  { FactoryGirl.create(:support, login: login) }
-    let(:support_id) { support.id.to_s }
+    let!(:support)     { FactoryGirl.create(:support, proposal: proposal, login: login) }
+    let(:support_id)  { support.id.to_s }
 
     subject { delete "/supports/#{support_id}", {}, headers }
 
@@ -54,6 +54,16 @@ describe 'Supports API' do
       expect(Support.where(id: support_id).count).to eql 1
       subject
       expect(Support.where(id: support_id).count).to eql 0
+    end
+
+    it 'destroys all suggestions on formelly supported proposal by the former supporter' do
+      proposal.suggestions << FactoryGirl.create(:suggestion, login: login)
+
+      expect {
+        subject
+      }.to change {
+        login.suggestions.count(proposal: proposal)
+      }.from(1).to(0)
     end
 
     it '204 No Content' do
@@ -64,7 +74,7 @@ describe 'Supports API' do
 
     it_behaves_like 'token is invalid'
 
-    it_behaves_like "token doesn't belong to owner", :focus do
+    it_behaves_like "token doesn't belong to owner" do
       let(:support) { create(:support) }
     end
   end
