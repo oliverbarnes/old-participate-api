@@ -1,7 +1,11 @@
 class Login
   include Mongoid::Document
 
+  # TODO: belongs_to :owner, class: User
+
+  # TODO: these will move into the User class
   has_many :proposals
+  has_many :supports
 
   field :email
   field :facebook_uid

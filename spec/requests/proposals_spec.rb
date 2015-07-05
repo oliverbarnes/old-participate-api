@@ -101,7 +101,7 @@ describe 'Proposals API' do
       expect(new_proposal.body).to eql params[:data][:attributes][:body]
     end
 
-    it '201 created' do
+    it '201 Created' do
       subject
 
       expect(response.status).to eq 201

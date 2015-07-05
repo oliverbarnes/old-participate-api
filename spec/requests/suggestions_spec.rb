@@ -11,6 +11,7 @@ describe 'Suggestions API' do
   let(:login)      { FactoryGirl.create(:login) }
   let(:token)      { login.access_token }
   let(:proposal)   { FactoryGirl.create(:proposal) }
+  let!(:support)    { FactoryGirl.create(:support, proposal: proposal, login: login) }
   let(:suggestion) { FactoryGirl.create(:suggestion, proposal: proposal, login: login) }
 
   describe 'GET /proposals/:proposal_id/suggestions' do
@@ -105,6 +106,11 @@ describe 'Suggestions API' do
           type: 'suggestions',
           attributes: {
             body:  'New body'
+          },
+          relationships: {
+            proposal: {
+              data: { type: 'proposals', 'id': proposal.id.to_s }
+            }
           }
         }
       }
@@ -120,10 +126,45 @@ describe 'Suggestions API' do
       expect(new_suggestion.body).to eql params[:data][:attributes][:body]
     end
 
-    it '201 created' do
+    it 'associates suggestion to proposal' do
+      subject
+      expect(new_suggestion.proposal).to eql proposal
+    end
+
+    it '201 Created' do
       subject
 
       expect(response.status).to eq 201
+    end
+
+    context 'when proposal is not supported' do
+      before { Support.destroy_all }
+
+      it '422 Unprocessable entity' do
+        subject
+
+        expect(response.status).to eq 422
+      end
+
+      it 'responds with an error for no support' do
+        subject
+
+        expected = {
+          errors: [
+            { title: 'proposal - must be supported',
+              detail: 'must be supported',
+              id: nil,
+              href: nil,
+              code: 100,
+              path: '/proposal',
+              links: nil,
+              status: 'unprocessable_entity'
+            }
+          ]
+        }
+
+        expect(response.body).to eql expected.to_json
+      end
     end
 
     it_behaves_like 'token is invalid'
@@ -159,7 +200,10 @@ describe 'Suggestions API' do
     it_behaves_like 'token is invalid'
 
     it_behaves_like "token doesn't belong to owner" do
-      let(:suggestion) { create(:suggestion) }
+      # Suggestion needs to be created by a login supporting the proposal to pass validation,
+      # so create a support factory and use its generated login
+      let(:support)    { FactoryGirl.create(:support, proposal: proposal) }
+      let(:suggestion) { FactoryGirl.create(:suggestion, login: support.login) }
     end
   end
 
@@ -183,7 +227,10 @@ describe 'Suggestions API' do
     it_behaves_like 'token is invalid'
 
     it_behaves_like "token doesn't belong to owner" do
-      let(:suggestion) { create(:suggestion) }
+      # Suggestion needs to be created by a login supporting the proposal to pass validation,
+      # so create a support factory and use its generated login
+      let(:support)    { FactoryGirl.create(:support, proposal: proposal) }
+      let(:suggestion) { FactoryGirl.create(:suggestion, login: support.login) }
     end
   end
 end

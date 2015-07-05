@@ -35,7 +35,7 @@ describe 'Supports API' do
       expect(new_support.proposal).to eql proposal
     end
 
-    it '201 created' do
+    it '201 Created' do
       subject
 
       expect(response.status).to eq 201

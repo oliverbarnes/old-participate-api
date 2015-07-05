@@ -1,5 +1,5 @@
 class Base < JSONAPI::Resource
-  before_create :associate_login
+  before_replace_fields :associate_login
   before_update :authorize_ownership!
   before_remove :authorize_ownership!
 
