@@ -5,7 +5,7 @@ describe 'Proposals API' do
     {
       'Accept':        'application/vnd.api+json',
       'Content-type':  'application/vnd.api+json',
-      'Authorization': token
+      'Authorization': "Bearer #{token}"
     }
   end
   let(:login)  { FactoryGirl.create(:login) }
