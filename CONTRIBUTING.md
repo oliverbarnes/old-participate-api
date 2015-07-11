@@ -13,34 +13,6 @@ cd participate-api
 git remote add upstream https://github.com/oliverbarnes/participate-api.git
 ```
 
-#### Ruby version and database
-
-Install Ruby 2.2.2 if you don't have it yet
-
-```
-rvm install 2.2.2
-```
-
-(Or use whatever ruby version manager you prefer. There's a [.ruby-version](.ruby-version) for the project that should work with any of them)
-
-Install MongoDB if you don't have it yet as well and start it up.
-
-```
-brew install mongodb
-mongod --logpath mongo.log &
-```
-
-#### Bundle install and run tests
-
-Ensure that dependencies are installed and tests run and pass.
-
-```
-bundle install
-guard
-```
-
-(Hit Enter/Return to get Guard to run the test suite after starting up)
-
 #### Create a Topic Branch
 
 Make sure your fork is up-to-date and create a topic branch for your feature or bug fix.
