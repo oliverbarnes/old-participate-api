@@ -57,6 +57,14 @@ Then startup the front-end app [by following the instructions on its github repo
 Go to [`http://localhost:4200`](http://localhost:4200) on your browser.
 
 
-#### Contributing
+## Contributing
 
-See the [CONTRIBUTING](CONTRIBUTING.md) guide and the [CHANGELOG](CHANGELOG.md).
+See the [CONTRIBUTING](CONTRIBUTING.md) guide.
+
+### Contributors
+------------
+Present and past:
+
+- [William Jeffreys](https://github.com/williamcodes)
+- [Qian Zhou](https://github.com/qianfinland)
+- [Cathy Nangini](https://github.com/KatiRG)
