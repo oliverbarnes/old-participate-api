@@ -25,7 +25,7 @@ describe 'Access Tokens API' do
       it 'responds with an access token' do
         subject
 
-        expect(response.body).to be_json_eql({ token: login.access_token }.to_json)
+        expect(response.body).to be_json_eql({ access_token: login.access_token }.to_json)
       end
 
       context 'when auth code is not present' do
