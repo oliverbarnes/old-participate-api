@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :support do
-    login
+    participant
     proposal
   end
 end

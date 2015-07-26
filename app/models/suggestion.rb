@@ -2,8 +2,8 @@ class Suggestion
 
   include Mongoid::Document
 
-  belongs_to  :login
-  belongs_to  :proposal
+  belongs_to :participant
+  belongs_to :proposal
 
   field :body
 

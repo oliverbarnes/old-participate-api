@@ -1,16 +1,9 @@
 require 'rails_helper'
 
 describe 'Supports API' do
-  let(:headers) do
-    {
-      'Accept':        'application/vnd.api+json',
-      'Content-type':  'application/vnd.api+json',
-      'Authorization': "Bearer #{token}"
-    }
-  end
-  let(:login)    { FactoryGirl.create(:login) }
-  let(:token)    { login.access_token }
-  let(:proposal) { FactoryGirl.create(:proposal) }
+  include_context 'headers and login'
+
+  let(:proposal)   { FactoryGirl.create(:proposal) }
 
   describe 'POST /proposals/:proposal_id/supports' do
     let(:params) do
@@ -45,7 +38,7 @@ describe 'Supports API' do
   end
 
   describe 'DELETE /supports/:id' do
-    let!(:support)     { FactoryGirl.create(:support, proposal: proposal, login: login) }
+    let!(:support)     { FactoryGirl.create(:support, proposal: proposal, participant: current_participant) }
     let(:support_id)  { support.id.to_s }
 
     subject { delete "/supports/#{support_id}", {}, headers }
@@ -57,12 +50,12 @@ describe 'Supports API' do
     end
 
     it 'destroys all suggestions on formelly supported proposal by the former supporter' do
-      proposal.suggestions << FactoryGirl.create(:suggestion, login: login)
+      proposal.suggestions << FactoryGirl.create(:suggestion, participant: current_participant)
 
       expect {
         subject
       }.to change {
-        login.suggestions.count(proposal: proposal)
+        current_participant.suggestions.count(proposal: proposal)
       }.from(1).to(0)
     end
 

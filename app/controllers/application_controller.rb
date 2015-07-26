@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  attr_reader :current_user
+  attr_reader :current_participant
 
   private
 
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
 
     def authenticate!
       token = extract_token(request.headers[:authorization])
-      @current_user = Login.authenticate!(token)
+      @current_participant = Login.authenticate!(token).participant
     rescue JWT::DecodeError, Mongoid::Errors::DocumentNotFound
       head 401
     end

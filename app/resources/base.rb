@@ -1,16 +1,16 @@
 class Base < JSONAPI::Resource
-  before_replace_fields :associate_login
+  before_replace_fields :associate_owner
   before_update :authorize_ownership!
   before_remove :authorize_ownership!
 
   # TODO: add spec
-  def associate_login
-    @model.login = context[:current_user]
+  def associate_owner
+    @model.participant = context[:current_participant]
   end
 
   # TODO: add spec
   def authorize_ownership!
-    raise Forbidden unless owned_by_current_user?
+    raise Forbidden unless owned_by_current_participant?
   end
 
   class << self
@@ -22,10 +22,10 @@ class Base < JSONAPI::Resource
 
   private
 
-    def owned_by_current_user?
+    def owned_by_current_participant?
       # FIXME: dirty hack, before_update also runs on creation
       # maybe authorization needs to be done in an operation callback
       return true if context[:request_method] == 'POST'
-      @model.login.id.to_s == context[:current_user].id.to_s
+      @model.participant.id.to_s == context[:current_participant].id.to_s
     end
 end

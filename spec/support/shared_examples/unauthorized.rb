@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 shared_examples 'token is invalid' do
-  let(:token) { 'badtoken' }
+  let(:login) { FactoryGirl.build :login }
 
   it '401 Unauthorized' do
     subject

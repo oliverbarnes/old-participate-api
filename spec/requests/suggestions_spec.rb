@@ -1,18 +1,11 @@
 require 'rails_helper'
 
 describe 'Suggestions API' do
-  let(:headers) do
-    {
-      'Accept':        'application/vnd.api+json',
-      'Content-type':  'application/vnd.api+json',
-      'Authorization': "Bearer #{token}"
-    }
-  end
-  let(:login)      { FactoryGirl.create(:login) }
-  let(:token)      { login.access_token }
+  include_context 'headers and login'
+
   let(:proposal)   { FactoryGirl.create(:proposal) }
-  let!(:support)    { FactoryGirl.create(:support, proposal: proposal, login: login) }
-  let(:suggestion) { FactoryGirl.create(:suggestion, proposal: proposal, login: login) }
+  let!(:support)   { FactoryGirl.create(:support, proposal: proposal, participant: current_participant) }
+  let(:suggestion) { FactoryGirl.create(:suggestion, proposal: proposal, participant: current_participant) }
 
   describe 'GET /proposals/:proposal_id/suggestions' do
     let!(:suggestions) { [suggestion] }
@@ -41,12 +34,9 @@ describe 'Suggestions API' do
             },
             relationships: {
               proposal: {
-                data: {
-                  type: 'proposals'
-                },
                 links: {
                   related: "http://www.example.com/suggestions/#{suggestion.id}/proposal",
-                  self: "http://www.example.com/suggestions/#{suggestion.id}/links/proposal"
+                  self: "http://www.example.com/suggestions/#{suggestion.id}/relationships/proposal"
                 }
               }
             }
@@ -83,12 +73,9 @@ describe 'Suggestions API' do
           },
           relationships: {
             proposal: {
-              data: {
-                type: 'proposals'
-              },
               links: {
                 related: "http://www.example.com/suggestions/#{suggestion.id}/proposal",
-                self: "http://www.example.com/suggestions/#{suggestion.id}/links/proposal"
+                self: "http://www.example.com/suggestions/#{suggestion.id}/relationships/proposal"
               }
             }
           }
@@ -156,7 +143,7 @@ describe 'Suggestions API' do
               id: nil,
               href: nil,
               code: 100,
-              path: '/proposal',
+              source: { pointer: '/data/relationships/proposal' },
               links: nil,
               status: 'unprocessable_entity'
             }
@@ -200,10 +187,10 @@ describe 'Suggestions API' do
     it_behaves_like 'token is invalid'
 
     it_behaves_like "token doesn't belong to owner" do
-      # Suggestion needs to be created by a login supporting the proposal to pass validation,
+      # Suggestion needs to be created by a participant supporting the proposal to pass validation,
       # so create a support factory and use its generated login
       let(:support)    { FactoryGirl.create(:support, proposal: proposal) }
-      let(:suggestion) { FactoryGirl.create(:suggestion, login: support.login) }
+      let(:suggestion) { FactoryGirl.create(:suggestion, participant: support.participant) }
     end
   end
 
@@ -227,10 +214,10 @@ describe 'Suggestions API' do
     it_behaves_like 'token is invalid'
 
     it_behaves_like "token doesn't belong to owner" do
-      # Suggestion needs to be created by a login supporting the proposal to pass validation,
+      # Suggestion needs to be created by a participant supporting the proposal to pass validation,
       # so create a support factory and use its generated login
       let(:support)    { FactoryGirl.create(:support, proposal: proposal) }
-      let(:suggestion) { FactoryGirl.create(:suggestion, login: support.login) }
+      let(:suggestion) { FactoryGirl.create(:suggestion, participant: support.participant) }
     end
   end
 end

@@ -1,16 +1,9 @@
 require 'rails_helper'
 
 describe 'Proposals API' do
-  let(:headers) do
-    {
-      'Accept':        'application/vnd.api+json',
-      'Content-type':  'application/vnd.api+json',
-      'Authorization': "Bearer #{token}"
-    }
-  end
-  let(:login)  { FactoryGirl.create(:login) }
-  let(:token)   { login.access_token }
-  let(:proposal) { FactoryGirl.create(:proposal, login: login) }
+  include_context 'headers and login'
+
+  let(:proposal)    { FactoryGirl.create(:proposal, participant: current_participant) }
 
   describe 'GET /proposals' do
     let!(:proposals) { [proposal] }

@@ -4,20 +4,20 @@ class Record
   include Mongoid::Document
 
   belongs_to :supportable
-  belongs_to :login
+  belongs_to :participant
 end
 
 class Supportable
   include Mongoid::Document
 
-  belongs_to :login
+  belongs_to :participant
   belongs_to :supports
 end
 
 describe SupportedValidator do
-  let(:login)       { FactoryGirl.build :login }
-  let(:supportable) { Supportable.new(login: login) }
-  let(:record)      { Record.new(login: login, supportable: supportable) }
+  let(:participant) { FactoryGirl.build :participant }
+  let(:supportable) { Supportable.new(participant: participant) }
+  let(:record)      { Record.new(participant: participant, supportable: supportable) }
 
   subject { described_class.new({ attributes: [:something] }) }
 
