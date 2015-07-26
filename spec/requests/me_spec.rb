@@ -22,7 +22,7 @@ describe 'Me API' do
           attributes: {
             name: current_participant.name
           },
-          type: 'participants',
+          type: 'me',
           links: {
             self: 'http://www.example.com/me'
           }
