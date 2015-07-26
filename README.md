@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/oliverbarnes/participate-api/badges/gpa.svg)](https://codeclimate.com/github/oliverbarnes/participate-api)
 [![Build Status](https://travis-ci.org/oliverbarnes/participate-api.svg?branch=master)](https://travis-ci.org/oliverbarnes/participate-api)
 
 Participate is a democratic participation plaftorm, based on [LiquidFeedback](http://liquidfeedback.org), the open source system used at the Pirate Party for its internal decision making and policy creation, and on its [principles](http://principles.liquidfeedback.org).
