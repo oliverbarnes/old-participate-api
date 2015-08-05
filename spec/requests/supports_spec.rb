@@ -5,6 +5,54 @@ describe 'Supports API' do
 
   let(:proposal)   { FactoryGirl.create(:proposal) }
 
+  describe 'GET /supports?filter[proposal_id]=:proposal_id&filter[participant_id]=:participant_id' do
+    let!(:support) { current_participant.supports.create( proposal: proposal ) }
+    let(:filter_params) do
+      filter  = "filter[proposal_id]=#{proposal.id}"
+      filter << "&filter[participant_id]=#{current_participant.id}"
+    end
+
+    subject { get "/supports?#{filter_params}", {}, headers  }
+
+    it '200 OK' do
+      subject
+
+      expect(response.status).to eq 200
+    end
+
+    it 'support resource' do
+      subject
+
+      expected = {
+        data: [
+          {
+            id: support.id,
+            type: 'supports',
+            relationships: {
+              participant: {
+                links: {
+                  related: "http://www.example.com/supports/#{support.id}/participant",
+                  self: "http://www.example.com/supports/#{support.id}/relationships/participant"
+                }
+              },
+              proposal: {
+                links: {
+                  related: "http://www.example.com/supports/#{support.id}/proposal",
+                  self: "http://www.example.com/supports/#{support.id}/relationships/proposal"
+                }
+              }
+            },
+            links: {
+              self: "http://www.example.com/supports/#{support.id}"
+            }
+          }
+        ]
+      }.to_json
+
+      expect(response.body).to be_json_eql(expected)
+    end
+  end
+
   describe 'POST /proposals/:proposal_id/supports' do
     let(:params) do
       {
@@ -22,16 +70,52 @@ describe 'Supports API' do
 
     subject { post "/proposals/#{proposal.id}/supports", params.to_json, headers }
 
-    it 'creates new support to related proposal' do
+    it 'associates new support to the current proposal' do
       expect(Support.count).to eql 0
       subject
       expect(new_support.proposal).to eql proposal
+    end
+
+    it 'associates new support to the current participant' do
+      expect(Support.count).to eql 0
+      subject
+      expect(new_support.participant).to eql current_participant
     end
 
     it '201 Created' do
       subject
 
       expect(response.status).to eq 201
+    end
+
+    it 'new support resource' do
+      subject
+
+      expected = {
+        data: {
+          id: new_support.id,
+          type: 'supports',
+          relationships: {
+            participant: {
+              links: {
+                related: "http://www.example.com/supports/#{new_support.id}/participant",
+                self: "http://www.example.com/supports/#{new_support.id}/relationships/participant"
+              }
+            },
+            proposal: {
+              links: {
+                related: "http://www.example.com/supports/#{new_support.id}/proposal",
+                self: "http://www.example.com/supports/#{new_support.id}/relationships/proposal"
+              }
+            }
+          },
+          links: {
+            self: "http://www.example.com/supports/#{new_support.id}"
+          }
+        }
+      }.to_json
+
+      expect(response.body).to be_json_eql(expected)
     end
 
     it_behaves_like 'token is invalid'
