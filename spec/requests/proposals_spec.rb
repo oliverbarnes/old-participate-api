@@ -37,6 +37,10 @@ describe 'Proposals API' do
 
       expect(response.body).to be_json_eql(expected)
     end
+
+    it_behaves_like 'empty collection' do
+      before { Proposal.first.destroy }
+    end
   end
 
   describe 'GET /proposals/:id' do
