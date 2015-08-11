@@ -1,9 +1,8 @@
 GIT
   remote: git://github.com/cerebris/jsonapi-resources.git
-  revision: dc86a1f36ca542fa5082e4e634953b3e6bde9c1b
-  branch: check_ar_by_name
+  revision: 338cce79a5f414223c75ca7c77bb129d59a9be71
   specs:
-    jsonapi-resources (0.5.4)
+    jsonapi-resources (0.5.5)
       rails (>= 4.0)
 
 GIT

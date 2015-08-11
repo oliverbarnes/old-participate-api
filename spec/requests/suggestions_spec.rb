@@ -142,8 +142,8 @@ describe 'Suggestions API' do
 
         expected = {
           errors: [
-            { title: 'proposal - must be supported',
-              detail: 'must be supported',
+            { title: 'must be supported',
+              detail: 'proposal - must be supported',
               id: nil,
               href: nil,
               code: 100,

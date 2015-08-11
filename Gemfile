@@ -8,7 +8,7 @@ gem 'mongoid', '~> 4.0.2'
 gem 'moped'
 gem 'rack-cors', '~> 0.4.0', require: 'rack/cors'
 gem 'httparty'
-gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources', branch: 'check_ar_by_name'
+gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources'
 gem 'jwt'
 
 group :development, :test do
