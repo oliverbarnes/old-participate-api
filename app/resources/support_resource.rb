@@ -1,10 +1,10 @@
 require 'jsonapi/resource'
 
 class SupportResource < Base
-  has_one :participant
+  has_one :author
   has_one :proposal
 
-  filters :proposal_id, :participant_id
+  filters :proposal_id, :author_id
 
   class << self
     def apply_filter(records, filter, value, options = {})

@@ -6,6 +6,6 @@ class SupportedValidator < ActiveModel::EachValidator
   private
 
     def supported?(record, attribute, value)
-      record.participant.supports.count(attribute => value) > 0
+      record.author.supports.count(attribute => value) > 0
     end
 end

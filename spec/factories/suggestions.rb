@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :suggestion do
     body  { Faker::Lorem.paragraphs(1) }
     proposal
-    participant
+    association :author, factory: :participant
   end
 end

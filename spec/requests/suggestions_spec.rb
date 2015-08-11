@@ -4,8 +4,8 @@ describe 'Suggestions API' do
   include_context 'headers and login'
 
   let(:proposal)   { FactoryGirl.create(:proposal) }
-  let!(:support)   { FactoryGirl.create(:support, proposal: proposal, participant: current_participant) }
-  let(:suggestion) { FactoryGirl.create(:suggestion, proposal: proposal, participant: current_participant) }
+  let!(:support)   { FactoryGirl.create(:support, proposal: proposal, author: current_participant) }
+  let(:suggestion) { FactoryGirl.create(:suggestion, proposal: proposal, author: current_participant) }
 
   describe 'GET /proposals/:proposal_id/suggestions' do
     let!(:suggestions) { [suggestion] }
@@ -194,7 +194,7 @@ describe 'Suggestions API' do
       # Suggestion needs to be created by a participant supporting the proposal to pass validation,
       # so create a support factory and use its generated login
       let(:support)    { FactoryGirl.create(:support, proposal: proposal) }
-      let(:suggestion) { FactoryGirl.create(:suggestion, participant: support.participant) }
+      let(:suggestion) { FactoryGirl.create(:suggestion, author: support.author) }
     end
   end
 
@@ -221,7 +221,7 @@ describe 'Suggestions API' do
       # Suggestion needs to be created by a participant supporting the proposal to pass validation,
       # so create a support factory and use its generated login
       let(:support)    { FactoryGirl.create(:support, proposal: proposal) }
-      let(:suggestion) { FactoryGirl.create(:suggestion, participant: support.participant) }
+      let(:suggestion) { FactoryGirl.create(:suggestion, author: support.author) }
     end
   end
 end

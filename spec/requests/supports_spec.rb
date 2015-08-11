@@ -5,11 +5,11 @@ describe 'Supports API' do
 
   let(:proposal)   { FactoryGirl.create(:proposal) }
 
-  describe 'GET /supports?filter[proposal_id]=:proposal_id&filter[participant_id]=:participant_id' do
+  describe 'GET /supports?filter[proposal_id]=:proposal_id&filter[author_id]=:author_id' do
     let!(:support) { current_participant.supports.create( proposal: proposal ) }
     let(:filter_params) do
       filter  = "filter[proposal_id]=#{proposal.id}"
-      filter << "&filter[participant_id]=#{current_participant.id}"
+      filter << "&filter[author_id]=#{current_participant.id}"
     end
 
     subject { get "/supports?#{filter_params}", {}, headers  }
@@ -29,10 +29,10 @@ describe 'Supports API' do
             id: support.id,
             type: 'supports',
             relationships: {
-              participant: {
+              author: {
                 links: {
-                  related: "http://www.example.com/supports/#{support.id}/participant",
-                  self: "http://www.example.com/supports/#{support.id}/relationships/participant"
+                  related: "http://www.example.com/supports/#{support.id}/author",
+                  self: "http://www.example.com/supports/#{support.id}/relationships/author"
                 }
               },
               proposal: {
@@ -83,7 +83,7 @@ describe 'Supports API' do
     it 'associates new support to the current participant' do
       expect(Support.count).to eql 0
       subject
-      expect(new_support.participant).to eql current_participant
+      expect(new_support.author).to eql current_participant
     end
 
     it '201 Created' do
@@ -100,10 +100,10 @@ describe 'Supports API' do
           id: new_support.id,
           type: 'supports',
           relationships: {
-            participant: {
+            author: {
               links: {
-                related: "http://www.example.com/supports/#{new_support.id}/participant",
-                self: "http://www.example.com/supports/#{new_support.id}/relationships/participant"
+                related: "http://www.example.com/supports/#{new_support.id}/author",
+                self: "http://www.example.com/supports/#{new_support.id}/relationships/author"
               }
             },
             proposal: {
@@ -126,7 +126,7 @@ describe 'Supports API' do
   end
 
   describe 'DELETE /supports/:id' do
-    let!(:support)     { FactoryGirl.create(:support, proposal: proposal, participant: current_participant) }
+    let!(:support)     { FactoryGirl.create(:support, proposal: proposal, author: current_participant) }
     let(:support_id)  { support.id.to_s }
 
     subject { delete "/supports/#{support_id}", {}, headers }
@@ -138,7 +138,7 @@ describe 'Supports API' do
     end
 
     it 'destroys all suggestions on formelly supported proposal by the former supporter' do
-      proposal.suggestions << FactoryGirl.create(:suggestion, participant: current_participant)
+      proposal.suggestions << FactoryGirl.create(:suggestion, author: current_participant)
 
       expect {
         subject

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Proposals API' do
   include_context 'headers and login'
 
-  let(:proposal)    { FactoryGirl.create(:proposal, participant: current_participant) }
+  let(:proposal)    { FactoryGirl.create(:proposal, author: current_participant) }
 
   describe 'GET /proposals' do
     let!(:proposals) { [proposal] }
@@ -30,6 +30,14 @@ describe 'Proposals API' do
             type: 'proposals',
             links: {
               self: "http://www.example.com/proposals/#{proposal.id}"
+            },
+            relationships: {
+              author: {
+                links: {
+                  related: "http://www.example.com/proposals/#{proposal.id}/author",
+                  self: "http://www.example.com/proposals/#{proposal.id}/relationships/author"
+                }
+              }
             }
           }
         ]
@@ -66,6 +74,14 @@ describe 'Proposals API' do
           type: 'proposals',
           links: {
             self: "http://www.example.com/proposals/#{proposal.id}"
+          },
+          relationships: {
+            author: {
+              links: {
+                related: "http://www.example.com/proposals/#{proposal.id}/author",
+                self: "http://www.example.com/proposals/#{proposal.id}/relationships/author"
+              }
+            }
           }
         }
       }.to_json

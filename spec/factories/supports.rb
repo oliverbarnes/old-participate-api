@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :support do
-    participant
+    association :author, factory: :participant
     proposal
   end
 end

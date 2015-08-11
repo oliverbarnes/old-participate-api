@@ -5,7 +5,7 @@ class Base < JSONAPI::Resource
 
   # TODO: add spec
   def associate_owner
-    @model.participant = context[:current_participant]
+    @model.author = context[:current_participant]
   end
 
   # TODO: add spec
@@ -26,6 +26,6 @@ class Base < JSONAPI::Resource
       # FIXME: dirty hack, before_update also runs on creation
       # maybe authorization needs to be done in an operation callback
       return true if context[:request_method] == 'POST'
-      @model.participant.id.to_s == context[:current_participant].id.to_s
+      @model.author.id.to_s == context[:current_participant].id.to_s
     end
 end
