@@ -1,7 +1,7 @@
 class Login
   include Mongoid::Document
 
-  belongs_to :participant
+  belongs_to :participant, dependent: :destroy
 
   field :email
   field :facebook_uid

@@ -4,7 +4,12 @@ class TokensController < ApplicationController
     render_bad_request && return unless params[:auth_code]
 
     facebook_user = Facebook.fetch_user(params[:auth_code])
-    login = Login.find_or_create_by(email: facebook_user[:email], facebook_uid: facebook_user[:id])
+    options = { email: facebook_user[:email], facebook_uid: facebook_user[:id] }
+
+    login = Login.find_or_create_by(options) do |login|
+      login.participant = Participant.create(name: facebook_user[:name])
+      login.save! #seems to be needed, yeah I know...
+    end
 
     render json: { access_token: login.access_token }
   rescue Facebook::APIError

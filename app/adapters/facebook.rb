@@ -39,7 +39,7 @@ class Facebook
       end
 
       def me_url(access_token)
-        config.facebook_graph_url + "/me?fields=email&access_token=#{access_token}"
+        config.facebook_graph_url + "/me?fields=email,name&access_token=#{access_token}"
       end
 
       def config
