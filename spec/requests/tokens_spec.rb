@@ -5,6 +5,7 @@ describe 'Access Tokens API' do
     describe 'POST /tokens' do
       let!(:user_data) { stub_facebook_requests! }
 
+      let(:name)   { user_data[:name] }
       let(:email)  { user_data[:email] }
       let(:login)  { Login.find_by(email: email) }
 
@@ -22,10 +23,33 @@ describe 'Access Tokens API' do
         expect { subject }.to change { Login.where(email: email).count }.by(1)
       end
 
+      it 'creates a participant' do
+        expect { subject }.to change { Participant.where(name: name).count }.by(1)
+      end
+
       it 'responds with an access token' do
         subject
 
         expect(response.body).to be_json_eql({ access_token: login.access_token }.to_json)
+      end
+
+      context 'a login already exists' do
+        before { Login.create(email: email, facebook_uid: user_data[:id]) }
+
+        it 'does not create another login' do
+          expect { subject }.to change { Login.where(email: email).count }.by(0)
+        end
+
+        it 'does not create another participant' do
+          expect { subject }.to change { Participant.where(name: name).count }.by(0)
+        end
+
+        it 'responds with an access token' do
+          subject
+
+          expect(response.body).to be_json_eql({ access_token: login.access_token }.to_json)
+        end
+
       end
 
       context 'when auth code is not present' do
