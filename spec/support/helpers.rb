@@ -5,7 +5,7 @@ module Helpers
     user_data_response = { body: JSON.generate(user_data), headers: { 'Content-Type' => 'application/json' } }
 
     stub_request(:get, %r{https://graph.facebook.com/v2.3/oauth/access_token}).to_return(token_response)
-    stub_request(:get, 'https://graph.facebook.com/v2.3/me?access_token=access_token&fields=email').to_return(user_data_response)
+    stub_request(:get, 'https://graph.facebook.com/v2.3/me?access_token=access_token&fields=email,name').to_return(user_data_response)
 
     user_data
   end

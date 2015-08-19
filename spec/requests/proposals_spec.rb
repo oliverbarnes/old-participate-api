@@ -37,6 +37,18 @@ describe 'Proposals API' do
                   related: "http://www.example.com/proposals/#{proposal.id}/author",
                   self: "http://www.example.com/proposals/#{proposal.id}/relationships/author"
                 }
+              },
+              suggestions: {
+                links: {
+                  related: "http://www.example.com/proposals/#{proposal.id}/suggestions",
+                  self: "http://www.example.com/proposals/#{proposal.id}/relationships/suggestions"
+                }
+              },
+              supports: {
+                links: {
+                  related: "http://www.example.com/proposals/#{proposal.id}/supports",
+                  self: "http://www.example.com/proposals/#{proposal.id}/relationships/supports"
+                }
               }
             }
           }
@@ -80,6 +92,18 @@ describe 'Proposals API' do
               links: {
                 related: "http://www.example.com/proposals/#{proposal.id}/author",
                 self: "http://www.example.com/proposals/#{proposal.id}/relationships/author"
+              }
+            },
+            suggestions: {
+              links: {
+                related: "http://www.example.com/proposals/#{proposal.id}/suggestions",
+                self: "http://www.example.com/proposals/#{proposal.id}/relationships/suggestions"
+              }
+            },
+            supports: {
+              links: {
+                related: "http://www.example.com/proposals/#{proposal.id}/supports",
+                self: "http://www.example.com/proposals/#{proposal.id}/relationships/supports"
               }
             }
           }
