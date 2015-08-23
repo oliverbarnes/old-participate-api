@@ -1,9 +1,7 @@
 [![Code Climate](https://codeclimate.com/github/oliverbarnes/participate-api/badges/gpa.svg)](https://codeclimate.com/github/oliverbarnes/participate-api)
 [![Build Status](https://travis-ci.org/oliverbarnes/participate-api.svg?branch=master)](https://travis-ci.org/oliverbarnes/participate-api)
 
-Participate is a democratic participation plaftorm, based on [LiquidFeedback](http://liquidfeedback.org), the open source system used at the Pirate Party for its internal decision making and policy creation, and on its [principles](http://principles.liquidfeedback.org).
-
-Development is in its early stages.
+Please see the README on [repo for the front-end app](https://github.com/oliverbarnes/participate) to learn more about the project.
 
 ## Bootstrapping the Project
 
@@ -61,11 +59,3 @@ Go to [`http://localhost:4200`](http://localhost:4200) on your browser.
 ## Contributing
 
 See the [CONTRIBUTING](CONTRIBUTING.md) guide.
-
-### Contributors
-------------
-Present and past:
-
-- [William Jeffreys](https://github.com/williamcodes)
-- [Qian Zhou](https://github.com/qianfinland)
-- [Cathy Nangini](https://github.com/KatiRG)
