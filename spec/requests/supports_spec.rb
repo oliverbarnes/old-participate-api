@@ -3,16 +3,16 @@ require 'rails_helper'
 describe 'Supports API' do
   include_context 'headers and login'
 
-  let(:proposal)   { FactoryGirl.create(:proposal) }
+  let(:proposal) { FactoryGirl.create(:proposal) }
 
   describe 'GET /supports?filter[proposal_id]=:proposal_id&filter[author_id]=:author_id' do
     let!(:support) { current_participant.supports.create( proposal: proposal ) }
     let(:filter_params) do
-      filter  = "filter[proposal_id]=#{proposal.id}"
+      filter = "filter[proposal_id]=#{proposal.id}"
       filter << "&filter[author_id]=#{current_participant.id}"
     end
 
-    subject { get "/supports?#{filter_params}", {}, headers  }
+    subject { get "/supports?#{filter_params}", {}, headers }
 
     it '200 OK' do
       subject
@@ -70,7 +70,7 @@ describe 'Supports API' do
         }
       }
     end
-    let(:new_support)  { Support.first }
+    let(:new_support) { Support.first }
 
     subject { post '/supports', params.to_json, headers }
 
@@ -126,7 +126,7 @@ describe 'Supports API' do
   end
 
   describe 'DELETE /supports/:id' do
-    let!(:support)     { FactoryGirl.create(:support, proposal: proposal, author: current_participant) }
+    let!(:support)    { FactoryGirl.create(:support, proposal: proposal, author: current_participant) }
     let(:support_id)  { support.id.to_s }
 
     subject { delete "/supports/#{support_id}", {}, headers }

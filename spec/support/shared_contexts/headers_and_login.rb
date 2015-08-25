@@ -6,6 +6,6 @@ shared_context 'headers and login' do
       'Authorization': "Bearer #{login.access_token}"
     }
   end
-  let(:login)       { FactoryGirl.create(:login) }
+  let(:login) { FactoryGirl.create(:login) }
   let(:current_participant) { login.participant }
 end

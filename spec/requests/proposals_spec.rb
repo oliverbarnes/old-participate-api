@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Proposals API' do
   include_context 'headers and login'
 
-  let(:proposal)    { FactoryGirl.create(:proposal, author: current_participant) }
+  let(:proposal) { FactoryGirl.create(:proposal, author: current_participant) }
 
   describe 'GET /proposals' do
     let!(:proposals) { [proposal] }
@@ -126,7 +126,7 @@ describe 'Proposals API' do
         }
       }
     end
-    let(:new_proposal)  { Proposal.first }
+    let(:new_proposal) { Proposal.first }
 
     subject { post '/proposals', params.to_json, headers }
 
