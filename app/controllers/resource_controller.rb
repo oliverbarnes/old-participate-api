@@ -1,7 +1,7 @@
 class ResourceController < ApplicationController
   rescue_from Forbidden, with: :forbidden_response
 
-  before_action :authenticate!, except: [:index, :show]
+  before_action :authenticate!
 
   include JSONAPI::ActsAsResourceController
 

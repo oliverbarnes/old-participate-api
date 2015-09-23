@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :tokens, only: :create
   jsonapi_resources :proposals
+  jsonapi_resources :participants
   resources :supports
   # Hide until we develop the front-end and decide on the api call
   # resources :suggestions, only: [:show, :create]
