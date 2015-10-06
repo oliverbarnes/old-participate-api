@@ -1,0 +1,2 @@
+class DelegationsController < ResourceController
+end
