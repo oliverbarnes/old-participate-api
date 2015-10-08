@@ -4,7 +4,7 @@ describe 'Delegations API' do
   include_context 'headers and login'
 
   let(:proposal) { FactoryGirl.create(:proposal) }
-  let(:delegate) { FactoryGirl.create(:participant)}
+  let(:delegate) { FactoryGirl.create(:participant) }
 
   describe 'POST /delegations' do
     let(:params) do
@@ -26,10 +26,20 @@ describe 'Delegations API' do
 
     subject { post '/delegations', params.to_json, headers }
 
-    it 'creates new delegation' do
-      expect(Delegation.count).to eql 0
-      subject
-      expect(new_delegate.proposal).to eql proposal
+    context 'creates a new delegation associated to' do
+      before { subject }
+
+      it 'a proposal' do
+        expect(new_delegation.proposal).to eql proposal
+      end
+
+      it 'a delegate' do
+        expect(new_delegation.delegate).to eql delegate
+      end
+
+      it 'an author' do
+        expect(new_delegation.author).to eql current_participant
+      end
     end
   end
 end
