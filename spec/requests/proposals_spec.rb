@@ -25,7 +25,8 @@ describe 'Proposals API' do
             id: proposal.id,
             attributes: {
               title: proposal.title,
-              body:  proposal.body
+              body:  proposal.body,
+              'support-count': 0
             },
             type: 'proposals',
             links: {
@@ -81,7 +82,8 @@ describe 'Proposals API' do
           id: proposal.id,
           attributes: {
             title: proposal.title,
-            body:  proposal.body
+            body:  proposal.body,
+            'support-count': proposal.support_count
           },
           type: 'proposals',
           links: {

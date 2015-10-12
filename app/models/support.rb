@@ -2,7 +2,7 @@ class Support
   include Mongoid::Document
 
   belongs_to :author, class_name: 'Participant'
-  belongs_to :proposal
+  belongs_to :proposal, index: true
 
   after_destroy :destroy_suggestions_by_author_on_previously_supported_proposal
 

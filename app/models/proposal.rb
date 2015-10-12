@@ -7,4 +7,8 @@ class Proposal
 
   field :title
   field :body
+
+  def support_count
+    supports.count
+  end
 end
