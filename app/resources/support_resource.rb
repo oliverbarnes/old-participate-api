@@ -9,6 +9,8 @@ class SupportResource < Base
   after_update :trigger_422_on_failed_validations
 
   # HACK, validation on model isn't triggering JR's 422 response
+  # ...probably because we're not using jsonapi_resources to
+  # declare the route
   def trigger_422_on_failed_validations
     raise JSONAPI::Exceptions::ValidationErrors.new(self) unless @model.valid?
   end

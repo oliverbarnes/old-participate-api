@@ -5,8 +5,8 @@ class Support
   belongs_to :proposal, index: true
 
   # Not triggering 422 on JR.
-  # Mongoid issue? forcing JR validation error on
-  # resource for now
+  # ...probably because we're not using jsonapi_resources to
+  # declare the route. forcing JR validation error on resource for now
   #
   validates :proposal, presence: true
   validates :author, presence: true
