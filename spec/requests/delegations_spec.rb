@@ -41,5 +41,47 @@ describe 'Delegations API' do
         expect(new_delegation.author).to eql current_participant
       end
     end
+
+    context 'without a proposal' do
+      let(:params) do
+        {
+          data: {
+            type: 'delegations',
+            relationships: {
+              delegate: {
+                data: { type: 'delegates', 'id': delegate.id.to_s }
+              }
+            }
+          }
+        }
+      end
+
+      it '422 Unprocessable entity' do
+        subject
+
+        expect(response.status).to eql 422
+      end
+    end
+
+    context 'without a delegate' do
+      let(:params) do
+        {
+          data: {
+            type: 'delegations',
+            relationships: {
+              proposal: {
+                data: { type: 'proposals', 'id': proposal.id.to_s }
+              }
+            }
+          }
+        }
+      end
+
+      it '422 Unprocessable entity' do
+        subject
+
+        expect(response.status).to eql 422
+      end
+    end
   end
 end
