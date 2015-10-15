@@ -110,13 +110,26 @@ describe 'Supports API' do
               links: {
                 related: "http://www.example.com/supports/#{new_support.id}/proposal",
                 self: "http://www.example.com/supports/#{new_support.id}/relationships/proposal"
+              },
+              data: {
+                type: 'proposals'
               }
             }
           },
           links: {
             self: "http://www.example.com/supports/#{new_support.id}"
           }
-        }
+        },
+        included: [{
+          type: 'proposals',
+          id: proposal.id,
+          attributes: {
+            'support-count': 1
+          },
+          links: {
+            self: "http://www.example.com/proposals/#{proposal.id}"
+          }
+        }]
       }.to_json
 
       expect(response.body).to be_json_eql(expected)
