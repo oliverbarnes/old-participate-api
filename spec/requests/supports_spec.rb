@@ -135,6 +135,22 @@ describe 'Supports API' do
       expect(response.body).to be_json_eql(expected)
     end
 
+    context 'without a proposal' do
+      let(:params) do
+        {
+          data: {
+            type: 'supports'
+          }
+        }
+      end
+
+      it '422 Unprocessable entity' do
+        subject
+
+        expect(response.status).to eql 422
+      end
+    end
+
     it_behaves_like 'token is invalid'
   end
 

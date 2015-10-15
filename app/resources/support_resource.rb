@@ -6,6 +6,13 @@ class SupportResource < Base
 
   filters :proposal_id, :author_id
 
+  after_update :trigger_422_on_failed_validations
+
+  # HACK, validation on model isn't triggering JR's 422 response
+  def trigger_422_on_failed_validations
+    raise JSONAPI::Exceptions::ValidationErrors.new(self) unless @model.valid?
+  end
+
   class << self
     def apply_filter(records, filter, value, options = {})
       value = fix_filter_value(value)
