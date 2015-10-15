@@ -84,4 +84,28 @@ describe 'Delegations API' do
       end
     end
   end
+
+  describe 'DELETE /delegations/:id' do
+    let(:delegation) { FactoryGirl.create(:delegation, author: current_participant) }
+
+    subject { delete "/delegations/#{delegation.id}", {}, headers }
+
+    it 'destroys the delegation' do
+      expect(Delegation.where(id: delegation.id).count).to eql 1
+      subject
+      expect(Delegation.where(id: delegation.id).count).to eql 0
+    end
+
+    it '204 No Content' do
+      subject
+
+      expect(response.status).to eq 204
+    end
+
+    it_behaves_like 'token is invalid'
+
+    it_behaves_like "token doesn't belong to owner" do
+      let(:delegation) { create(:delegation) }
+    end
+  end
 end
