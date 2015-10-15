@@ -8,6 +8,8 @@ class Proposal
   field :title
   field :body
 
+  validates :author, presence: true
+
   def support_count
     supports.count
   end
