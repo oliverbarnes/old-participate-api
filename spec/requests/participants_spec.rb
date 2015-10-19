@@ -57,4 +57,30 @@ describe 'Participants API' do
 
     it_behaves_like 'token is invalid'
   end
+
+  describe 'GET /participants?filter[exclude_author_of_proposal]=:proposal_id' do
+    let(:proposal) { FactoryGirl.create(:proposal) }
+    let!(:author_of_proposal) { proposal.author }
+    let(:filter_params) do
+      "filter[exclude_author_of_proposal]=#{proposal.id}"
+    end
+
+    subject { get "/participants?#{filter_params}", {}, headers }
+
+    it 'excludes the author of a proposal from the participants collection' do
+      subject
+
+      proposal_author_data = {
+        id: author_of_proposal.id,
+        attributes: {
+          name: author_of_proposal.name
+        },
+        type: 'participants',
+        links: {
+          self: "http://www.example.com/participants/#{author_of_proposal.id}"
+        }
+      }.to_json
+      expect(JSON.parse(response.body)['data'].to_json).to_not include_json(proposal_author_data)
+    end
+  end
 end
