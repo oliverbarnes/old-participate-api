@@ -5,8 +5,8 @@ class Participant
   has_many :proposals
   has_many :supports
   has_many :suggestions
-  has_many :delegations_given, class_name: 'Delegation', inverse_of: :delegate
-  has_many :delegations_received, class_name: 'Delegation', inverse_of: :author
+  has_many :delegations_given, class_name: 'Delegation', inverse_of: :author
+  has_many :delegations_received, class_name: 'Delegation', inverse_of: :delegate
 
   field :name
 end

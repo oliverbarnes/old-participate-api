@@ -7,11 +7,14 @@ class Support
   # Not triggering 422 on JR.
   # ...probably because we're not using jsonapi_resources to
   # declare the route. forcing JR validation error on resource for now
-  #
   validates :proposal, presence: true
   validates :author, presence: true
 
   after_destroy :destroy_suggestions_by_author_on_previously_supported_proposal
+
+  def weight
+    author.delegations_received.where(proposal: proposal).count + 1
+  end
 
   def destroy_suggestions_by_author_on_previously_supported_proposal
     # FIXME: there's got to be an equivalent to AR's #destroy_all

@@ -11,6 +11,16 @@ class Proposal
   validates :author, presence: true
 
   def support_count
-    supports.count
+    supported? ? sum_of_support_weights : 0
   end
+
+  private
+
+    def supported?
+      supports.count > 0
+    end
+
+    def sum_of_support_weights
+      supports.map(&:weight).reduce(:+)
+    end
 end
