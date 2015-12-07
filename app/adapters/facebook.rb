@@ -21,7 +21,7 @@ class Facebook
 
       def request(url)
         response = HTTParty.get(url)
-        raise APIError.new if response.code != 200
+        raise APIError.new(response['error']['message']) if response.code != 200
         response
       end
 
