@@ -11,6 +11,7 @@ module Helpers
   end
 
   def stub_facebook_and_return_error!
-    stub_request(:get, %r{https://graph.facebook.com}).to_return({ status: 500 })
+    error_response = { status: 500, body: '{ error: { message: "nasty error"  } } ' }
+    stub_request(:get, %r{https://graph.facebook.com}).to_return(error_response)
   end
 end
