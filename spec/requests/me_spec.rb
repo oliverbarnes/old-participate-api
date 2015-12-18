@@ -25,6 +25,14 @@ describe 'Me API' do
           type: 'me',
           links: {
             self: 'http://www.example.com/me'
+          },
+          relationships: {
+            supports: {
+              links: {
+                related: 'http://www.example.com/me/supports',
+                self: 'http://www.example.com/me/relationships/supports'
+              }
+            }
           }
         }
       }.to_json
