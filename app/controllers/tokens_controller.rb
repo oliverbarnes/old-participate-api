@@ -14,9 +14,7 @@ class TokensController < ApplicationController
 
     render json: { access_token: login.access_token }
   rescue Facebook::APIError => e
-    logger.warn ''
-    logger.warn "Facebook API error: #{e.message}"
-    logger.warn ''
+    logger.warn "\nFacebook API error: #{e.message}\n"
     render nothing: true, status: 500
   end
 
