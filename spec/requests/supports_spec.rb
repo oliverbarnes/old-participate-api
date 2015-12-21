@@ -5,6 +5,50 @@ describe 'Supports API' do
 
   let(:proposal) { FactoryGirl.create(:proposal) }
 
+  describe 'GET /me/supports (supports#get_related_resources {:relationship=>"supports", :source=>"me"})' do
+    let!(:support) { current_participant.supports.create( proposal: proposal ) }
+
+    subject { get '/me/supports', { relationship: 'supports', source: 'me' }, headers }
+
+    it '200 OK' do
+      subject
+
+      expect(response.status).to eq 200
+    end
+
+    it 'supports for current participant' do
+      subject
+
+      expected = {
+        data: [
+          {
+            id: support.id,
+            type: 'supports',
+            relationships: {
+              author: {
+                links: {
+                  related: "http://www.example.com/supports/#{support.id}/author",
+                  self: "http://www.example.com/supports/#{support.id}/relationships/author"
+                }
+              },
+              proposal: {
+                links: {
+                  related: "http://www.example.com/supports/#{support.id}/proposal",
+                  self: "http://www.example.com/supports/#{support.id}/relationships/proposal"
+                }
+              }
+            },
+            links: {
+              self: "http://www.example.com/supports/#{support.id}"
+            }
+          }
+        ]
+      }.to_json
+
+      expect(response.body).to be_json_eql(expected)
+    end
+  end
+
   describe 'GET /supports?filter[proposal_id]=:proposal_id&filter[author_id]=:author_id' do
     let!(:support) { current_participant.supports.create( proposal: proposal ) }
     let(:filter_params) do
