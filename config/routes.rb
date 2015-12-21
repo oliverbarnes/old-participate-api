@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/me', to: 'me#show'
+  jsonapi_resource :me
 
   match 'proposals/:id', to: 'proposals#index', via: [:options]
 
