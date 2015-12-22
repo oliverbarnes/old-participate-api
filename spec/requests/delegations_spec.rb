@@ -6,6 +6,60 @@ describe 'Delegations API' do
   let(:proposal) { FactoryGirl.create(:proposal) }
   let(:delegate) { FactoryGirl.create(:participant) }
 
+  describe 'GET /me/delegations-given (delegations#get_related_resources {:relationship=>"delegations", :source=>"me"})' do
+    let!(:delegation) { current_participant.delegations_given.create( proposal: proposal, delegate: delegate ) }
+
+    subject { get '/me/delegations-given', { relationship: 'delegations_given', source: 'me' }, headers }
+
+    it '200 OK' do
+      subject
+
+      expect(response.status).to eq 200
+    end
+
+    it 'delegation resource' do
+      subject
+
+      expected = {
+        data: [
+          {
+            id: delegation.id,
+            type: 'delegations',
+            relationships: {
+              author: {
+                links: {
+                  related: "http://www.example.com/delegations/#{delegation.id}/author",
+                  self: "http://www.example.com/delegations/#{delegation.id}/relationships/author"
+                }
+              },
+              proposal: {
+                links: {
+                  related: "http://www.example.com/delegations/#{delegation.id}/proposal",
+                  self: "http://www.example.com/delegations/#{delegation.id}/relationships/proposal"
+                }
+              },
+              delegate: {
+                links: {
+                  related: "http://www.example.com/delegations/#{delegation.id}/delegate",
+                  self: "http://www.example.com/delegations/#{delegation.id}/relationships/delegate"
+                }
+              }
+            },
+            links: {
+              self: "http://www.example.com/delegations/#{delegation.id}"
+            }
+          }
+        ]
+      }.to_json
+
+      expect(response.body).to be_json_eql(expected)
+    end
+
+    it_behaves_like 'empty collection' do
+      before { Delegation.first.destroy }
+    end
+  end
+
   describe 'GET /delegations?filter[proposal_id]=:proposal_id&filter[author_id]=:author_id' do
     let!(:delegation) { current_participant.delegations_given.create( proposal: proposal, delegate: delegate ) }
     let(:filter_params) do

@@ -47,6 +47,10 @@ describe 'Supports API' do
 
       expect(response.body).to be_json_eql(expected)
     end
+
+    it_behaves_like 'empty collection' do
+      before { Support.first.destroy }
+    end
   end
 
   describe 'GET /supports?filter[proposal_id]=:proposal_id&filter[author_id]=:author_id' do

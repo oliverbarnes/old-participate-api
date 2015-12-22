@@ -32,6 +32,12 @@ describe 'Me API' do
                 related: 'http://www.example.com/me/supports',
                 self: 'http://www.example.com/me/relationships/supports'
               }
+            },
+            'delegations-given': {
+              links: {
+                related: 'http://www.example.com/me/delegations-given',
+                self: 'http://www.example.com/me/relationships/delegations-given'
+              }
             }
           }
         }

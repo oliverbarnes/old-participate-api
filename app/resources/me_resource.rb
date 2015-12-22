@@ -8,6 +8,7 @@ class MeResource < JSONAPI::Resource
   attributes :name
 
   has_many :supports
+  has_many :delegations_given, class_name: 'Delegation'
 
   # we're not using a key, but key-checking barfs with placeholder string.
   # part of the singleton resource hack
