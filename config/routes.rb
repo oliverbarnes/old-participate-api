@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   match 'proposals/:id', to: 'proposals#index', via: [:options]
 
-  resources :tokens, only: :create
+  resource :token, only: :create
   jsonapi_resources :proposals
   jsonapi_resources :participants
   jsonapi_resources :supports

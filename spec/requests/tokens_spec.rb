@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Access Tokens API' do
   describe 'with Facebook login' do
-    describe 'POST /tokens' do
+    describe 'POST /token' do
       let!(:user_data) { stub_facebook_requests! }
 
       let(:name)   { user_data[:name] }
@@ -11,7 +11,7 @@ describe 'Access Tokens API' do
 
       let(:params) { { auth_code: 'authenticationcode' } }
 
-      subject { post '/tokens', params }
+      subject { post '/token', params }
 
       it '200 OK' do
         subject
