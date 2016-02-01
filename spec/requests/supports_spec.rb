@@ -5,10 +5,10 @@ describe 'Supports API' do
 
   let(:proposal) { FactoryGirl.create(:proposal) }
 
-  describe 'GET /me/supports (supports#get_related_resources {:relationship=>"supports", :source=>"me"})' do
+  describe 'GET /participants/:participant_id/supports (supports#get_related_resources {:relationship=>"supports", :source=>"participants"})' do
     let!(:support) { current_participant.supports.create( proposal: proposal ) }
 
-    subject { get '/me/supports', { relationship: 'supports', source: 'me' }, headers }
+    subject { get "/participants/#{current_participant.id}/supports", { relationship: 'supports', source: 'participants' }, headers }
 
     it '200 OK' do
       subject

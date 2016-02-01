@@ -3,6 +3,9 @@ require 'jsonapi/resource'
 class ParticipantResource < Base
   attributes :name
 
+  has_many :supports
+  has_many :delegations_given, class_name: 'Delegation'
+
   filters :exclude_author_of_proposal
 
   class << self

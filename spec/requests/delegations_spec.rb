@@ -6,10 +6,10 @@ describe 'Delegations API' do
   let(:proposal) { FactoryGirl.create(:proposal) }
   let(:delegate) { FactoryGirl.create(:participant) }
 
-  describe 'GET /me/delegations-given (delegations#get_related_resources {:relationship=>"delegations", :source=>"me"})' do
+  describe 'GET /participants/:participant_id/delegations-given (delegations#get_related_resources {:relationship=>"delegations", :source=>"participants"})' do
     let!(:delegation) { current_participant.delegations_given.create( proposal: proposal, delegate: delegate ) }
 
-    subject { get '/me/delegations-given', { relationship: 'delegations_given', source: 'me' }, headers }
+    subject { get "/participants/#{current_participant.id}/delegations-given", { relationship: 'delegations_given', source: 'participants' }, headers }
 
     it '200 OK' do
       subject

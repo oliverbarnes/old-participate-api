@@ -19,26 +19,9 @@ describe 'Me API' do
       expected = {
         data: {
           id: current_participant.id,
-          attributes: {
-            name: current_participant.name
-          },
-          type: 'me',
+          type: 'participants',
           links: {
-            self: 'http://www.example.com/me'
-          },
-          relationships: {
-            supports: {
-              links: {
-                related: 'http://www.example.com/me/supports',
-                self: 'http://www.example.com/me/relationships/supports'
-              }
-            },
-            'delegations-given': {
-              links: {
-                related: 'http://www.example.com/me/delegations-given',
-                self: 'http://www.example.com/me/relationships/delegations-given'
-              }
-            }
+            self: "http://www.example.com/participants/#{current_participant.id}"
           }
         }
       }.to_json
