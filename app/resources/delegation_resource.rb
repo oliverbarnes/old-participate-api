@@ -1,9 +1,9 @@
 require 'jsonapi/resource'
 
 class DelegationResource < Base
-  has_one :author
+  has_one :author, class_name: 'Participant'
   has_one :proposal
-  has_one :delegate
+  has_one :delegate, class_name: 'Participant'
 
   filters :proposal_id, :author_id
 

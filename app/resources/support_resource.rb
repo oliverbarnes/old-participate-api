@@ -1,7 +1,7 @@
 require 'jsonapi/resource'
 
 class SupportResource < Base
-  has_one :author
+  has_one :author, class_name: 'Participant'
   has_one :proposal
 
   filters :proposal_id, :author_id

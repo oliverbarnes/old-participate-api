@@ -128,7 +128,7 @@ describe 'Delegations API' do
               data: { type: 'proposals', 'id': proposal.id.to_s }
             },
             delegate: {
-              data: { type: 'delegates', 'id': delegate.id.to_s }
+              data: { type: 'participants', 'id': delegate.id.to_s }
             }
           }
         }
@@ -161,7 +161,7 @@ describe 'Delegations API' do
             type: 'delegations',
             relationships: {
               delegate: {
-                data: { type: 'delegates', 'id': delegate.id.to_s }
+                data: { type: 'participants', 'id': delegate.id.to_s }
               }
             }
           }
