@@ -21,7 +21,7 @@ group :development, :test do
   gem 'pry', github: 'pry/pry'
   gem 'rubocop', require: false
   gem 'faker', require: false
-  gem 'database_cleaner', '~> 1.4.1'
+  gem 'database_cleaner', '~> 1.5.1'
 end
 
 group :test do
