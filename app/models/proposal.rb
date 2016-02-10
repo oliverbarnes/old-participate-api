@@ -4,6 +4,7 @@ class Proposal
   belongs_to :author, class_name: 'Participant'
   has_many   :supports
   has_many   :suggestions
+  has_many   :delegations
 
   field :title
   field :body
@@ -12,6 +13,10 @@ class Proposal
 
   def support_count
     supported? ? sum_of_support_weights : 0
+  end
+
+  def delegates
+    Participant.in(id: delegations.pluck(:delegate_id))
   end
 
   private
