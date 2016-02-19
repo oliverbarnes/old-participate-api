@@ -33,6 +33,12 @@ describe 'Participants API' do
               self: "http://www.example.com/participants/#{participant.id}"
             },
             relationships: {
+              delegates: {
+                links: {
+                  related: "http://www.example.com/participants/#{participant.id}/delegates",
+                  self: "http://www.example.com/participants/#{participant.id}/relationships/delegates"
+                }
+              },
               'delegations-given': {
                 links: {
                   related: "http://www.example.com/participants/#{participant.id}/delegations-given",

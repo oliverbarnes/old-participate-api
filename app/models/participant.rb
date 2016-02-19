@@ -9,4 +9,8 @@ class Participant
   has_many :delegations_received, class_name: 'Delegation', inverse_of: :delegate
 
   field :name
+
+  def delegates
+    Participant.in(id: delegations_given.pluck(:delegate_id))
+  end
 end

@@ -5,6 +5,7 @@ class ParticipantResource < Base
 
   has_many :supports
   has_many :delegations_given, class_name: 'Delegation'
+  has_many :delegates, class_name: 'Participant'
 
   filters :exclude_author_of_proposal
 
