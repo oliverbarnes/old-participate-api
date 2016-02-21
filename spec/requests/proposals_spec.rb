@@ -45,6 +45,12 @@ describe 'Proposals API' do
                   self: "http://www.example.com/proposals/#{proposal.id}/relationships/delegates"
                 }
               },
+              delegations: {
+                links: {
+                  related: "http://www.example.com/proposals/#{proposal.id}/delegations",
+                  self: "http://www.example.com/proposals/#{proposal.id}/relationships/delegations"
+                }
+              },
               suggestions: {
                 links: {
                   related: "http://www.example.com/proposals/#{proposal.id}/suggestions",
@@ -106,6 +112,12 @@ describe 'Proposals API' do
               links: {
                 related: "http://www.example.com/proposals/#{proposal.id}/delegates",
                 self: "http://www.example.com/proposals/#{proposal.id}/relationships/delegates"
+              }
+            },
+            delegations: {
+              links: {
+                related: "http://www.example.com/proposals/#{proposal.id}/delegations",
+                self: "http://www.example.com/proposals/#{proposal.id}/relationships/delegations"
               }
             },
             suggestions: {

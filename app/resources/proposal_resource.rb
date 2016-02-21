@@ -7,4 +7,5 @@ class ProposalResource < Base
   has_many :suggestions
   has_many :supports
   has_many :delegates, class_name: 'Participant'
+  has_many :delegations
 end
