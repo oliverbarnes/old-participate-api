@@ -12,6 +12,8 @@ module Api
   class Application < Rails::Application
     Figaro.load
 
+    config.mongoid.observers = :delegation_observer
+
     config.middleware.insert_before 0, 'Rack::Cors', debug: true, logger: (-> { Rails.logger }) do
       allow do
         origins '*'

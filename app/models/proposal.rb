@@ -5,6 +5,7 @@ class Proposal
   has_many   :supports
   has_many   :suggestions
   has_many   :delegations
+  has_many :delegates, class_name: 'Participant'
 
   field :title
   field :body

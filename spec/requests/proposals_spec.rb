@@ -72,7 +72,7 @@ describe 'Proposals API' do
 
   describe 'GET /proposals/:id' do
 
-    subject { get "/proposals/#{proposal.id}", {}, headers }
+    subject { get "/proposals/#{proposal.id}", { includes: 'author,supports,delegations' }, headers }
 
     it '200 OK' do
       subject
