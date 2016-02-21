@@ -16,10 +16,6 @@ class Proposal
     supported? ? sum_of_support_weights : 0
   end
 
-  def delegates
-    Participant.in(id: delegations.pluck(:delegate_id))
-  end
-
   private
 
     def supported?
