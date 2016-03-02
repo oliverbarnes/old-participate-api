@@ -8,4 +8,6 @@ class ProposalResource < Base
   has_many :supports
   has_many :delegates, class_name: 'Participant'
   has_many :delegations
+  has_many :counter_proposals, class_name: 'Proposal'
+  has_one  :previous_proposal, class_name: 'Proposal'
 end

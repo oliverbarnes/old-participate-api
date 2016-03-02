@@ -39,10 +39,22 @@ describe 'Proposals API' do
                   self: "http://www.example.com/proposals/#{proposal.id}/relationships/author"
                 }
               },
+              'counter-proposals': {
+                links: {
+                  related: "http://www.example.com/proposals/#{proposal.id}/counter-proposals",
+                  self: "http://www.example.com/proposals/#{proposal.id}/relationships/counter-proposals"
+                }
+              },
               delegates: {
                 links: {
                   related: "http://www.example.com/proposals/#{proposal.id}/delegates",
                   self: "http://www.example.com/proposals/#{proposal.id}/relationships/delegates"
+                }
+              },
+              'previous-proposal': {
+                links: {
+                  related: "http://www.example.com/proposals/#{proposal.id}/previous-proposal",
+                  self: "http://www.example.com/proposals/#{proposal.id}/relationships/previous-proposal"
                 }
               },
               delegations: {
@@ -108,10 +120,22 @@ describe 'Proposals API' do
                 self: "http://www.example.com/proposals/#{proposal.id}/relationships/author"
               }
             },
+            'counter-proposals': {
+              links: {
+                related: "http://www.example.com/proposals/#{proposal.id}/counter-proposals",
+                self: "http://www.example.com/proposals/#{proposal.id}/relationships/counter-proposals"
+              }
+            },
             delegates: {
               links: {
                 related: "http://www.example.com/proposals/#{proposal.id}/delegates",
                 self: "http://www.example.com/proposals/#{proposal.id}/relationships/delegates"
+              }
+            },
+            'previous-proposal': {
+              links: {
+                related: "http://www.example.com/proposals/#{proposal.id}/previous-proposal",
+                self: "http://www.example.com/proposals/#{proposal.id}/relationships/previous-proposal"
               }
             },
             delegations: {

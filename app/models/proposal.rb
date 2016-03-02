@@ -5,7 +5,9 @@ class Proposal
   has_many   :supports
   has_many   :suggestions
   has_many   :delegations
-  has_many :delegates, class_name: 'Participant'
+  has_many   :delegates, class_name: 'Participant'
+  has_many   :counter_proposals, class_name: 'Proposal', inverse_of: :previous_proposal
+  belongs_to :previous_proposal, class_name: 'Proposal', inverse_of: :counter_proposals
 
   field :title
   field :body
