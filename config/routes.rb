@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   jsonapi_resources :proposals
   jsonapi_resources :participants
   jsonapi_resources :supports
+  jsonapi_resources :suggestions
   jsonapi_resources :delegations
 end
