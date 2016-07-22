@@ -1,7 +1,9 @@
 [![Code Climate](https://codeclimate.com/github/oliverbarnes/participate-api/badges/gpa.svg)](https://codeclimate.com/github/oliverbarnes/participate-api)
 [![Build Status](https://travis-ci.org/oliverbarnes/participate-api.svg?branch=master)](https://travis-ci.org/oliverbarnes/participate-api)
 
-Please see the README on [repo for the front-end app](https://github.com/oliverbarnes/participate) to learn more about the project.
+**NOTE:** This API is undergoing a [rewrite in a separate repo](https://github.com/oliverbarnes/participate-new-api). It's being ported over to Elixir 
+
+Please see the README on [repo for the front-end app](https://github.com/oliverbarnes/participate) to learn more about the project in general.
 
 ## Bootstrapping the Project
 
